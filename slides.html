@@ -2,656 +2,602 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Agents for Social Science Research</title>
-  
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/reset.css">
   <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/reveal.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/theme/black.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/plugin/highlight/monokai.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Newsreader:ital,wght@1,400&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --border: rgba(255,255,255,0.06);
-      --text: #f0f0f0;
-      --text-2: #888;
-      --text-3: #555;
-      --accent: #d63031;
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --dim: #666;
+      --accent: #c0392b;
+      --code-bg: #1a1a1a;
+      --code-text: #e8e8e8;
     }
     
     .reveal {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 28px;
       font-weight: 400;
+      color: var(--text);
       background: var(--bg);
     }
     
-    .reveal .slides { text-align: left; }
-    
-    .reveal .slides section {
-      padding: 100px;
-      height: 100%;
-      box-sizing: border-box;
+    .reveal .slides {
+      text-align: left;
     }
     
-    /* Typography scale */
+    .reveal .slides section {
+      padding: 60px 80px;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
     .reveal h1 {
-      font-size: 3em;
+      font-size: 2.4em;
       font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--text);
-      margin: 0 0 0.4em 0;
+      line-height: 1.15;
+      margin: 0 0 0.5em 0;
     }
     
     .reveal h2 {
-      font-size: 1.8em;
+      font-size: 1.6em;
       font-weight: 600;
-      letter-spacing: -0.02em;
       line-height: 1.2;
-      color: var(--text);
       margin: 0 0 0.6em 0;
-    }
-    
-    .reveal h3 {
-      font-size: 1em;
-      font-weight: 500;
-      color: var(--text);
-      margin: 0 0 0.3em 0;
     }
     
     .reveal p {
       font-size: 1.1em;
-      line-height: 1.5;
-      color: var(--text-2);
-      margin: 0 0 0.6em 0;
+      line-height: 1.6;
+      color: var(--dim);
+      margin: 0 0 1em 0;
+      max-width: 800px;
     }
     
-    .label {
-      font-size: 0.7em;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-3);
-      margin-bottom: 1em;
-      display: block;
-    }
-    
-    /* Progress bar */
-    .reveal .progress { height: 2px; background: var(--border); }
+    .reveal .progress { height: 3px; }
     .reveal .progress span { background: var(--accent); }
     
-    /* Lists */
-    .reveal ul { list-style: none; padding: 0; margin: 0; }
-    .reveal ul li {
-      font-size: 1em;
-      line-height: 1.5;
-      color: var(--text-2);
-      padding-left: 1.2em;
-      margin-bottom: 0.5em;
-      position: relative;
-    }
-    .reveal ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.6em;
-      width: 4px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 50%;
-    }
-    
-    /* Numbered list */
-    .numbered { counter-reset: n; }
-    .numbered li {
-      counter-increment: n;
-      padding-left: 2.2em;
-      margin-bottom: 0.7em;
-    }
-    .numbered li::before {
-      content: counter(n);
-      width: 1.5em;
-      height: 1.5em;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 50%;
-      font-size: 0.75em;
+    .label {
+      font-size: 0.65em;
       font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-2);
-      top: 0.1em;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      margin-bottom: 0.8em;
     }
     
-    /* Terminal */
-    .terminal {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px 24px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75em;
-      line-height: 1.7;
+    /* Code blocks */
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7em;
+      line-height: 1.6;
+      padding: 28px 32px;
+      border-radius: 6px;
+      margin: 1em 0;
+      overflow-x: auto;
+      max-width: 1000px;
     }
-    .terminal-bar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .terminal-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-    .terminal-dot.r { background: #ff5f57; }
-    .terminal-dot.y { background: #febc2e; }
-    .terminal-dot.g { background: #28c840; }
-    .terminal .p { color: var(--text-3); }
-    .terminal .c { color: var(--text); }
-    .terminal .o { color: var(--text-3); }
-    .terminal .s { color: #28c840; }
     
-    /* Cards */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-    }
-    .card h3 { margin-bottom: 0.3em; }
-    .card p { font-size: 0.9em; margin: 0; }
+    pre .prompt { color: #888; }
+    pre .cmd { color: #fff; }
+    pre .comment { color: #666; }
+    pre .output { color: #888; }
+    pre .file { color: #7ec699; }
+    pre .success { color: #7ec699; }
     
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-    
-    /* Callout */
-    .callout {
-      background: rgba(214, 48, 49, 0.08);
-      border-left: 2px solid var(--accent);
-      padding: 16px 20px;
-      border-radius: 0 6px 6px 0;
-    }
-    .callout p { margin: 0; color: var(--text); font-size: 1em; }
-    
-    .callout-muted {
-      background: var(--surface);
-      border-left-color: var(--border);
-    }
-    .callout-muted p { color: var(--text-2); }
-    
-    /* Quote */
-    .reveal blockquote {
-      font-family: 'Newsreader', Georgia, serif;
-      font-style: italic;
-      font-size: 1.6em;
-      line-height: 1.4;
-      color: var(--text);
-      border: none;
-      padding: 0;
+    /* Lists */
+    .reveal ul, .reveal ol {
       margin: 0;
+      padding-left: 1.2em;
       max-width: 700px;
     }
     
-    /* Comparison */
-    .compare {
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: 40px;
-      align-items: start;
-    }
-    .compare-divider {
-      background: var(--border);
-      height: 140px;
-      align-self: center;
-    }
-    .compare h3 { color: var(--text-3); font-weight: 400; margin-bottom: 0.8em; }
-    .compare .right h3 { color: var(--text); font-weight: 500; }
-    
-    /* Workflow */
-    .workflow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .workflow-step {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 10px 18px;
-      font-size: 0.9em;
-      color: var(--text-2);
-    }
-    .workflow-step.on {
-      border-color: var(--accent);
+    .reveal li {
+      font-size: 1em;
+      line-height: 1.6;
       color: var(--text);
+      margin-bottom: 0.4em;
     }
-    .workflow-arrow { color: var(--text-3); }
     
-    /* Center slide */
+    /* Center */
     .center {
-      display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
     }
+    .center p { max-width: 600px; }
     
-    /* Section slide */
+    /* Section */
     .section {
-      display: flex;
-      flex-direction: column;
       justify-content: flex-end;
-      padding-bottom: 140px !important;
+      padding-bottom: 100px !important;
     }
     
-    /* Big number */
-    .big-num {
-      font-size: 8em;
+    /* Stats */
+    .stat {
+      font-size: 4em;
       font-weight: 600;
-      letter-spacing: -0.04em;
       line-height: 1;
       color: var(--text);
     }
-    .big-num .unit {
-      font-size: 0.18em;
+    .stat .unit {
+      font-size: 0.3em;
       font-weight: 400;
-      color: var(--text-2);
-      margin-left: 0.1em;
+      color: var(--dim);
     }
     
-    /* Timer */
-    .timer {
-      font-size: 5em;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
+    /* Two column */
+    .cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
     }
-    .timer-label {
-      font-size: 1em;
-      color: var(--text-2);
-      margin-top: 0.3em;
+    .cols h3 {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: var(--dim);
+      margin: 0 0 0.6em 0;
     }
+    .cols.right h3 { color: var(--text); }
     
     /* Accent */
     .accent { color: var(--accent); }
     
-    /* Width constraints */
-    .narrow { max-width: 650px; }
-    .medium { max-width: 800px; }
+    /* Dim slide */
+    .dim-bg {
+      background: var(--code-bg);
+      color: var(--code-text);
+    }
+    .dim-bg h1, .dim-bg h2 { color: var(--code-text); }
+    .dim-bg p { color: #888; }
+    .dim-bg .label { color: #666; }
   </style>
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
+<div class="reveal">
+<div class="slides">
 
-      <!-- TITLE -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Workshop</span>
-        <h1>AI Agents for<br>Social Science Research</h1>
-        <p style="margin-top: 1em;">
-          Charles Crabtree<br>
-          <span style="color: var(--text-3);">Monash University · Korea University</span>
-        </p>
-      </section>
+<!-- TITLE -->
+<section class="section">
+  <p class="label">Workshop</p>
+  <h1>AI Agents for<br>Social Science Research</h1>
+  <p style="margin-top: 1.5em;">
+    Charles Crabtree<br>
+    <span style="color: var(--dim);">Monash University · Korea University</span>
+  </p>
+</section>
 
-      <!-- COLD OPEN SETUP -->
-      <section class="center" data-background-color="var(--bg)">
-        <p style="color: var(--text-3); font-size: 1.2em;">Before we start, let me show you something.</p>
-      </section>
+<!-- SETUP -->
+<section class="center">
+  <p style="color: var(--dim);">Before we start, I want to show you something.</p>
+</section>
 
-      <!-- COLD OPEN DEMO -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Live</span>
-        <h2>Building a conjoint experiment</h2>
-        <div class="terminal medium" style="margin-top: 1.2em;">
-          <div class="terminal-bar">
-            <span class="terminal-dot r"></span>
-            <span class="terminal-dot y"></span>
-            <span class="terminal-dot g"></span>
-          </div>
-          <p style="margin:0;"><span class="p">$</span> <span class="c">"Build a conjoint about hiring. Vary gender, education, experience. Include attention checks. Export as Qualtrics QSF."</span></p>
-          <p class="o fragment" style="margin:0.8em 0 0;">Designing experiment structure...</p>
-          <p class="o fragment" style="margin:0;">Creating 8 randomized choice tasks...</p>
-          <p class="o fragment" style="margin:0;">Adding attention checks...</p>
-          <p class="s fragment" style="margin:0.8em 0 0;">✓ hiring_conjoint.qsf ready</p>
-        </div>
-      </section>
+<!-- THE PROMPT -->
+<section class="dim-bg">
+  <p class="label">Live Demo</p>
+  <h2>One prompt. One research project.</h2>
+  <pre style="margin-top: 1em;">
+<span class="prompt">$</span> <span class="cmd">"Design an experiment studying partisan bias in scandal evaluation.
 
-      <!-- TIME REVEAL -->
-      <section class="center" data-background-color="var(--bg)">
-        <p class="big-num fragment"><span class="accent">14</span><span class="unit">seconds</span></p>
-        <p class="fragment" style="margin-top: 0.5em; color: var(--text-2);">That usually takes an afternoon.</p>
-      </section>
+Voters see a vignette about a state legislator accused of financial misconduct.
+Randomize: politician party (Democrat/Republican) and respondent party.
 
-      <!-- CHATBOT VS AGENT -->
-      <section data-background-color="var(--bg)">
-        <h2>This isn't ChatGPT</h2>
-        <div class="compare" style="margin-top: 1.5em;">
-          <div class="left fragment">
-            <h3>Chatbot</h3>
-            <ul>
-              <li>Answers questions</li>
-              <li>One turn at a time</li>
-              <li>Tells you what to do</li>
-            </ul>
-          </div>
-          <div class="compare-divider"></div>
-          <div class="right fragment">
-            <h3>Agent</h3>
-            <ul>
-              <li>Takes action</li>
-              <li>Multi-step workflows</li>
-              <li>Does it for you</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+Create:
+1. A title and abstract
+2. Qualtrics survey with randomized vignettes
+3. AsPredicted pre-registration
+4. R analysis script using robust SEs
 
-      <!-- QUOTE -->
-      <section class="center" data-background-color="var(--bg)">
-        <blockquote>The difference between knowing the path and <span class="accent">walking</span> the path.</blockquote>
-      </section>
+Put everything in /partisan-scandal-experiment/"</span>
+</pre>
+</section>
 
-      <!-- ROADMAP -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Today</span>
-        <h2>What we'll cover</h2>
-        <ul class="numbered narrow" style="margin-top: 1em;">
-          <li class="fragment">How agents work</li>
-          <li class="fragment">Three demonstrations</li>
-          <li class="fragment">Where they fail</li>
-          <li class="fragment">Hands-on practice</li>
-          <li class="fragment">Implications</li>
-        </ul>
-      </section>
+<!-- OUTPUT 1: STRUCTURE -->
+<section class="dim-bg">
+  <p class="label">Output</p>
+  <h2>Project structure</h2>
+  <pre>
+<span class="output">Creating project...</span>
+<span class="file">partisan-scandal-experiment/</span>
+<span class="file">├── README.md</span>
+<span class="file">├── paper/</span>
+<span class="file">│   ├── title_abstract.tex</span>
+<span class="file">│   └── prereg.md</span>
+<span class="file">├── survey/</span>
+<span class="file">│   ├── vignettes.md</span>
+<span class="file">│   └── partisan_scandal.qsf</span>
+<span class="file">├── analysis/</span>
+<span class="file">│   └── 01_analysis.R</span>
+<span class="file">└── data/</span>
+<span class="file">    └── .gitkeep</span>
+</pre>
+</section>
 
-      <!-- PART 1 -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Part 1</span>
-        <h1>How Agents Work</h1>
-      </section>
+<!-- OUTPUT 2: ABSTRACT -->
+<section class="dim-bg">
+  <p class="label">Output</p>
+  <h2>title_abstract.tex</h2>
+  <pre style="font-size: 0.65em;">
+\title{Partisan Bias in Evaluating Political Scandals: 
+       A Survey Experiment}
 
-      <!-- TOOLS -->
-      <section data-background-color="var(--bg)">
-        <h2>Agents have tools</h2>
-        <div class="grid-2" style="margin-top: 1.2em; max-width: 700px;">
-          <div class="card fragment">
-            <h3>File System</h3>
-            <p>Read, write, organize files</p>
-          </div>
-          <div class="card fragment">
-            <h3>Terminal</h3>
-            <p>Run commands and scripts</p>
-          </div>
-          <div class="card fragment">
-            <h3>Web Access</h3>
-            <p>Search and fetch resources</p>
-          </div>
-          <div class="card fragment">
-            <h3>Code Execution</h3>
-            <p>Run R, Python, Stata</p>
-          </div>
-        </div>
-      </section>
+\begin{abstract}
+Do partisans apply different standards when evaluating 
+misconduct by co-partisan versus opposing-party politicians? 
+We present a pre-registered survey experiment (N = 2,000) 
+in which respondents evaluate a state legislator accused 
+of financial misconduct. We randomize the party affiliation 
+of the accused politician while holding the scandal constant. 
 
-      <!-- LOOP -->
-      <section data-background-color="var(--bg)">
-        <h2>The loop</h2>
-        <p class="narrow">They observe each result, then decide what to do next.</p>
-        <div class="workflow" style="margin-top: 1.2em;">
-          <div class="workflow-step fragment">Observe</div>
-          <span class="workflow-arrow fragment">→</span>
-          <div class="workflow-step fragment">Plan</div>
-          <span class="workflow-arrow fragment">→</span>
-          <div class="workflow-step fragment">Act</div>
-          <span class="workflow-arrow fragment">→</span>
-          <div class="workflow-step fragment">Evaluate</div>
-          <span class="workflow-arrow fragment">→</span>
-          <div class="workflow-step on fragment">Repeat</div>
-        </div>
-        <div class="callout narrow fragment" style="margin-top: 1.5em;">
-          <p>This is why they recover from errors.</p>
-        </div>
-      </section>
+We find that respondents rate co-partisan politicians as 
+significantly less culpable than opposing-party politicians 
+accused of identical misconduct. This effect is strongest 
+among strong partisans and persists after controlling for 
+demographic characteristics. Our findings suggest that 
+partisan identity shapes moral judgment in ways that may 
+undermine democratic accountability.
+\end{abstract}</pre>
+</section>
 
-      <!-- PART 2 -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Part 2</span>
-        <h1>Three Demonstrations</h1>
-      </section>
+<!-- OUTPUT 3: VIGNETTE -->
+<section class="dim-bg">
+  <p class="label">Output</p>
+  <h2>Vignette text</h2>
+  <pre style="font-size: 0.65em;">
+<span class="comment"># Treatment conditions (2x2 design)</span>
 
-      <!-- DEMO 1 -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Demo 1</span>
-        <h2>Analyze Data, Report Findings</h2>
-        <p class="narrow">Take survey data, run models, produce tables and figures, write the results.</p>
-        <div class="terminal medium fragment" style="margin-top: 1.2em;">
-          <div class="terminal-bar">
-            <span class="terminal-dot r"></span>
-            <span class="terminal-dot y"></span>
-            <span class="terminal-dot g"></span>
-          </div>
-          <p style="margin:0;"><span class="p">$</span> <span class="c">"Analyze data/survey.csv. Run OLS predicting trust with age, education, income. Cluster SEs by respondent. Produce a LaTeX table and coefficient plot. Write a results paragraph."</span></p>
-        </div>
-      </section>
+<span class="comment">## Base vignette (party randomized)</span>
 
-      <section class="center" data-background-color="var(--bg)">
-        <h2>Live Demo</h2>
-        <p style="color: var(--text-3);">Analysis → tables → figures → text</p>
-      </section>
+"State Representative [Michael Torres / Michael Torres], a 
+[Democrat / Republican] from [District 14], is facing an 
+ethics investigation. According to documents obtained by 
+local reporters, Torres allegedly used $47,000 in campaign 
+funds to pay for personal travel and family expenses over 
+an 18-month period.
 
-      <!-- DEMO 2 -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Demo 2</span>
-        <h2>Interactive Experiment</h2>
-        <p class="narrow">Build a social media simulation for studying misinformation.</p>
-        <div class="terminal medium fragment" style="margin-top: 1.2em;">
-          <div class="terminal-bar">
-            <span class="terminal-dot r"></span>
-            <span class="terminal-dot y"></span>
-            <span class="terminal-dot g"></span>
-          </div>
-          <p style="margin:0;"><span class="p">$</span> <span class="c">"Build a Twitter/X interface. Feed of posts, users can like and share, track engagement. Include treatment conditions. Make it embeddable in Qualtrics."</span></p>
-        </div>
-      </section>
+Torres has denied wrongdoing, stating that the expenditures 
+were 'legitimate campaign-related costs' and that he will 
+'fully cooperate with any investigation.' The state ethics 
+commission is expected to issue findings within 60 days."
 
-      <section class="center" data-background-color="var(--bg)">
-        <h2>Live Demo</h2>
-        <p style="color: var(--text-3);">Building the experiment</p>
-      </section>
+<span class="comment">## Measured: respondent party ID (7-point scale)</span>
+<span class="comment">## DVs: culpability, punishment severity, vote likelihood</span></pre>
+</section>
 
-      <!-- DEMO 3 -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Demo 3</span>
-        <h2>Complete Paper Section</h2>
-        <p class="narrow">From raw experimental data to compiled PDF with methods and results.</p>
-        <ul class="narrow" style="margin-top: 1em;">
-          <li class="fragment">Load and validate data</li>
-          <li class="fragment">Run pre-registered analyses</li>
-          <li class="fragment">Generate all tables and figures</li>
-          <li class="fragment">Write methods and results text</li>
-          <li class="fragment">Compile LaTeX to PDF</li>
-        </ul>
-      </section>
+<!-- OUTPUT 4: PREREG -->
+<section class="dim-bg">
+  <p class="label">Output</p>
+  <h2>prereg.md (AsPredicted format)</h2>
+  <pre style="font-size: 0.6em;">
+## 1. Data collection
+Data will be collected via Prolific. N = 2,000 US adults.
 
-      <section class="center" data-background-color="var(--bg)">
-        <h2>Live Demo</h2>
-        <p style="color: var(--text-3);">End-to-end pipeline</p>
-      </section>
+## 2. Hypothesis
+H1 (In-party bias): Respondents will rate politicians from 
+their own party as less culpable than opposing-party politicians.
 
-      <!-- REPRODUCIBILITY -->
-      <section data-background-color="var(--bg)">
-        <h2>What matters</h2>
-        <div class="callout narrow">
-          <p>Every command is logged. Every file change is tracked. The workflow is reproducible by default.</p>
-        </div>
-      </section>
+H2 (Asymmetry): The in-party bias effect will be larger among 
+respondents with stronger partisan identification.
 
-      <!-- QUOTE -->
-      <section class="center" data-background-color="var(--bg)">
-        <blockquote>Workflow automation, not task completion.</blockquote>
-      </section>
+## 3. Dependent variables
+- Culpability (7-point scale: "not at all" to "completely")
+- Appropriate punishment (5-point scale)
+- Vote likelihood (if Torres ran for re-election)
 
-      <!-- PART 3 -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Part 3</span>
-        <h1>Where They Fail</h1>
-      </section>
+## 4. Analyses
+OLS regression with robust standard errors. 
+Interaction: politician_party × respondent_party.
+Controls: age, gender, education, political interest.</pre>
+</section>
 
-      <!-- FAILURES -->
-      <section data-background-color="var(--bg)">
-        <h2>Known failure modes</h2>
-        <div class="narrow" style="margin-top: 1em;">
-          <div class="callout-muted fragment">
-            <p><strong>Hallucinated citations.</strong> They invent references. Verify everything.</p>
-          </div>
-          <div class="callout-muted fragment" style="margin-top: 0.8em;">
-            <p><strong>Wrong statistics.</strong> Numbers can be subtly off. Check the math.</p>
-          </div>
-          <div class="callout-muted fragment" style="margin-top: 0.8em;">
-            <p><strong>Overfit to your prompt.</strong> They do what you ask, even if wrong.</p>
-          </div>
-        </div>
-      </section>
+<!-- OUTPUT 5: ANALYSIS CODE -->
+<section class="dim-bg">
+  <p class="label">Output</p>
+  <h2>01_analysis.R</h2>
+  <pre style="font-size: 0.58em;">
+library(tidyverse)
+library(estimatr)
+library(modelsummary)
 
-      <!-- VERIFICATION -->
-      <section data-background-color="var(--bg)">
-        <h2>The verification principle</h2>
-        <p class="narrow">Treat output like a research assistant's first draft.</p>
-        <ul class="narrow" style="margin-top: 1em;">
-          <li class="fragment">Run the code yourself</li>
-          <li class="fragment">Spot-check calculations</li>
-          <li class="fragment">Verify citations exist</li>
-          <li class="fragment">Review the logic</li>
-        </ul>
-      </section>
+df <- read_csv("data/scandal_experiment.csv") |>
+  mutate(
+    co_partisan = (respondent_party == politician_party),
+    strong_partisan = abs(party_id_7) >= 3
+  )
 
-      <!-- PART 4 -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Part 4</span>
-        <h1>Hands-On</h1>
-      </section>
+# H1: In-party bias
+m1 <- lm_robust(
+  culpability ~ co_partisan + age + female + college,
+  data = df, se_type = "HC2"
+)
 
-      <!-- CHALLENGES -->
-      <section data-background-color="var(--bg)">
-        <h2>Choose your challenge</h2>
-        <div class="grid-3" style="margin-top: 1.2em;">
-          <div class="card">
-            <h3 style="color: var(--text-3);">Starter</h3>
-            <p>Set up a project: folders, README, pre-registration.</p>
-          </div>
-          <div class="card">
-            <h3>Standard</h3>
-            <p>Run a regression, produce a LaTeX table.</p>
-          </div>
-          <div class="card">
-            <h3 style="color: var(--accent);">Advanced</h3>
-            <p>Complete analysis: data → figures → text.</p>
-          </div>
-        </div>
-      </section>
+# H2: Interaction with partisan strength  
+m2 <- lm_robust(
+  culpability ~ co_partisan * strong_partisan + age + female + college,
+  data = df, se_type = "HC2"
+)
 
-      <!-- TIMER -->
-      <section class="center" data-background-color="var(--bg)">
-        <p class="timer">14:00</p>
-        <p class="timer-label">Work session</p>
-      </section>
+modelsummary(list("H1" = m1, "H2" = m2), 
+             output = "output/tables/main_results.tex")</pre>
+</section>
 
-      <!-- SHARE -->
-      <section class="center" data-background-color="var(--bg)">
-        <h2>Share what you built</h2>
-        <p style="color: var(--text-3);">Successes and failures both useful.</p>
-      </section>
+<!-- TIMING -->
+<section class="center">
+  <p class="stat fragment"><span class="accent">47</span><span class="unit"> seconds</span></p>
+  <p class="fragment" style="margin-top: 0.8em;">Title, abstract, survey, pre-registration, analysis code.</p>
+</section>
 
-      <!-- PART 5 -->
-      <section class="section" data-background-color="var(--bg)">
-        <span class="label">Part 5</span>
-        <h1>Implications</h1>
-      </section>
-
-      <!-- QUOTE -->
-      <section class="center" data-background-color="var(--bg)">
-        <blockquote>These tools are here. The question is how we use them responsibly.</blockquote>
-      </section>
-
-      <!-- DISCUSSION -->
-      <section data-background-color="var(--bg)">
-        <h2>Discussion</h2>
-        <ul class="narrow" style="margin-top: 1em;">
-          <li class="fragment">What tasks benefit most from agent assistance?</li>
-          <li class="fragment">Where should human judgment stay non-negotiable?</li>
-          <li class="fragment">What norms for transparency and acknowledgment?</li>
-        </ul>
-      </section>
-
-      <!-- TIMER -->
-      <section class="center" data-background-color="var(--bg)">
-        <p class="timer">12:00</p>
-        <p class="timer-label">Table discussion</p>
-      </section>
-
-      <!-- SUMMARY -->
-      <section data-background-color="var(--bg)">
-        <span class="label">Summary</span>
-        <h2>Three things</h2>
-        <ul class="numbered narrow" style="margin-top: 1em;">
-          <li class="fragment"><strong>Agents act.</strong> They execute, not just advise.</li>
-          <li class="fragment"><strong>Verify everything.</strong> Trust requires validation.</li>
-          <li class="fragment"><strong>Document by default.</strong> The log is your audit trail.</li>
-        </ul>
-      </section>
-
-      <!-- RESOURCES -->
-      <section data-background-color="var(--bg)">
-        <h2>Resources</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 1.2em; max-width: 600px;">
-          <ul>
-            <li>Prompt templates</li>
-            <li>Example workflows</li>
-            <li>Practice datasets</li>
-          </ul>
-          <div class="card" style="text-align: center;">
-            <p style="color: var(--text-3); font-size: 0.85em; margin: 0;">Download</p>
-            <p style="color: var(--text); margin: 0.3em 0 0;"><strong>bit.ly/agents-workshop</strong></p>
-          </div>
-        </div>
-      </section>
-
-      <!-- END -->
-      <section class="section" data-background-color="var(--bg)">
-        <h1>Thank you</h1>
-        <p style="margin-top: 1em;">
-          Charles Crabtree<br>
-          charles.crabtree@monash.edu<br>
-          charlescrabtree.com
-        </p>
-      </section>
-
+<!-- DISTINCTION -->
+<section>
+  <h2>This isn't ChatGPT</h2>
+  <div class="cols" style="margin-top: 1.5em;">
+    <div class="fragment">
+      <h3>Chatbot</h3>
+      <ul>
+        <li>Tells you what to do</li>
+        <li>One response at a time</li>
+        <li>You copy-paste everything</li>
+      </ul>
+    </div>
+    <div class="right fragment">
+      <h3 style="color: var(--text);">Agent</h3>
+      <ul>
+        <li>Does it for you</li>
+        <li>Multi-step workflows</li>
+        <li>Files appear on your machine</li>
+      </ul>
     </div>
   </div>
+</section>
 
-  <script src="https://unpkg.com/reveal.js@4.5.0/dist/reveal.js"></script>
-  <script src="https://unpkg.com/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
-  <script src="https://unpkg.com/reveal.js@4.5.0/plugin/notes/notes.js"></script>
-  <script>
-    Reveal.initialize({
-      hash: true,
-      transition: 'none',
-      backgroundTransition: 'none',
-      progress: true,
-      slideNumber: false,
-      center: false,
-      width: 1920,
-      height: 1080,
-      margin: 0,
-      plugins: [ RevealHighlight, RevealNotes ]
-    });
-  </script>
+<!-- ROADMAP -->
+<section>
+  <p class="label">Today</p>
+  <h2>What we'll cover</h2>
+  <ol style="margin-top: 1em;">
+    <li class="fragment">How agents work</li>
+    <li class="fragment">Three demonstrations</li>
+    <li class="fragment">Where they fail</li>
+    <li class="fragment">Hands-on practice</li>
+    <li class="fragment">Implications</li>
+  </ol>
+</section>
+
+<!-- PART 1 -->
+<section class="section">
+  <p class="label">Part 1</p>
+  <h1>How Agents Work</h1>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <h2>Agents have tools</h2>
+  <ul style="margin-top: 1em;">
+    <li class="fragment"><strong>File system</strong> — read, write, organize</li>
+    <li class="fragment"><strong>Terminal</strong> — run commands, execute scripts</li>
+    <li class="fragment"><strong>Code execution</strong> — run R, Python, see errors, fix them</li>
+    <li class="fragment"><strong>Web access</strong> — search docs, verify information</li>
+  </ul>
+</section>
+
+<!-- LOOP -->
+<section>
+  <h2>The loop</h2>
+  <p>Agents observe each result and decide what to do next.</p>
+  <ol style="margin-top: 1em;">
+    <li class="fragment">Observe the current state</li>
+    <li class="fragment">Plan the next action</li>
+    <li class="fragment">Execute the action</li>
+    <li class="fragment">Check if it worked</li>
+    <li class="fragment">Repeat until done</li>
+  </ol>
+  <p class="fragment" style="margin-top: 1em;">This is why they recover from errors.</p>
+</section>
+
+<!-- PART 2 -->
+<section class="section">
+  <p class="label">Part 2</p>
+  <h1>Three Demonstrations</h1>
+</section>
+
+<!-- DEMO 1 INTRO -->
+<section>
+  <p class="label">Demo 1</p>
+  <h2>Experimental Design → Qualtrics</h2>
+  <p>We'll design a media trust experiment and export it as a .qsf file.</p>
+  <pre style="margin-top: 1em;">
+<span class="prompt">$</span> <span class="cmd">"Design a 2x2 vignette experiment on media trust.
+Manipulate: source (mainstream vs. alternative) and 
+topic (COVID vs. economy).
+
+Create a Qualtrics survey with attention checks and 
+standard demographics. Export as media_trust.qsf"</span></pre>
+</section>
+
+<section class="center">
+  <h2>Live Demo</h2>
+  <p>Experimental design → Qualtrics file</p>
+</section>
+
+<!-- DEMO 2 INTRO -->
+<section>
+  <p class="label">Demo 2</p>
+  <h2>Data → Analysis → Results</h2>
+  <p>Full analysis pipeline from raw data to written findings.</p>
+  <pre style="margin-top: 1em;">
+<span class="prompt">$</span> <span class="cmd">"Analyze the experiment data in data/media_trust.csv.
+
+Run OLS predicting trust with treatment indicators.
+Cluster standard errors by respondent.
+Produce a coefficient plot and LaTeX table.
+Write a results paragraph summarizing the findings."</span></pre>
+</section>
+
+<section class="center">
+  <h2>Live Demo</h2>
+  <p>Analysis → tables → figures → text</p>
+</section>
+
+<!-- DEMO 3 INTRO -->
+<section>
+  <p class="label">Demo 3</p>
+  <h2>Interactive Experiment Interface</h2>
+  <p>Build a social media simulation for studying sharing behavior.</p>
+  <pre style="margin-top: 1em;">
+<span class="prompt">$</span> <span class="cmd">"Build a Twitter/X-style interface for a survey experiment.
+
+Show a feed of 6 posts about climate change.
+Users can like, share, and reply.
+Track all engagement.
+Make it embeddable in Qualtrics via iframe."</span></pre>
+</section>
+
+<section class="center">
+  <h2>Live Demo</h2>
+  <p>Building an interactive experiment</p>
+</section>
+
+<!-- KEY POINT -->
+<section>
+  <h2>What matters</h2>
+  <p style="font-size: 1.2em; color: var(--text); max-width: 700px;">
+    Every command is logged. Every file change is tracked. 
+    The workflow is reproducible by default.
+  </p>
+</section>
+
+<!-- PART 3 -->
+<section class="section">
+  <p class="label">Part 3</p>
+  <h1>Where They Fail</h1>
+</section>
+
+<!-- FAILURES -->
+<section>
+  <h2>Known failure modes</h2>
+  <ul style="margin-top: 1em;">
+    <li class="fragment"><strong>Hallucinated citations</strong> — they invent references</li>
+    <li class="fragment"><strong>Wrong statistics</strong> — numbers can be subtly off</li>
+    <li class="fragment"><strong>Overfit to prompt</strong> — they do what you ask, even if wrong</li>
+  </ul>
+</section>
+
+<!-- VERIFICATION -->
+<section>
+  <h2>The verification principle</h2>
+  <p>Treat agent output like a research assistant's first draft.</p>
+  <ul style="margin-top: 1em;">
+    <li class="fragment">Run the code yourself</li>
+    <li class="fragment">Spot-check calculations</li>
+    <li class="fragment">Verify every citation exists</li>
+    <li class="fragment">Review the logic, not just the output</li>
+  </ul>
+</section>
+
+<!-- PART 4 -->
+<section class="section">
+  <p class="label">Part 4</p>
+  <h1>Hands-On Practice</h1>
+</section>
+
+<!-- CHALLENGES -->
+<section>
+  <h2>Choose your challenge</h2>
+  <ul style="margin-top: 1em;">
+    <li><strong style="color: var(--dim);">Starter:</strong> Set up a project structure with README and pre-registration template</li>
+    <li><strong>Standard:</strong> Design a vignette experiment and export to Qualtrics</li>
+    <li><strong style="color: var(--accent);">Advanced:</strong> Full pipeline — design, pre-registration, analysis code</li>
+  </ul>
+</section>
+
+<!-- TIMER -->
+<section class="center">
+  <p class="stat">14:00</p>
+  <p>Work session</p>
+</section>
+
+<!-- SHARE -->
+<section class="center">
+  <h2>Share what you built</h2>
+  <p>Successes and failures both useful.</p>
+</section>
+
+<!-- PART 5 -->
+<section class="section">
+  <p class="label">Part 5</p>
+  <h1>Implications</h1>
+</section>
+
+<!-- DISCUSSION -->
+<section>
+  <h2>Discussion questions</h2>
+  <ul style="margin-top: 1em;">
+    <li class="fragment">What tasks benefit most from agent assistance?</li>
+    <li class="fragment">Where should human judgment stay non-negotiable?</li>
+    <li class="fragment">What norms for transparency and acknowledgment?</li>
+  </ul>
+</section>
+
+<!-- TIMER -->
+<section class="center">
+  <p class="stat">12:00</p>
+  <p>Table discussion</p>
+</section>
+
+<!-- SUMMARY -->
+<section>
+  <p class="label">Summary</p>
+  <h2>Three things</h2>
+  <ol style="margin-top: 1em;">
+    <li class="fragment"><strong>Agents act.</strong> They execute, not just advise.</li>
+    <li class="fragment"><strong>Verify everything.</strong> Trust requires validation.</li>
+    <li class="fragment"><strong>Document by default.</strong> The log is your audit trail.</li>
+  </ol>
+</section>
+
+<!-- RESOURCES -->
+<section>
+  <h2>Resources</h2>
+  <ul style="margin-top: 1em;">
+    <li>Prompt templates</li>
+    <li>Example workflows</li>
+    <li>Practice datasets</li>
+  </ul>
+  <p style="margin-top: 1.5em; color: var(--text);"><strong>bit.ly/agents-workshop</strong></p>
+</section>
+
+<!-- END -->
+<section class="section">
+  <h1>Thank you</h1>
+  <p style="margin-top: 1em;">
+    Charles Crabtree<br>
+    charles.crabtree@monash.edu<br>
+    charlescrabtree.com
+  </p>
+</section>
+
+</div>
+</div>
+
+<script src="https://unpkg.com/reveal.js@4.5.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    transition: 'none',
+    progress: true,
+    center: false,
+    width: 1920,
+    height: 1080,
+    margin: 0
+  });
+</script>
 </body>
 </html>

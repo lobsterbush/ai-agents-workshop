@@ -29,43 +29,43 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 ## Design Conventions
 
 ### Color Palette
-- Background: `#0a0a0a`
-- Surface: `#141414`
-- Accent: `#d63031` (red, used sparingly)
-- Text: `#f0f0f0` (primary), `#888` (secondary), `#555` (muted)
+- Background: `#fafafa` (light)
+- Text: `#1a1a1a` (primary), `#666` (dim)
+- Accent: `#c0392b` (red, used sparingly)
+- Code blocks: `#1a1a1a` background, `#e8e8e8` text
 
 ### Typography
-- Headings: Inter 600, h1 at 3em, h2 at 1.8em
-- Body: Inter 400 at 1.1em
-- Code: JetBrains Mono at 0.75em
-- Quotes: Newsreader italic at 1.6em
+- Headings: IBM Plex Sans 600, h1 at 2.4em, h2 at 1.6em
+- Body: IBM Plex Sans 400 at 1.1em
+- Code: IBM Plex Mono at 0.7em
 
 ### Layout
 - Resolution: 1920×1080
-- Padding: 100px all sides
+- Padding: 60px top/bottom, 80px sides
 - Left-aligned text throughout
-- Width constraints: `.narrow` (650px), `.medium` (800px)
+- Max paragraph width: 800px
 
 ### CSS Classes
 - `.section` - part divider slides (bottom-aligned)
 - `.center` - centered content slides
-- `.terminal` - command-line mockups
-- `.card`, `.grid-2`, `.grid-3` - card layouts
-- `.callout`, `.callout-muted` - highlighted boxes
-- `.numbered` - ordered lists with circular numbers
-- `.compare`, `.compare-divider` - side-by-side layouts
-- `.workflow`, `.workflow-step`, `.workflow-step.on` - process flows
-- `.big-num`, `.timer` - large display numbers
+- `pre` - dark code blocks
+- `.cols` - two-column comparison layouts
+- `.stat` - large display numbers
 - `.accent` - red accent color
 - `.label` - small caps section labels
+- `.dim-bg` - dark background slides (for code demos)
 
 ## Workshop Content Notes
 
 The workshop demonstrates three live demos in Warp:
-1. **Analyze & Report** - Survey data → OLS with clustered SEs → LaTeX table + coefficient plot → results paragraph
-2. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
-3. **Complete Paper Section** - Raw experimental data → pre-registered analyses → tables/figures → methods + results → compiled PDF
+1. **Experimental Design → Qualtrics** - Design a 2x2 vignette experiment on media trust, export as .qsf
+2. **Data → Analysis → Results** - OLS with clustered SEs → coefficient plot → LaTeX table → results paragraph
+3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
-The cold open builds a Qualtrics-importable conjoint experiment in ~14 seconds.
+The cold open builds a complete "Partisan Bias in Scandal Evaluation" experiment in ~47 seconds:
+- Title and abstract (LaTeX)
+- Vignette text with randomization
+- AsPredicted pre-registration
+- R analysis script with estimatr/modelsummary
 
 Key themes: workflow automation (not just task completion), reproducibility through logging, verification of all outputs.
