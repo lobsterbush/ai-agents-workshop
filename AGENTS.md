@@ -29,42 +29,42 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 ## Design Conventions
 
 ### Color Palette
-- Background: near-black (`#0c0c0c`)
-- Surface: dark gray (`#161616`)
-- Accent: vermillion red (`#e34234`) - used sparingly
-- Text: white (`#fafafa`), secondary (`#a1a1a1`), muted (`#6b6b6b`)
-- No gradients, no stock photos, no emojis
+- Background: `#0a0a0a`
+- Surface: `#141414`
+- Accent: `#d63031` (red, used sparingly)
+- Text: `#f0f0f0` (primary), `#888` (secondary), `#555` (muted)
 
 ### Typography
-- Headings: Inter (weight 600-700)
-- Body: Inter (weight 400)
-- Code: JetBrains Mono
-- Accent serif: Playfair Display (for quotes)
+- Headings: Inter 600, h1 at 3em, h2 at 1.8em
+- Body: Inter 400 at 1.1em
+- Code: JetBrains Mono at 0.75em
+- Quotes: Newsreader italic at 1.6em
 
 ### Layout
 - Resolution: 1920×1080
-- Padding: 80px top/bottom, 120px sides
-- Left-aligned text (not centered)
-- Content width constraints: `.content-narrow` (800px), `.content-medium` (1000px), `.content-wide` (1400px)
+- Padding: 100px all sides
+- Left-aligned text throughout
+- Width constraints: `.narrow` (650px), `.medium` (800px)
 
 ### CSS Classes
-- `.section-title` - part divider slides (bottom-aligned)
-- `.center-slide` - centered content slides
+- `.section` - part divider slides (bottom-aligned)
+- `.center` - centered content slides
 - `.terminal` - command-line mockups
-- `.card`, `.card-grid`, `.card-grid-3` - information cards
-- `.callout`, `.callout-subtle` - highlighted information
-- `.numbered-list` - ordered lists with circular numbers
-- `.vs-grid`, `.vs-divider` - comparison layouts
-- `.workflow`, `.workflow-step` - process flows
-- `.accent` - red accent color for emphasis
-- `.serif` - italic Playfair for editorial emphasis
+- `.card`, `.grid-2`, `.grid-3` - card layouts
+- `.callout`, `.callout-muted` - highlighted boxes
+- `.numbered` - ordered lists with circular numbers
+- `.compare`, `.compare-divider` - side-by-side layouts
+- `.workflow`, `.workflow-step`, `.workflow-step.on` - process flows
+- `.big-num`, `.timer` - large display numbers
+- `.accent` - red accent color
+- `.label` - small caps section labels
 
 ## Workshop Content Notes
 
 The workshop demonstrates three live demos in Warp:
-1. **Research Dashboard** - Building an interactive Shiny app from WVS data with filters and map visualization
-2. **Full Analysis Pipeline** - Raw data → clustered SE regressions → LaTeX tables/figures → methods text → compiled PDF
-3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
+1. **Analyze & Report** - Survey data → OLS with clustered SEs → LaTeX table + coefficient plot → results paragraph
+2. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
+3. **Complete Paper Section** - Raw experimental data → pre-registered analyses → tables/figures → methods + results → compiled PDF
 
 The cold open builds a Qualtrics-importable conjoint experiment in ~14 seconds.
 
