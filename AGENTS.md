@@ -28,27 +28,44 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 
 ## Design Conventions
 
-### Styling
-- Primary color: Monash Blue (`#006DAE`)
-- Accent colors: mint (`#4ECDC4`), coral (`#FF6B6B`), gold (`#FFE66D`)
-- Progress bar enabled at bottom
+### Color Palette
+- Background: near-black (`#0c0c0c`)
+- Surface: dark gray (`#161616`)
+- Accent: vermillion red (`#e34234`) - used sparingly
+- Text: white (`#fafafa`), secondary (`#a1a1a1`), muted (`#6b6b6b`)
+- No gradients, no stock photos, no emojis
+
+### Typography
+- Headings: Inter (weight 600-700)
+- Body: Inter (weight 400)
+- Code: JetBrains Mono
+- Accent serif: Playfair Display (for quotes)
+
+### Layout
 - Resolution: 1920×1080
+- Padding: 80px top/bottom, 120px sides
+- Left-aligned text (not centered)
+- Content width constraints: `.content-narrow` (800px), `.content-medium` (1000px), `.content-wide` (1400px)
 
-### Content patterns
-Slides use these CSS classes:
-- `.gradient-text` / `.gradient-text-warm` - gradient headings
-- `.callout`, `.callout-warning`, `.callout-success`, `.callout-insight` - callout boxes
-- `.terminal` - mock terminal displays
-- `.fragment` - Reveal.js reveal animations
-
-### Prompt cards
-6 cards covering: Project Setup, Data Cleaning, Statistical Analysis, Visualization, Writing Assistance, Literature Review. Print double-sided, cut along grid.
+### CSS Classes
+- `.section-title` - part divider slides (bottom-aligned)
+- `.center-slide` - centered content slides
+- `.terminal` - command-line mockups
+- `.card`, `.card-grid`, `.card-grid-3` - information cards
+- `.callout`, `.callout-subtle` - highlighted information
+- `.numbered-list` - ordered lists with circular numbers
+- `.vs-grid`, `.vs-divider` - comparison layouts
+- `.workflow`, `.workflow-step` - process flows
+- `.accent` - red accent color for emphasis
+- `.serif` - italic Playfair for editorial emphasis
 
 ## Workshop Content Notes
 
 The workshop demonstrates three live demos in Warp:
-1. **Project Setup** - Creating folder structures, READMEs, pre-registration templates
-2. **Data Analysis** - Loading data, running regressions with clustered SEs, generating LaTeX tables
-3. **Full Pipeline** - Qualitative coding of interview transcripts → codebook → visualization → methods paragraph
+1. **Research Dashboard** - Building an interactive Shiny app from WVS data with filters and map visualization
+2. **Full Analysis Pipeline** - Raw data → clustered SE regressions → LaTeX tables/figures → methods text → compiled PDF
+3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
-Key themes: reproducibility through logging, self-correcting agent behavior, verification of citations and statistics.
+The cold open builds a Qualtrics-importable conjoint experiment in ~14 seconds.
+
+Key themes: workflow automation (not just task completion), reproducibility through logging, verification of all outputs.
