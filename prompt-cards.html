@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Agent Prompt Cards — SoSS Workshop</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    
+    .print-instructions {
+      background: #006DAE;
+      color: white;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .print-instructions h1 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    
+    .print-instructions p {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+    
+    @media print {
+      .print-instructions {
+        display: none;
+      }
+      
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .card-grid {
+        gap: 0;
+      }
+      
+      .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        border: 1px solid #ddd;
+        box-shadow: none;
+      }
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-left: 5px solid #006DAE;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card.mint { border-left-color: #4ECDC4; }
+    .card.coral { border-left-color: #FF6B6B; }
+    .card.gold { border-left-color: #FFE66D; }
+    .card.purple { border-left-color: #A855F7; }
+    .card.blue { border-left-color: #006DAE; }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .card-icon {
+      font-size: 2em;
+    }
+    
+    .card-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    
+    .card-subtitle {
+      font-size: 0.75em;
+      color: #666;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .card-prompt {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 0.85em;
+      line-height: 1.5;
+      color: #333;
+      flex-grow: 1;
+      font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    }
+    
+    .card-tip {
+      margin-top: 12px;
+      font-size: 0.75em;
+      color: #666;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+    }
+    
+    .card-tip strong {
+      color: #006DAE;
+    }
+    
+    .page-break {
+      page-break-after: always;
+      height: 0;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.8em;
+      color: #666;
+    }
+    
+    @media print {
+      .footer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-instructions">
+  <h1>🖨️ Prompt Cards — Print Instructions</h1>
+  <p>Print this page double-sided, then cut along the grid lines. Each participant gets one set of 6 cards.</p>
+</div>
+
+<div class="card-grid">
+
+  <!-- Card 1: Project Setup -->
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">🚀</span>
+      <div>
+        <div class="card-subtitle">Card 1</div>
+        <div class="card-title">Project Setup</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Create a new research project called "[PROJECT NAME]" with:
+- Folder structure for data (raw/processed), analysis, output (tables/figures)
+- README explaining the project and each folder
+- Pre-registration template
+- Starter analysis scripts in [R/Python/Stata]
+- .gitignore configured for [language]
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Be specific about your language and project type. The more detail, the better the output.
+    </div>
+  </div>
+
+  <!-- Card 2: Data Cleaning -->
+  <div class="card mint">
+    <div class="card-header">
+      <span class="card-icon">🧹</span>
+      <div>
+        <div class="card-subtitle">Card 2</div>
+        <div class="card-title">Data Cleaning</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Load the data in [FILE PATH] and:
+1. Show me the first few rows and variable types
+2. Identify missing values and suggest how to handle them
+3. Check for outliers in [VARIABLE]
+4. Create clean versions of [VARIABLES] with appropriate labels
+5. Save the cleaned data to [OUTPUT PATH]
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Always verify the agent's cleaning decisions. Ask "explain why you made this choice" for anything non-obvious.
+    </div>
+  </div>
+
+  <!-- Card 3: Statistical Analysis -->
+  <div class="card coral">
+    <div class="card-header">
+      <span class="card-icon">📊</span>
+      <div>
+        <div class="card-subtitle">Card 3</div>
+        <div class="card-title">Statistical Analysis</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Using the data in [FILE PATH]:
+1. Run a [MODEL TYPE] predicting [DV] with [IVs]
+2. Use [robust/clustered] standard errors by [CLUSTER VAR]
+3. Include [controls/fixed effects] for [VARIABLES]
+4. Generate a publication-ready LaTeX table
+5. Write a methods paragraph describing the analysis
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Specify your standard error type explicitly. The agent will default to your preferences if you've set them.
+    </div>
+  </div>
+
+  <!-- Card 4: Visualization -->
+  <div class="card gold">
+    <div class="card-header">
+      <span class="card-icon">📈</span>
+      <div>
+        <div class="card-subtitle">Card 4</div>
+        <div class="card-title">Visualization</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Create a [CHART TYPE] showing [RELATIONSHIP]:
+- Use ggplot with theme_tufte()
+- X-axis: [VARIABLE], Y-axis: [VARIABLE]
+- Color/group by [VARIABLE] if relevant
+- Add clear axis labels and a descriptive title
+- Save as high-resolution PNG and PDF
+- Make labels appropriately large for publication
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Ask for multiple versions: "Also create a version without the legend" or "Make a grayscale version."
+    </div>
+  </div>
+
+  <!-- Card 5: Writing Assistance -->
+  <div class="card purple">
+    <div class="card-header">
+      <span class="card-icon">✍️</span>
+      <div>
+        <div class="card-subtitle">Card 5</div>
+        <div class="card-title">Writing Assistance</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Based on the analysis we just ran:
+1. Write a results paragraph summarizing the key findings
+2. Include effect sizes and confidence intervals
+3. Reference the table/figure numbers
+4. Use past tense and passive voice (per journal style)
+5. Flag any results that need human interpretation
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Always verify statistical claims in generated text. Numbers can be subtly wrong even when prose sounds correct.
+    </div>
+  </div>
+
+  <!-- Card 6: Literature Review -->
+  <div class="card blue">
+    <div class="card-header">
+      <span class="card-icon">📚</span>
+      <div>
+        <div class="card-subtitle">Card 6</div>
+        <div class="card-title">Literature Review</div>
+      </div>
+    </div>
+    <div class="card-prompt">
+Help me understand the literature on [TOPIC]:
+1. What are the key debates in this area?
+2. What methodological approaches are common?
+3. What gaps exist that my research could address?
+4. Suggest 5 seminal papers I should cite
+5. Draft a paragraph positioning my contribution
+
+⚠️ VERIFY ALL CITATIONS — agents hallucinate references
+    </div>
+    <div class="card-tip">
+      <strong>Tip:</strong> Cross-check every citation against Google Scholar. Hallucinated citations are the #1 failure mode.
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>AI Agents for Social Science Research • School of Social Sciences, Monash University</p>
+  <p>bit.ly/soss-ai-agents • charles.crabtree@monash.edu</p>
+</div>
+
+</body>
+</html>

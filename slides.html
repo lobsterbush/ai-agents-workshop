@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents for Social Science Research</title>
+  
+  <!-- Reveal.js -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/dist/theme/black.css">
+  
+  <!-- Highlight.js for code -->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.5.0/plugin/highlight/monokai.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Animate.css for extra animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  
+  <style>
+    :root {
+      /* Monash-inspired but more vibrant */
+      --monash-blue: #006DAE;
+      --monash-blue-light: #0088D4;
+      --monash-blue-dark: #004B7A;
+      --accent-coral: #FF6B6B;
+      --accent-mint: #4ECDC4;
+      --accent-gold: #FFE66D;
+      --accent-purple: #A855F7;
+      --dark-bg: #0a0a0f;
+      --light-text: #f8fafc;
+      --muted-text: #94a3b8;
+    }
+    
+    .reveal {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 400;
+    }
+    
+    .reveal h1, .reveal h2, .reveal h3 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    
+    .reveal h1 {
+      font-size: 3.5em;
+      font-weight: 800;
+    }
+    
+    .reveal h2 {
+      font-size: 2.2em;
+      font-weight: 700;
+    }
+    
+    .reveal h3 {
+      font-size: 1.5em;
+      font-weight: 600;
+    }
+    
+    .reveal p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+    
+    .reveal code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    /* Progress bar */
+    .reveal .progress {
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+    }
+    
+    .reveal .progress span {
+      background: linear-gradient(90deg, var(--monash-blue), var(--accent-mint));
+    }
+    
+    /* Slide backgrounds */
+    .reveal .slides section {
+      padding: 40px;
+    }
+    
+    /* Gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--monash-blue-light) 0%, var(--accent-mint) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .gradient-text-warm {
+      background: linear-gradient(135deg, var(--accent-coral) 0%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Big number callout */
+    .big-number {
+      font-size: 8em;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--monash-blue-light), var(--accent-mint));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Callout boxes */
+    .callout {
+      background: rgba(255,255,255,0.05);
+      border-left: 4px solid var(--monash-blue-light);
+      padding: 1.5em 2em;
+      border-radius: 0 12px 12px 0;
+      margin: 1em 0;
+      backdrop-filter: blur(10px);
+    }
+    
+    .callout-warning {
+      border-left-color: var(--accent-coral);
+      background: rgba(255,107,107,0.1);
+    }
+    
+    .callout-success {
+      border-left-color: var(--accent-mint);
+      background: rgba(78,205,196,0.1);
+    }
+    
+    .callout-insight {
+      border-left-color: var(--accent-gold);
+      background: rgba(255,230,109,0.1);
+    }
+    
+    /* Icon styling */
+    .icon-large {
+      font-size: 4em;
+      margin-bottom: 0.3em;
+      display: block;
+    }
+    
+    /* Cards grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2em;
+      margin-top: 2em;
+    }
+    
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 16px;
+      padding: 2em;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,0.08);
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 3em;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--monash-blue-light), var(--accent-mint));
+      border-radius: 2px;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.5em;
+      padding-left: 1em;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -3em;
+      top: 0.5em;
+      width: 16px;
+      height: 16px;
+      background: var(--monash-blue-light);
+      border-radius: 50%;
+      border: 3px solid var(--dark-bg);
+    }
+    
+    /* Keyboard key style */
+    .key {
+      display: inline-block;
+      padding: 0.2em 0.6em;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      margin: 0 0.2em;
+    }
+    
+    /* Comparison table */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      margin: 2em 0;
+    }
+    
+    .comparison-old, .comparison-new {
+      padding: 2em;
+      border-radius: 16px;
+    }
+    
+    .comparison-old {
+      background: rgba(255,107,107,0.1);
+      border: 2px solid var(--accent-coral);
+    }
+    
+    .comparison-new {
+      background: rgba(78,205,196,0.1);
+      border: 2px solid var(--accent-mint);
+    }
+    
+    /* Quote styling */
+    .reveal blockquote {
+      background: transparent;
+      border: none;
+      font-size: 1.8em;
+      font-style: italic;
+      font-weight: 300;
+      padding: 0;
+      margin: 1em 0;
+      position: relative;
+    }
+    
+    .reveal blockquote::before {
+      content: '"';
+      font-size: 4em;
+      position: absolute;
+      left: -0.4em;
+      top: -0.2em;
+      opacity: 0.2;
+      font-style: normal;
+    }
+    
+    /* Author info footer */
+    .author-footer {
+      position: absolute;
+      bottom: 30px;
+      left: 40px;
+      font-size: 0.7em;
+      color: var(--muted-text);
+    }
+    
+    /* Centered content */
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+    }
+    
+    /* Stats row */
+    .stats-row {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 2em 0;
+    }
+    
+    .stat {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 4em;
+      font-weight: 800;
+      color: var(--monash-blue-light);
+    }
+    
+    .stat-label {
+      font-size: 1em;
+      color: var(--muted-text);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    
+    /* Floating badges */
+    .badge {
+      display: inline-block;
+      padding: 0.3em 1em;
+      background: var(--monash-blue);
+      border-radius: 100px;
+      font-size: 0.8em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1em;
+    }
+    
+    /* Demo terminal mock */
+    .terminal {
+      background: #1e1e2e;
+      border-radius: 12px;
+      padding: 1.5em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      text-align: left;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    }
+    
+    .terminal-header {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1em;
+    }
+    
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .terminal-dot.red { background: #ff5f56; }
+    .terminal-dot.yellow { background: #ffbd2e; }
+    .terminal-dot.green { background: #27c93f; }
+    
+    .terminal-prompt {
+      color: var(--accent-mint);
+    }
+    
+    .terminal-command {
+      color: var(--light-text);
+    }
+    
+    .terminal-output {
+      color: var(--muted-text);
+      margin-top: 0.5em;
+    }
+    
+    /* Glowing effect */
+    .glow {
+      text-shadow: 0 0 40px rgba(0,136,212,0.5);
+    }
+    
+    /* List styling */
+    .reveal ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    
+    .reveal ul li {
+      position: relative;
+      padding-left: 2em;
+      margin-bottom: 0.8em;
+      font-size: 1.1em;
+    }
+    
+    .reveal ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--monash-blue-light);
+      font-weight: bold;
+    }
+    
+    /* Monash logo positioning */
+    .monash-logo {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 50px;
+      opacity: 0.9;
+    }
+    
+    /* Full-bleed image backgrounds */
+    .reveal section[data-background-image] h1,
+    .reveal section[data-background-image] h2,
+    .reveal section[data-background-image] p {
+      text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+    }
+    
+    /* Overlay for readability on images */
+    .image-overlay {
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%);
+      padding: 3em;
+      border-radius: 20px;
+    }
+    
+    /* Workflow visualization */
+    .workflow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1em;
+      margin: 2em 0;
+    }
+    
+    .workflow-step {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid var(--monash-blue-light);
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      text-align: center;
+      min-width: 120px;
+    }
+    
+    .workflow-arrow {
+      font-size: 2em;
+      color: var(--monash-blue-light);
+    }
+    
+    /* Animated underline */
+    .underline-animate {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .underline-animate::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--monash-blue-light), var(--accent-mint));
+      border-radius: 2px;
+    }
+    
+    /* Two column layout */
+    .two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3em;
+      align-items: center;
+    }
+    
+    /* Subtle animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(0,136,212,0.3); }
+      50% { box-shadow: 0 0 40px rgba(0,136,212,0.6); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ============================================ -->
+      <!-- TITLE SLIDE -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80" data-background-opacity="0.3">
+        <div class="center-content">
+          <span class="badge">Workshop • 105 Minutes</span>
+          <h1 style="font-size: 2.8em; margin-bottom: 0.3em;">
+            <span class="gradient-text">AI Agents</span><br>
+            for Social Science Research
+          </h1>
+          <p style="font-size: 1.2em; color: var(--muted-text); max-width: 800px; margin: 0 auto;">
+            Practical Workflows for Faster, Better,<br>More Reproducible Work
+          </p>
+          <div style="margin-top: 3em;">
+            <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>Charles Crabtree</strong></p>
+            <p style="font-size: 0.75em; color: var(--muted-text);">
+              Senior Lecturer, School of Social Sciences, Monash University<br>
+              K-Club Professor, University College, Korea University
+            </p>
+          </div>
+          <img src="https://www.monash.edu/__data/assets/image/0008/1656512/monash-logo-mono.png" alt="Monash University" class="monash-logo" style="filter: brightness(0) invert(1);">
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- HOOK: THE COLD OPEN -->
+      <!-- ============================================ -->
+      <section data-background-color="#0a0a0f" data-auto-animate>
+        <div class="center-content">
+          <p style="font-size: 1.5em; color: var(--muted-text);">Before we begin...</p>
+          <h2 style="font-size: 2.5em;" class="gradient-text">Watch this.</h2>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f" data-auto-animate>
+        <div class="center-content">
+          <h2 style="font-size: 1.8em; margin-bottom: 1em;">🎬 LIVE DEMO</h2>
+          <div class="terminal" style="width: 90%; max-width: 900px;">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <p><span class="terminal-prompt">❯</span> <span class="terminal-command">"Set up a new research project on immigration attitudes with folder structure, pre-registration template, R analysis script, and codebook"</span></p>
+            <p class="terminal-output fragment">Creating project structure...</p>
+            <p class="terminal-output fragment">✓ Created /immigration-attitudes/</p>
+            <p class="terminal-output fragment">✓ Created README.md with project overview</p>
+            <p class="terminal-output fragment">✓ Created pre-registration template (AsPredicted format)</p>
+            <p class="terminal-output fragment">✓ Created analysis/01_clean_data.R</p>
+            <p class="terminal-output fragment">✓ Created analysis/02_descriptives.R</p>
+            <p class="terminal-output fragment">✓ Created codebook_template.csv</p>
+            <p class="terminal-output fragment" style="color: var(--accent-mint);">Done in 12 seconds.</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <span class="big-number fragment">45</span>
+          <p style="font-size: 1.5em; margin-top: 0.5em;" class="fragment">minutes of setup</p>
+          <p style="font-size: 2.5em; margin-top: 0.5em;" class="fragment gradient-text">→ 12 seconds</p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- WHAT JUST HAPPENED? -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1920&q=80" data-background-opacity="0.15">
+        <h2>What just happened?</h2>
+        <div class="comparison fragment">
+          <div class="comparison-old">
+            <h3 style="color: var(--accent-coral); font-size: 1.2em;">🤖 Chatbot</h3>
+            <p style="font-size: 0.9em;">Answers questions</p>
+            <p style="font-size: 0.9em;">One turn at a time</p>
+            <p style="font-size: 0.9em;">No memory, no action</p>
+          </div>
+          <div class="comparison-new">
+            <h3 style="color: var(--accent-mint); font-size: 1.2em;">🦾 Agent</h3>
+            <p style="font-size: 0.9em;">Takes action</p>
+            <p style="font-size: 0.9em;">Multi-step workflows</p>
+            <p style="font-size: 0.9em;">Reads files, writes code, runs commands</p>
+          </div>
+        </div>
+        <div class="callout-insight fragment">
+          <p style="font-size: 1em; margin: 0;"><strong>Key insight:</strong> Agents don't just <em>tell</em> you how to do something—they <em>do</em> it.</p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SESSION ROADMAP -->
+      <!-- ============================================ -->
+      <section data-background-color="#0a0a0f">
+        <h2 class="gradient-text">Today's Journey</h2>
+        <div class="timeline" style="margin-top: 2em;">
+          <div class="timeline-item fragment">
+            <h3 style="margin: 0; font-size: 1.1em;">The Mental Model</h3>
+            <p style="font-size: 0.85em; color: var(--muted-text); margin: 0;">How agents think and act</p>
+          </div>
+          <div class="timeline-item fragment">
+            <h3 style="margin: 0; font-size: 1.1em;">Three Live Demos</h3>
+            <p style="font-size: 0.85em; color: var(--muted-text); margin: 0;">Project setup → Data analysis → Full pipeline</p>
+          </div>
+          <div class="timeline-item fragment">
+            <h3 style="margin: 0; font-size: 1.1em;">Principles & Pitfalls</h3>
+            <p style="font-size: 0.85em; color: var(--muted-text); margin: 0;">What makes agent work reliable</p>
+          </div>
+          <div class="timeline-item fragment">
+            <h3 style="margin: 0; font-size: 1.1em;">Hands-On Sprint</h3>
+            <p style="font-size: 0.85em; color: var(--muted-text); margin: 0;">Your turn to try</p>
+          </div>
+          <div class="timeline-item fragment">
+            <h3 style="margin: 0; font-size: 1.1em;">Building Shared Norms</h3>
+            <p style="font-size: 0.85em; color: var(--muted-text); margin: 0;">How should we use these tools?</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PULSE CHECK -->
+      <!-- ============================================ -->
+      <section data-background-color="var(--monash-blue)">
+        <div class="center-content">
+          <h2 style="color: white; font-size: 2em;">Quick Pulse Check ✋</h2>
+          <div style="margin-top: 2em; text-align: left; max-width: 600px;">
+            <p class="fragment" style="font-size: 1.2em;">Who has used ChatGPT or similar?</p>
+            <p class="fragment" style="font-size: 1.2em;">Who has written code in the last month?</p>
+            <p class="fragment" style="font-size: 1.2em;">Who is skeptical about AI in research?</p>
+          </div>
+          <p class="fragment" style="font-size: 1em; margin-top: 2em; color: rgba(255,255,255,0.8);">
+            <em>All perspectives are welcome here.</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 2: THE MENTAL MODEL -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80" data-background-opacity="0.2">
+        <span class="badge">Part 1</span>
+        <h1 class="gradient-text">The Mental Model</h1>
+        <p style="font-size: 1.3em; color: var(--muted-text);">Understanding how agents work</p>
+      </section>
+
+      <!-- Evolution slide -->
+      <section data-background-color="#0a0a0f" data-auto-animate>
+        <h2>The Evolution</h2>
+        <div class="workflow" style="margin-top: 3em;">
+          <div class="workflow-step fragment">
+            <span style="font-size: 2em;">💬</span>
+            <p style="font-size: 0.9em; margin: 0.5em 0 0;">Chatbot</p>
+            <p style="font-size: 0.7em; color: var(--muted-text); margin: 0;">Answers</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment">
+            <span style="font-size: 2em;">✨</span>
+            <p style="font-size: 0.9em; margin: 0.5em 0 0;">Co-pilot</p>
+            <p style="font-size: 0.7em; color: var(--muted-text); margin: 0;">Suggests</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment" style="border-color: var(--accent-mint); background: rgba(78,205,196,0.1);">
+            <span style="font-size: 2em;">🦾</span>
+            <p style="font-size: 0.9em; margin: 0.5em 0 0; color: var(--accent-mint);">Agent</p>
+            <p style="font-size: 0.7em; color: var(--muted-text); margin: 0;"><strong>Acts</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What agents have access to -->
+      <section data-background-color="#0a0a0f">
+        <h2>Agents Have <span class="gradient-text">Tools</span></h2>
+        <div class="cards-grid" style="margin-top: 2em;">
+          <div class="card fragment">
+            <span class="icon-large">📁</span>
+            <h3 style="font-size: 1em; margin: 0;">File System</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text); margin: 0.5em 0 0;">Read, write, organize</p>
+          </div>
+          <div class="card fragment">
+            <span class="icon-large">⚡</span>
+            <h3 style="font-size: 1em; margin: 0;">Terminal</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text); margin: 0.5em 0 0;">Run any command</p>
+          </div>
+          <div class="card fragment">
+            <span class="icon-large">🌐</span>
+            <h3 style="font-size: 1em; margin: 0;">Web</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text); margin: 0.5em 0 0;">Search, fetch, verify</p>
+          </div>
+        </div>
+        <p class="fragment" style="font-size: 1.1em; margin-top: 2em; color: var(--muted-text);">
+          Anything you can do in a terminal, an agent can do.
+        </p>
+      </section>
+
+      <!-- The Agent Loop -->
+      <section data-background-color="#0a0a0f" data-auto-animate>
+        <h2>The Agent Loop</h2>
+        <div style="display: flex; justify-content: center; align-items: center; margin-top: 3em;">
+          <div style="position: relative; width: 500px; height: 500px;">
+            <div class="fragment" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); text-align: center;">
+              <span style="font-size: 3em;">👁️</span>
+              <p style="font-size: 1em; margin: 0.3em 0 0;">Observe</p>
+            </div>
+            <div class="fragment" style="position: absolute; top: 50%; right: 0; transform: translateY(-50%); text-align: center;">
+              <span style="font-size: 3em;">🎯</span>
+              <p style="font-size: 1em; margin: 0.3em 0 0;">Plan</p>
+            </div>
+            <div class="fragment" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center;">
+              <span style="font-size: 3em;">⚡</span>
+              <p style="font-size: 1em; margin: 0.3em 0 0;">Act</p>
+            </div>
+            <div class="fragment" style="position: absolute; top: 50%; left: 0; transform: translateY(-50%); text-align: center;">
+              <span style="font-size: 3em;">🔄</span>
+              <p style="font-size: 1em; margin: 0.3em 0 0;">Reflect</p>
+            </div>
+            <div class="fragment" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+              <span style="font-size: 1.5em; color: var(--accent-mint);">↻ Repeat</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>Why This Matters for Research</h2>
+        <div style="margin-top: 2em;">
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>🔧 Self-correcting:</strong> Agents recover from errors and adjust</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>📚 Context-aware:</strong> They understand your codebase and files</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>🔗 End-to-end:</strong> They maintain context across long tasks</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 3: LIVE DEMOS -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=1920&q=80" data-background-opacity="0.2">
+        <span class="badge">Part 2</span>
+        <h1 class="gradient-text">Live Demos</h1>
+        <p style="font-size: 1.3em; color: var(--muted-text);">Seeing is believing</p>
+      </section>
+
+      <!-- DEMO 1 -->
+      <section data-background-color="var(--monash-blue-dark)">
+        <div class="center-content">
+          <span style="font-size: 5em;" class="float">🚀</span>
+          <h2 style="color: white; font-size: 2em;">Demo 1</h2>
+          <h1 style="color: white; font-size: 2.5em;">Project Setup</h1>
+          <p style="color: rgba(255,255,255,0.8); font-size: 1em;">From zero to organized in seconds</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>What We'll Create</h2>
+        <div class="two-columns">
+          <div>
+            <ul style="font-size: 1em;">
+              <li class="fragment">Project folder structure</li>
+              <li class="fragment">README with study overview</li>
+              <li class="fragment">Pre-registration template</li>
+              <li class="fragment">Ethics approval template</li>
+              <li class="fragment">Basic analysis scripts</li>
+              <li class="fragment">.gitignore configured</li>
+            </ul>
+          </div>
+          <div class="terminal fragment" style="font-size: 0.7em;">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <pre style="margin: 0; color: var(--muted-text);">
+survey-experiment/
+├── README.md
+├── pre-registration.md
+├── ethics/
+│   └── ethics_template.md
+├── data/
+│   ├── raw/
+│   └── processed/
+├── analysis/
+│   ├── 01_clean.R
+│   └── 02_analyze.R
+├── output/
+│   ├── tables/
+│   └── figures/
+└── .gitignore
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <h2 style="font-size: 2em;">🎬 Live Demo Time</h2>
+          <p style="color: var(--muted-text);">Watch the agent work...</p>
+        </div>
+      </section>
+
+      <!-- DEMO 2 -->
+      <section data-background-color="var(--monash-blue-dark)">
+        <div class="center-content">
+          <span style="font-size: 5em;" class="float">📊</span>
+          <h2 style="color: white; font-size: 2em;">Demo 2</h2>
+          <h1 style="color: white; font-size: 2.5em;">Data Analysis</h1>
+          <p style="color: rgba(255,255,255,0.8); font-size: 1em;">From raw data to publication-ready output</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>The Workflow</h2>
+        <div class="workflow" style="flex-wrap: wrap; gap: 1.5em;">
+          <div class="workflow-step fragment">
+            <p style="font-size: 0.9em; margin: 0;">Load Data</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment">
+            <p style="font-size: 0.9em; margin: 0;">Clean</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment">
+            <p style="font-size: 0.9em; margin: 0;">Descriptives</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment">
+            <p style="font-size: 0.9em; margin: 0;">Models</p>
+          </div>
+          <span class="workflow-arrow fragment">→</span>
+          <div class="workflow-step fragment" style="border-color: var(--accent-mint);">
+            <p style="font-size: 0.9em; margin: 0; color: var(--accent-mint);">LaTeX Tables</p>
+          </div>
+        </div>
+        <div class="callout-insight fragment" style="margin-top: 2em;">
+          <p style="font-size: 0.9em; margin: 0;">The agent will use <strong>clustered standard errors</strong> (because it knows your preferences) and write the methods section.</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <h2 style="font-size: 2em;">🎬 Live Demo Time</h2>
+          <p style="color: var(--muted-text);">Loading real survey data...</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>Key Insight</h2>
+        <div class="callout-success" style="font-size: 1.1em;">
+          <p style="margin: 0;"><strong>Reproducibility built in:</strong></p>
+          <p style="margin: 0.5em 0 0;">Every step is logged. Every command is documented.<br>Your future self (and reviewers) can see exactly what happened.</p>
+        </div>
+      </section>
+
+      <!-- DEMO 3: THE WOW DEMO -->
+      <section data-background-image="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=1920&q=80" data-background-opacity="0.3">
+        <div class="center-content">
+          <span style="font-size: 5em;" class="float">🔥</span>
+          <h2 style="font-size: 2em;">Demo 3</h2>
+          <h1 style="font-size: 2.5em;">The <span class="gradient-text-warm">Full Pipeline</span></h1>
+          <p style="color: var(--muted-text); font-size: 1em;">Qualitative + Quantitative + Writing</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>One Prompt. Multiple Steps.</h2>
+        <div style="margin-top: 2em;">
+          <p class="fragment" style="font-size: 1.1em;">📝 Take this interview transcript...</p>
+          <p class="fragment" style="font-size: 1.1em;">🏷️ Code it for themes related to X...</p>
+          <p class="fragment" style="font-size: 1.1em;">📖 Generate a codebook...</p>
+          <p class="fragment" style="font-size: 1.1em;">📊 Create a visualization...</p>
+          <p class="fragment" style="font-size: 1.1em;">✍️ Draft the methods section.</p>
+        </div>
+        <div class="callout fragment" style="margin-top: 2em;">
+          <p style="margin: 0; font-size: 1em;">The agent maintains context across <strong>15+ steps</strong>.</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <h2 style="font-size: 2em;">🎬 Live Demo Time</h2>
+          <p style="color: var(--muted-text);">This is where jaws drop...</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <blockquote style="max-width: 800px;">
+            This is what I mean by <em>workflow</em>, not just <em>task</em>.
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 4: PRINCIPLES & PITFALLS -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1920&q=80" data-background-opacity="0.15">
+        <span class="badge">Part 3</span>
+        <h1 class="gradient-text">Principles & Pitfalls</h1>
+        <p style="font-size: 1.3em; color: var(--muted-text);">Making agent work reliable</p>
+      </section>
+
+      <!-- Four Habits -->
+      <section data-background-color="#0a0a0f">
+        <h2>Four Habits for Reliable Work</h2>
+        <div class="cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 2em;">
+          <div class="card fragment">
+            <span style="font-size: 2.5em;">🎯</span>
+            <h3 style="font-size: 1em;">Be Specific</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text);">Clear outputs, clear format</p>
+          </div>
+          <div class="card fragment">
+            <span style="font-size: 2.5em;">🔍</span>
+            <h3 style="font-size: 1em;">Ask for Explanations</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text);">"Explain why you did that"</p>
+          </div>
+          <div class="card fragment">
+            <span style="font-size: 2.5em;">✓</span>
+            <h3 style="font-size: 1em;">Verify Before Trusting</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text);">Check code, check citations</p>
+          </div>
+          <div class="card fragment">
+            <span style="font-size: 2.5em;">🧠</span>
+            <h3 style="font-size: 1em;">Humans in the Loop</h3>
+            <p style="font-size: 0.8em; color: var(--muted-text);">Judgment calls are yours</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Failure Modes -->
+      <section data-background-color="#0a0a0f">
+        <h2>Common Failure Modes</h2>
+        <div style="margin-top: 2em;">
+          <div class="callout-warning fragment">
+            <p style="margin: 0;"><strong>⚠️ Hallucinated Citations</strong></p>
+            <p style="font-size: 0.9em; color: var(--muted-text); margin: 0.3em 0 0;">Always verify references exist</p>
+          </div>
+          <div class="callout-warning fragment">
+            <p style="margin: 0;"><strong>⚠️ Plausible-but-Wrong Statistics</strong></p>
+            <p style="font-size: 0.9em; color: var(--muted-text); margin: 0.3em 0 0;">Check the math yourself</p>
+          </div>
+          <div class="callout-warning fragment">
+            <p style="margin: 0;"><strong>⚠️ Overconfident Code</strong></p>
+            <p style="font-size: 0.9em; color: var(--muted-text); margin: 0.3em 0 0;">Run it, test it, break it</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>The Reproducibility Payoff</h2>
+        <div class="center-content" style="margin-top: 2em;">
+          <div class="callout-success" style="max-width: 700px;">
+            <p style="margin: 0; font-size: 1.1em;">
+              <strong>Everything the agent does is logged.</strong>
+            </p>
+            <p style="margin: 0.5em 0 0; font-size: 1em;">
+              Commands, file changes, decisions—all documented.<br>
+              Your workflow becomes transparent by default.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 5: HANDS-ON SPRINT -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80" data-background-opacity="0.2">
+        <span class="badge">Part 4</span>
+        <h1 class="gradient-text">Hands-On Sprint</h1>
+        <p style="font-size: 1.3em; color: var(--muted-text);">Your turn</p>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>Choose Your Level</h2>
+        <div class="cards-grid" style="margin-top: 2em;">
+          <div class="card" style="border-color: var(--accent-mint);">
+            <span style="font-size: 2em;">🌱</span>
+            <h3 style="color: var(--accent-mint);">Beginner</h3>
+            <p style="font-size: 0.8em; text-align: left;">"Create a folder structure for a research project on [your topic] with a README explaining each folder."</p>
+          </div>
+          <div class="card" style="border-color: var(--accent-gold);">
+            <span style="font-size: 2em;">🌿</span>
+            <h3 style="color: var(--accent-gold);">Intermediate</h3>
+            <p style="font-size: 0.8em; text-align: left;">"Write an R script that loads a CSV, produces summary statistics, and creates a bar chart. Add comments."</p>
+          </div>
+          <div class="card" style="border-color: var(--accent-coral);">
+            <span style="font-size: 2em;">🌳</span>
+            <h3 style="color: var(--accent-coral);">Advanced</h3>
+            <p style="font-size: 0.8em; text-align: left;">"Take this dataset, clean it, run a regression with robust SEs, and output a formatted table."</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="var(--monash-blue)">
+        <div class="center-content">
+          <h1 style="color: white; font-size: 3em;">⏱️</h1>
+          <h2 style="color: white; font-size: 2.5em;">14 Minutes</h2>
+          <p style="color: rgba(255,255,255,0.8); font-size: 1.2em;">Go!</p>
+          <p style="color: rgba(255,255,255,0.6); font-size: 0.9em; margin-top: 2em;">I'll be walking around to help.</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <h2>Quick Share-Out</h2>
+          <p style="color: var(--muted-text); font-size: 1.2em;">Who wants to show what they got?</p>
+          <p class="fragment" style="font-size: 1em; margin-top: 2em;">🎉 Celebrate wins.<br>🤝 Normalize confusion.</p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 6: GROUP DISCUSSION -->
+      <!-- ============================================ -->
+      <section data-background-image="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=1920&q=80" data-background-opacity="0.2">
+        <span class="badge">Part 5</span>
+        <h1 class="gradient-text">Building Shared Norms</h1>
+        <p style="font-size: 1.3em; color: var(--muted-text);">How should we use these tools?</p>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <blockquote style="max-width: 800px; font-size: 1.4em;">
+            These tools are coming whether we like it or not.
+            <br><br>
+            How do we use them <span class="gradient-text">well</span> as a scholarly community?
+          </blockquote>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>Discussion Questions</h2>
+        <div style="margin-top: 2em;">
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>1.</strong> What tasks in your research workflow would benefit most from agent assistance?</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>2.</strong> Where should humans stay firmly in the loop?</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;"><strong>3.</strong> What norms should we adopt for transparency?<br><span style="font-size: 0.9em; color: var(--muted-text);">(e.g., acknowledging AI assistance in papers)</span></p>
+          </div>
+        </div>
+        <p class="fragment" style="font-size: 1em; margin-top: 2em; color: var(--muted-text);">Tables of 4-5. 12 minutes.</p>
+      </section>
+
+      <section data-background-color="var(--monash-blue)">
+        <div class="center-content">
+          <h1 style="color: white; font-size: 3em;">💬</h1>
+          <h2 style="color: white; font-size: 2.5em;">12 Minutes</h2>
+          <p style="color: rgba(255,255,255,0.8); font-size: 1.2em;">Discuss at your tables</p>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <div class="center-content">
+          <h2>Report Back</h2>
+          <p style="color: var(--muted-text); font-size: 1.2em;">One insight per table</p>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- PART 7: CLOSE -->
+      <!-- ============================================ -->
+      <section data-background-color="#0a0a0f">
+        <h2>Three Things to Remember</h2>
+        <div style="margin-top: 2em;">
+          <div class="fragment" style="display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;">
+            <span class="big-number" style="font-size: 3em;">1</span>
+            <p style="font-size: 1.2em; margin: 0;"><strong>Agents act.</strong> They don't just answer—they do.</p>
+          </div>
+          <div class="fragment" style="display: flex; align-items: center; gap: 1em; margin-bottom: 1.5em;">
+            <span class="big-number" style="font-size: 3em;">2</span>
+            <p style="font-size: 1.2em; margin: 0;"><strong>Verify always.</strong> Trust but check citations, code, stats.</p>
+          </div>
+          <div class="fragment" style="display: flex; align-items: center; gap: 1em;">
+            <span class="big-number" style="font-size: 3em;">3</span>
+            <p style="font-size: 1.2em; margin: 0;"><strong>Document everything.</strong> Reproducibility comes free.</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>Resources</h2>
+        <div class="two-columns" style="margin-top: 2em;">
+          <div>
+            <ul style="font-size: 0.95em;">
+              <li>Prompt cards (PDF)</li>
+              <li>Workflow templates</li>
+              <li>Example datasets</li>
+              <li>Troubleshooting guide</li>
+            </ul>
+          </div>
+          <div class="terminal" style="font-size: 0.75em;">
+            <div class="terminal-header">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+            </div>
+            <p style="margin: 0;"><span class="terminal-prompt">Download:</span></p>
+            <p style="color: var(--accent-mint); margin: 0.5em 0 0;">bit.ly/soss-ai-agents</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-background-color="#0a0a0f">
+        <h2>What's Next?</h2>
+        <div style="margin-top: 2em;">
+          <div class="callout fragment">
+            <p style="margin: 0;">📅 <strong>Office Hours:</strong> Drop-in sessions for follow-up questions</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;">💬 <strong>Slack Channel:</strong> #soss-ai-research</p>
+          </div>
+          <div class="callout fragment">
+            <p style="margin: 0;">🎓 <strong>Advanced Workshop:</strong> Coming next semester</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL SLIDE -->
+      <section data-background-color="var(--monash-blue)" data-background-image="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1920&q=80" data-background-opacity="0.15">
+        <div class="center-content">
+          <h1 style="color: white; font-size: 3em;">Thank You</h1>
+          <div style="margin-top: 2em; color: rgba(255,255,255,0.9);">
+            <p style="font-size: 1.1em; margin-bottom: 0.2em;"><strong>Charles Crabtree</strong></p>
+            <p style="font-size: 0.85em; margin: 0;">Senior Lecturer, School of Social Sciences, Monash University</p>
+            <p style="font-size: 0.85em; margin: 0;">K-Club Professor, University College, Korea University</p>
+            <p style="font-size: 0.9em; margin-top: 1.5em;">
+              📧 charles.crabtree@monash.edu<br>
+              🌐 charlescrabtree.com
+            </p>
+          </div>
+          <img src="https://www.monash.edu/__data/assets/image/0008/1656512/monash-logo-mono.png" alt="Monash University" class="monash-logo" style="filter: brightness(0) invert(1);">
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js Scripts -->
+  <script src="https://unpkg.com/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+  <script src="https://unpkg.com/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      progress: true,
+      slideNumber: false,
+      center: false,
+      width: 1920,
+      height: 1080,
+      margin: 0.04,
+      autoAnimateEasing: 'ease-out',
+      autoAnimateDuration: 0.8,
+      autoAnimateUnmatched: false,
+      plugins: [ RevealHighlight, RevealNotes ]
+    });
+  </script>
+</body>
+</html>
