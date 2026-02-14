@@ -30,20 +30,21 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 
 ### Color Palette
 - Background: `#fafafa` (light)
-- Text: `#1a1a1a` (primary), `#666` (dim)
-- Accent: `#c0392b` (red, used sparingly)
+- Text: `#1a1a1a` (primary), `#4a4a4a` (secondary), `#6a6a6a` (muted)
+- Accent: `#0066cc` (blue)
+- Green: `#4A9B67`
 - Code blocks: `#1a1a1a` background, `#e8e8e8` text
 
 ### Typography
-- Headings: IBM Plex Sans 600, h1 at 2.4em, h2 at 1.6em
-- Body: IBM Plex Sans 400 at 1.1em
+- Headings: Space Grotesk 600, h1 at 2.6em, h2 at 1.7em
+- Body: Space Grotesk 400 at 1.1em
 - Code: IBM Plex Mono at 0.7em
 
 ### Layout
 - Resolution: 1920×1080
 - Padding: 60px top/bottom, 80px sides
 - Left-aligned text throughout
-- Max paragraph width: 800px
+- Max paragraph width: 750px
 
 ### CSS Classes
 - `.section` - part divider slides (bottom-aligned)
@@ -51,9 +52,9 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 - `pre` - dark code blocks
 - `.cols` - two-column comparison layouts
 - `.stat` - large display numbers
-- `.accent` - red accent color
-- `.label` - small caps section labels
-- `.dim-bg` - dark background slides (for code demos)
+- `.accent` - blue accent color
+- `.label` - small caps section labels (IBM Plex Mono)
+- `.dark` - dark background slides (for code demos)
 
 ## Workshop Content Notes
 
