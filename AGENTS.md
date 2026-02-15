@@ -17,8 +17,7 @@ Workshop materials for a 105-minute hands-on session teaching social scientists 
 ### Viewing slides locally
 Open `slides.html` directly in a browser. Requires internet connection for CDN resources:
 - Reveal.js 4.5.0
-- Google Fonts (Inter, JetBrains Mono)
-- Animate.css
+- Google Fonts (Space Grotesk, IBM Plex Mono)
 
 ### Slide navigation
 - Arrow keys to navigate
@@ -45,6 +44,8 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 - Padding: 60px top/bottom, 80px sides
 - Left-aligned text throughout
 - Max paragraph width: 750px
+- Graph paper background (blue grid pattern from charlescrabtree.org)
+- Subtle radial gradient overlays (blue/green)
 
 ### CSS Classes
 - `.section` - part divider slides (bottom-aligned)
@@ -55,12 +56,14 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 - `.accent` - blue accent color
 - `.label` - small caps section labels (IBM Plex Mono)
 - `.dark` - dark background slides (for code demos)
+- `.callout` - blue accent callout boxes
+- `.card` - white card with subtle border/shadow
 
 ## Workshop Content Notes
 
 The workshop demonstrates three live demos in Warp:
-1. **Experimental Design → Qualtrics** - Design a 2x2 vignette experiment on media trust, export as .qsf
-2. **Data → Analysis → Results** - OLS with clustered SEs → coefficient plot → LaTeX table → results paragraph
+1. **Experimental Design → Qualtrics** - Design a 2×2 vignette experiment on media trust, export as .qsf
+2. **Interview Transcripts → Thematic Analysis** - Qualitative coding with inductive codebook, theme visualization
 3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
 The cold open builds a complete "Partisan Bias in Scandal Evaluation" experiment in ~47 seconds:

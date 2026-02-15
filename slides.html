@@ -26,7 +26,40 @@
       background: var(--bg);
     }
     
-    .reveal .slides { text-align: left; }
+    /* Graph paper background */
+    .reveal::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(rgba(0, 102, 204, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 102, 204, 0.015) 1px, transparent 1px);
+      background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Subtle gradient overlay */
+    .reveal::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 15% 50%, rgba(0, 102, 204, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 85% 80%, rgba(74, 155, 103, 0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .reveal .slides { text-align: left; position: relative; z-index: 1; }
     
     .reveal .slides section {
       padding: 60px 80px;
@@ -79,22 +112,23 @@
       background: var(--bg-code);
       color: #e8e8e8;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72em;
+      font-size: 0.7em;
       line-height: 1.55;
       padding: 24px 28px;
       border-radius: 8px;
       margin: 0.8em 0;
       max-width: 950px;
       overflow-x: auto;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
     
     pre .p { color: var(--green); }
     pre .c { color: #fff; }
     pre .o { color: #888; }
     pre .f { color: #7ec699; }
-    pre .s { color: #7ec699; }
     pre .k { color: #66d9ef; }
-    pre .comment { color: #666; }
+    pre .s { color: #e6db74; }
+    pre .comment { color: #75715e; }
     
     /* Lists */
     .reveal ul, .reveal ol {
@@ -162,7 +196,19 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 20px 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
+    
+    /* Callout */
+    .callout {
+      background: rgba(0, 102, 204, 0.06);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 6px 6px 0;
+      margin: 1em 0;
+      max-width: 700px;
+    }
+    .callout p { margin: 0; color: var(--text); }
     
     /* Accent */
     .accent { color: var(--accent); }
@@ -172,6 +218,7 @@
     .dark {
       background: var(--bg-code);
     }
+    .dark::before, .dark::after { display: none; }
     .dark h1, .dark h2 { color: #fff; }
     .dark p { color: #aaa; }
     .dark .label { color: var(--green); }
@@ -238,7 +285,7 @@ Put everything in /partisan-scandal/"</span></pre>
 <section class="dark">
   <p class="label">Output</p>
   <h2>title_abstract.tex</h2>
-  <pre style="font-size: 0.68em;">
+  <pre style="font-size: 0.65em;">
 \title{Partisan Bias in Evaluating Political Scandals: A Survey Experiment}
 
 \begin{abstract}
@@ -251,7 +298,8 @@ holding the scandal constant.
 
 We find that respondents rate co-partisan politicians as significantly 
 less culpable than opposing-party politicians accused of identical 
-misconduct. This effect is strongest among strong partisans.
+misconduct. This effect is strongest among strong partisans and 
+persists after controlling for demographic characteristics.
 \end{abstract}</pre>
 </section>
 
@@ -259,7 +307,7 @@ misconduct. This effect is strongest among strong partisans.
 <section class="dark">
   <p class="label">Output</p>
   <h2>Vignette text</h2>
-  <pre style="font-size: 0.68em;">
+  <pre style="font-size: 0.65em;">
 <span class="comment"># Treatment conditions (party randomized)</span>
 
 "State Representative Michael Torres, a <span class="k">[Democrat / Republican]</span> 
@@ -279,7 +327,7 @@ with any investigation.'"
 <section class="dark">
   <p class="label">Output</p>
   <h2>prereg.md (AsPredicted format)</h2>
-  <pre style="font-size: 0.65em;">
+  <pre style="font-size: 0.62em;">
 <span class="comment">## 1. Data collection</span>
 Prolific, N = 2,000 US adults.
 
@@ -295,19 +343,20 @@ H2 (Asymmetry): Effect stronger among strong partisans.
 - Vote likelihood (if Torres ran for re-election)
 
 <span class="comment">## 4. Analyses</span>
-OLS with robust SEs. Interaction: politician_party × respondent_party.</pre>
+OLS with robust SEs. Interaction: politician_party × respondent_party.
+Controls: age, gender, education, political interest.</pre>
 </section>
 
 <!-- OUTPUT: R CODE -->
 <section class="dark">
   <p class="label">Output</p>
   <h2>01_analysis.R</h2>
-  <pre style="font-size: 0.62em;">
+  <pre style="font-size: 0.6em;">
 <span class="k">library</span>(tidyverse)
 <span class="k">library</span>(estimatr)
 <span class="k">library</span>(modelsummary)
 
-df <- <span class="k">read_csv</span>("data/scandal_experiment.csv") |>
+df <- <span class="k">read_csv</span>(<span class="s">"data/scandal_experiment.csv"</span>) |>
   <span class="k">mutate</span>(
     co_partisan = (respondent_party == politician_party),
     strong_partisan = <span class="k">abs</span>(party_id_7) >= 3
@@ -315,14 +364,14 @@ df <- <span class="k">read_csv</span>("data/scandal_experiment.csv") |>
 
 <span class="comment"># H1: In-party bias</span>
 m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female + college,
-                data = df, se_type = "HC2")
+                data = df, se_type = <span class="s">"HC2"</span>)
 
 <span class="comment"># H2: Interaction with partisan strength</span>
 m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partisan + 
-                age + female + college, data = df, se_type = "HC2")
+                age + female + college, data = df, se_type = <span class="s">"HC2"</span>)
 
-<span class="k">modelsummary</span>(<span class="k">list</span>("H1" = m1, "H2" = m2), 
-             output = "output/tables/main_results.tex")</pre>
+<span class="k">modelsummary</span>(<span class="k">list</span>(<span class="s">"H1"</span> = m1, <span class="s">"H2"</span> = m2), 
+             output = <span class="s">"output/tables/main_results.tex"</span>)</pre>
 </section>
 
 <!-- TIMING -->
@@ -341,6 +390,7 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
         <li>Tells you what to do</li>
         <li>One response at a time</li>
         <li>You copy-paste everything</li>
+        <li>No memory between turns</li>
       </ul>
     </div>
     <div class="fragment">
@@ -349,6 +399,7 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
         <li>Does it for you</li>
         <li>Multi-step workflows</li>
         <li>Files appear on disk</li>
+        <li>Sees errors, fixes them</li>
       </ul>
     </div>
   </div>
@@ -363,7 +414,7 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
     <li class="fragment">Three demonstrations</li>
     <li class="fragment">Where they fail</li>
     <li class="fragment">Hands-on practice</li>
-    <li class="fragment">Implications</li>
+    <li class="fragment">Implications for our field</li>
   </ol>
 </section>
 
@@ -376,11 +427,12 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
 <!-- TOOLS -->
 <section>
   <h2>Agents have tools</h2>
+  <p>They can interact with your computer the same way you do.</p>
   <ul style="margin-top: 0.8em;">
-    <li class="fragment"><strong>File system</strong> — read, write, organize</li>
-    <li class="fragment"><strong>Terminal</strong> — run commands, execute scripts</li>
-    <li class="fragment"><strong>Code execution</strong> — run R, Python, fix errors</li>
-    <li class="fragment"><strong>Web access</strong> — search docs, verify info</li>
+    <li class="fragment"><strong>File system</strong> — read, write, organize, delete</li>
+    <li class="fragment"><strong>Terminal</strong> — run commands, install packages, execute scripts</li>
+    <li class="fragment"><strong>Code execution</strong> — run R, Python, Stata; see errors; fix them</li>
+    <li class="fragment"><strong>Web access</strong> — search documentation, fetch data, verify information</li>
   </ul>
 </section>
 
@@ -392,10 +444,12 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
     <li class="fragment">Observe current state</li>
     <li class="fragment">Plan next action</li>
     <li class="fragment">Execute action</li>
-    <li class="fragment">Check result</li>
+    <li class="fragment">Check if it worked</li>
     <li class="fragment">Repeat until done</li>
   </ol>
-  <p class="fragment" style="margin-top: 0.8em;">This is why they recover from errors.</p>
+  <div class="callout fragment" style="margin-top: 1em;">
+    <p>This is why they recover from errors. They see what went wrong and try again.</p>
+  </div>
 </section>
 
 <!-- PART 2 -->
@@ -408,11 +462,18 @@ m2 <- <span class="k">lm_robust</span>(culpability ~ co_partisan * strong_partis
 <section>
   <p class="label">Demo 1</p>
   <h2>Experimental Design → Qualtrics</h2>
-  <p>Design a 2×2 vignette experiment and export as .qsf file.</p>
+  <p>Design a vignette experiment and export it ready for fielding.</p>
   <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"Design a 2x2 experiment on media trust.
+<span class="p">$</span> <span class="c">"Design a 2x2 vignette experiment on media trust.
 Manipulate: source (mainstream vs. alternative) × topic (COVID vs. economy).
-Create Qualtrics survey with attention checks. Export as media_trust.qsf"</span></pre>
+
+Include:
+- 4 vignette conditions with realistic news excerpts
+- Attention checks
+- Standard demographics
+- 7-point trust and credibility scales
+
+Export as media_trust.qsf for Qualtrics import."</span></pre>
 </section>
 
 <section class="center">
@@ -420,31 +481,90 @@ Create Qualtrics survey with attention checks. Export as media_trust.qsf"</span>
   <p style="color: var(--text-muted);">Experimental design → Qualtrics file</p>
 </section>
 
-<!-- DEMO 2 -->
+<!-- DEMO 2: QUALITATIVE -->
 <section>
   <p class="label">Demo 2</p>
-  <h2>Data → Analysis → Results</h2>
-  <p>Full pipeline from raw data to written findings.</p>
+  <h2>Interview Transcripts → Thematic Analysis</h2>
+  <p>Code qualitative data, generate a codebook, visualize themes.</p>
   <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"Analyze data/media_trust.csv. Run OLS predicting trust with 
-treatment indicators. Cluster SEs by respondent. Produce coefficient 
-plot and LaTeX table. Write results paragraph."</span></pre>
+<span class="p">$</span> <span class="c">"I have 12 interview transcripts in /data/interviews/ about 
+experiences of workplace discrimination.
+
+1. Read all transcripts
+2. Develop an inductive codebook with themes and definitions
+3. Code each transcript, noting illustrative quotes
+4. Create a visualization of theme frequencies
+5. Draft a methods paragraph for the qualitative analysis"</span></pre>
+</section>
+
+<!-- DEMO 2 OUTPUT: CODEBOOK -->
+<section class="dark">
+  <p class="label">Output</p>
+  <h2>codebook.md</h2>
+  <pre style="font-size: 0.6em;">
+<span class="comment"># Inductive Codebook: Workplace Discrimination Experiences</span>
+
+<span class="k">## Theme 1: Microaggressions</span>
+Definition: Subtle, often unintentional slights that communicate 
+hostile or negative messages about one's identity.
+Example: "They always ask where I'm 'really' from" (P03, line 47)
+
+<span class="k">## Theme 2: Exclusion from Opportunities</span>
+Definition: Being passed over for projects, promotions, or 
+professional development without clear justification.
+Example: "I watched three less qualified people get promoted" (P07, line 112)
+
+<span class="k">## Theme 3: Code-Switching Pressure</span>
+Definition: Feeling pressure to modify speech, appearance, or 
+behavior to fit workplace norms.
+Example: "I straighten my hair for client meetings" (P11, line 89)
+
+<span class="k">## Theme 4: Gaslighting</span>
+Definition: Having discriminatory experiences minimized or denied.
+Example: "HR said I was being too sensitive" (P02, line 156)</pre>
+</section>
+
+<!-- DEMO 2 OUTPUT: CODED -->
+<section class="dark">
+  <p class="label">Output</p>
+  <h2>coded_transcripts.csv</h2>
+  <pre style="font-size: 0.6em;">
+participant,theme,quote,line
+P01,microaggressions,"They kept mispronouncing my name on purpose",23
+P01,exclusion,"Never invited to the informal lunch meetings",45
+P02,gaslighting,"HR said I was being too sensitive",156
+P02,microaggressions,"Comments about my accent in meetings",34
+P03,microaggressions,"They always ask where I'm 'really' from",47
+P03,code_switching,"I started going by my middle name",52
+P04,exclusion,"Passed over for the London trip",78
+...
+
+<span class="comment"># Theme frequencies:</span>
+<span class="comment"># microaggressions: 34 instances (12/12 participants)</span>
+<span class="comment"># exclusion: 28 instances (10/12 participants)</span>
+<span class="comment"># code_switching: 19 instances (8/12 participants)</span>
+<span class="comment"># gaslighting: 15 instances (7/12 participants)</span></pre>
 </section>
 
 <section class="center">
   <h2>Live Demo</h2>
-  <p style="color: var(--text-muted);">Analysis → tables → figures → text</p>
+  <p style="color: var(--text-muted);">Transcripts → codebook → coded data → visualization</p>
 </section>
 
 <!-- DEMO 3 -->
 <section>
   <p class="label">Demo 3</p>
-  <h2>Interactive Experiment</h2>
-  <p>Build a social media simulation for studying sharing behavior.</p>
+  <h2>Interactive Experiment Interface</h2>
+  <p>Build a social media simulation for studying information behavior.</p>
   <pre style="margin-top: 0.8em;">
 <span class="p">$</span> <span class="c">"Build a Twitter/X interface for a survey experiment.
-Feed of posts about climate change. Users can like, share, reply.
-Track engagement. Make embeddable in Qualtrics."</span></pre>
+
+- Feed of 8 posts about climate change (mix of accurate/misinformation)
+- Users can like, retweet, reply, and scroll
+- Track all engagement with timestamps
+- Randomize post order and treatment conditions
+- Make it embeddable in Qualtrics via iframe
+- Log data to CSV on completion"</span></pre>
 </section>
 
 <section class="center">
@@ -459,6 +579,9 @@ Track engagement. Make embeddable in Qualtrics."</span></pre>
     Every command is logged. Every file change is tracked. 
     The workflow is reproducible by default.
   </p>
+  <div class="callout" style="margin-top: 1em;">
+    <p>This isn't just faster. It's a different way of working—where documentation happens automatically.</p>
+  </div>
 </section>
 
 <!-- PART 3 -->
@@ -470,22 +593,25 @@ Track engagement. Make embeddable in Qualtrics."</span></pre>
 <!-- FAILURES -->
 <section>
   <h2>Known failure modes</h2>
+  <p>These tools are powerful but not infallible.</p>
   <ul style="margin-top: 0.8em;">
-    <li class="fragment"><strong>Hallucinated citations</strong> — they invent references</li>
-    <li class="fragment"><strong>Wrong statistics</strong> — numbers can be subtly off</li>
-    <li class="fragment"><strong>Overfit to prompt</strong> — they do what you ask, even if wrong</li>
+    <li class="fragment"><strong>Hallucinated citations</strong> — they invent plausible-sounding references that don't exist</li>
+    <li class="fragment"><strong>Wrong statistics</strong> — numbers can be subtly incorrect; always verify</li>
+    <li class="fragment"><strong>Overfit to prompt</strong> — they do exactly what you ask, even if it's the wrong thing to ask</li>
+    <li class="fragment"><strong>Confident errors</strong> — mistakes are presented with the same confidence as correct output</li>
   </ul>
 </section>
 
 <!-- VERIFICATION -->
 <section>
   <h2>The verification principle</h2>
-  <p>Treat output like a research assistant's first draft.</p>
+  <p>Treat agent output like a research assistant's first draft.</p>
   <ul style="margin-top: 0.8em;">
     <li class="fragment">Run the code yourself</li>
-    <li class="fragment">Spot-check calculations</li>
-    <li class="fragment">Verify citations exist</li>
-    <li class="fragment">Review the logic</li>
+    <li class="fragment">Spot-check calculations against known values</li>
+    <li class="fragment">Verify every citation exists (Google Scholar, library)</li>
+    <li class="fragment">Review the logic, not just the output</li>
+    <li class="fragment">Check edge cases and assumptions</li>
   </ul>
 </section>
 
@@ -499,22 +625,25 @@ Track engagement. Make embeddable in Qualtrics."</span></pre>
 <section>
   <h2>Choose your challenge</h2>
   <ul style="margin-top: 0.8em;">
-    <li><strong style="color: var(--text-muted);">Starter:</strong> Project structure, README, pre-registration template</li>
-    <li><strong>Standard:</strong> Design a vignette experiment, export to Qualtrics</li>
-    <li><strong class="accent">Advanced:</strong> Full pipeline — design, pre-reg, analysis code</li>
+    <li><strong style="color: var(--text-muted);">Starter:</strong> Project structure with README, pre-registration template, and analysis scaffold</li>
+    <li><strong>Standard:</strong> Design a vignette experiment on a topic of your choice, export to Qualtrics</li>
+    <li><strong class="accent">Advanced:</strong> Full pipeline — experimental design, pre-registration, simulated data, analysis code</li>
   </ul>
+  <div class="callout fragment" style="margin-top: 1.2em;">
+    <p>Pick the one that slightly scares you.</p>
+  </div>
 </section>
 
 <!-- TIMER -->
 <section class="center">
   <p class="stat">14:00</p>
-  <p style="color: var(--text-muted);">Work session</p>
+  <p style="color: var(--text-muted);">Work session — I'll be walking around to help</p>
 </section>
 
 <!-- SHARE -->
 <section class="center">
   <h2>Share what you built</h2>
-  <p style="color: var(--text-muted);">Successes and failures both useful.</p>
+  <p style="color: var(--text-muted);">Successes and failures are both useful.</p>
 </section>
 
 <!-- PART 5 -->
@@ -523,13 +652,23 @@ Track engagement. Make embeddable in Qualtrics."</span></pre>
   <h1>Implications</h1>
 </section>
 
+<!-- FRAMING -->
+<section>
+  <h2>The question isn't whether</h2>
+  <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">
+    These tools are here. They're getting better rapidly. 
+    The question is how we use them responsibly as a scholarly community.
+  </p>
+</section>
+
 <!-- DISCUSSION -->
 <section>
   <h2>Discussion</h2>
   <ul style="margin-top: 0.8em;">
-    <li class="fragment">What tasks benefit most from agent assistance?</li>
-    <li class="fragment">Where should human judgment stay non-negotiable?</li>
-    <li class="fragment">What norms for transparency and acknowledgment?</li>
+    <li class="fragment">What research tasks would benefit most from agent assistance?</li>
+    <li class="fragment">Where should human judgment remain non-negotiable?</li>
+    <li class="fragment">What norms should we adopt for transparency and acknowledgment?</li>
+    <li class="fragment">How do we train the next generation of researchers for this world?</li>
   </ul>
 </section>
 
@@ -554,9 +693,10 @@ Track engagement. Make embeddable in Qualtrics."</span></pre>
 <section>
   <h2>Resources</h2>
   <ul style="margin-top: 0.8em;">
-    <li>Prompt templates</li>
-    <li>Example workflows</li>
+    <li>Prompt templates for common research tasks</li>
+    <li>Example workflows (experimental, qualitative, mixed methods)</li>
     <li>Practice datasets</li>
+    <li>Troubleshooting guide</li>
   </ul>
   <p style="margin-top: 1.2em; color: var(--text);"><strong>bit.ly/agents-workshop</strong></p>
 </section>
