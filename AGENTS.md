@@ -62,7 +62,7 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 ## Workshop Content Notes
 
 The workshop demonstrates three live demos in Warp:
-1. **Experimental Design → Qualtrics** - Design a 2×2 vignette experiment on media trust, export as .qsf
+1. **Data Analysis → Publication-Ready Output** - Conjoint analysis with AMCEs, coefficient plot, LaTeX table, results paragraph
 2. **Interview Transcripts → Thematic Analysis** - Qualitative coding with inductive codebook, theme visualization
 3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
