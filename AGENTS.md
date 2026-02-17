@@ -60,23 +60,43 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 - `.callout` - blue accent callout boxes
 - `.card` - white card with subtle border/shadow
 
+### Additional CSS Classes (v4)
+- `.era-slide` - full-screen background image slides (computing history, IT screenshots)
+- `.era-label` - overlay label with backdrop blur for era slides
+- `.section-bg` - section dividers with background images
+- `.section-fail` - dark section divider with red accent (Part 3: Where They Fail)
+- `.cost-grid` / `.cost-item` / `.cost-arrow` - equilibrium cost visualization
+- `.value-arrow` - blue up-arrow for "what gains value" items
+- `.timer` - clickable countdown timer (click to start, click again to reset)
+
 ## Workshop Content Notes
 
-The workshop demonstrates three live demos in Warp:
-1. **Data Analysis → Publication-Ready Output** - Conjoint analysis with AMCEs, coefficient plot, LaTeX table, results paragraph
-2. **Interview Transcripts → Thematic Analysis** - Qualitative coding with inductive codebook, theme visualization
+### Slide Flow
+Title → About Me → AI Credentials → "I was a skeptic" → Today (roadmap) → Computing History (5 era slides) → "New OS is language" → Installation section → IT conversation screenshots (6 slides) → Download Warp → Credits → Pricing → Models → Competitors → "You direct the agent" → Cold open (populism) → Output slides → ~60 seconds → "This isn't the ChatGPT you know" → Part 1 (How Agents Work) → Part 2 (Three Demos) → Part 3 (Where They Fail) → Verification → Prototyping → Part 4 (Hands-On) → Prompt Cards 1–3 → Challenges → Timer → Share → Part 5 (Implications) → Equilibrium → Discussion → Timer → Summary → Resources → Thank You
+
+### Three Live Demos
+1. **Forgotten Survey Data → Full Paper** - TKFD Asia comparative survey project (China, Korea, Taiwan). Explores `~/Dropbox/tkfd/surveys/asia` — immigration, masculinity, COVID-19, security, refugees data. Models with robust SEs, ggplot figures, LaTeX tables, paper draft with guardrails.
+2. **Interview Transcripts → Thematic Explorer** - QDR South Africa political representation interviews. Braun & Clarke reflexive thematic analysis producing 7-theme codebook (2 slides), coded data CSV, and an expansive web app with dashboard (frequency charts, co-occurrence matrix, quote density heatmap) and explorer (quote browser, participant comparison, keyword search, CSV export).
 3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
-The cold open re-analyzes a forgotten populism survey dataset (~60 seconds):
+### Cold Open
+Re-analyzes a forgotten populism survey dataset (~60 seconds):
 - Data exploration (500+ variables, Argentina sample)
 - Populism index construction
 - Predictor models with robust SEs
 - Immigration conjoint AMCEs with clustered SEs
 - Publication-ready figures and LaTeX output
 
-Prompt cards (3 scenarios, also inlined in slides):
+### Installation Sequence
+Before the Warp setup slides, there are 6 screenshots (`images/it-1.png` through `it-6.png`) showing a conversation with IT about installing Warp, preceded by a dark "Installation" section divider.
+
+### Prompt Cards
+3 scenarios, inlined in slides (unchanged):
 1. Project management — entering an old/unfamiliar project directory
 2. Quantitative analysis — re-analyzing old/forgotten data
 3. Survey instrument — creating a survey with validated scales and experimental treatments
+
+### Timers
+Two countdown timers (14 min work session, 12 min discussion). Click to start, click again to reset. JS uses `stopPropagation()` to avoid Reveal.js click interference. Colors: green → amber (≤2 min) → red (expired, pulsing).
 
 Key themes: workflow automation (not just task completion), interacting with and directing agents, rapid prototyping/iteration, reproducibility through logging, verification of all outputs.
