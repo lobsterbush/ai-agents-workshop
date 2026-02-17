@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thematic Explorer | Political Representation</title>
+  <style>
+    :root {
+      --bg: #fafafa;
+      --bg-card: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-muted: #6a6a6a;
+      --accent: #0066cc;
+      --accent-light: rgba(0, 102, 204, 0.1);
+      --green: #4A9B67;
+      --orange: #e67e22;
+      --purple: #8e44ad;
+      --red: #c0392b;
+      --border: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    
+    [data-theme="dark"] {
+      --bg: #1a1a1a;
+      --bg-card: #2a2a2a;
+      --text: #f0f0f0;
+      --text-secondary: #b0b0b0;
+      --text-muted: #808080;
+      --border: #404040;
+      --shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    header {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    header h1 {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    
+    header h1 span {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    
+    button {
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background: #0052a3;
+    }
+    
+    .btn-secondary {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+    
+    main {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .stat {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    
+    .chart-container {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+      padding: 1rem 0;
+    }
+    
+    .bar {
+      flex: 1;
+      background: var(--accent);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      min-height: 20px;
+    }
+    
+    .bar:hover {
+      opacity: 0.8;
+    }
+    
+    .bar.active {
+      background: var(--green);
+    }
+    
+    .bar-label {
+      position: absolute;
+      bottom: -2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      max-width: 80px;
+      overflow: hidden;
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .theme-colors {
+      --theme-1: #0066cc;
+      --theme-2: #4A9B67;
+      --theme-3: #e67e22;
+      --theme-4: #8e44ad;
+      --theme-5: #c0392b;
+    }
+    
+    .bar[data-theme="1"] { background: var(--theme-1); }
+    .bar[data-theme="2"] { background: var(--theme-2); }
+    .bar[data-theme="3"] { background: var(--theme-3); }
+    .bar[data-theme="4"] { background: var(--theme-4); }
+    .bar[data-theme="5"] { background: var(--theme-5); }
+    
+    .co-occurrence {
+      display: grid;
+      grid-template-columns: 120px repeat(5, 1fr);
+      gap: 4px;
+      font-size: 0.75rem;
+    }
+    
+    .co-cell {
+      padding: 0.5rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+    
+    .co-header {
+      font-weight: 600;
+      color: var(--text-muted);
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      text-align: left;
+      padding: 0.5rem 0.25rem;
+    }
+    
+    .co-row-label {
+      font-weight: 500;
+      text-align: right;
+      padding-right: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    
+    .co-value {
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    
+    .co-value.high {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .co-value.diagonal {
+      background: var(--bg);
+      color: var(--text-muted);
+    }
+    
+    .filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    
+    .filter-btn {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 20px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+    
+    .quote-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .quote {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    
+    .quote:hover {
+      background: var(--bg);
+    }
+    
+    .quote:last-child {
+      border-bottom: none;
+    }
+    
+    .quote-text {
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .quote-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.8rem;
+    }
+    
+    .quote-participant {
+      color: var(--accent);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    
+    .quote-participant:hover {
+      text-decoration: underline;
+    }
+    
+    .quote-theme {
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    
+    .quote-theme[data-theme="1"] { background: rgba(0, 102, 204, 0.15); color: var(--theme-1); }
+    .quote-theme[data-theme="2"] { background: rgba(74, 155, 103, 0.15); color: var(--theme-2); }
+    .quote-theme[data-theme="3"] { background: rgba(230, 126, 34, 0.15); color: var(--theme-3); }
+    .quote-theme[data-theme="4"] { background: rgba(142, 68, 173, 0.15); color: var(--theme-4); }
+    .quote-theme[data-theme="5"] { background: rgba(192, 57, 43, 0.15); color: var(--theme-5); }
+    
+    .participant-panel {
+      position: fixed;
+      top: 0;
+      right: -500px;
+      width: 500px;
+      height: 100vh;
+      background: var(--bg-card);
+      border-left: 1px solid var(--border);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      z-index: 200;
+      overflow-y: auto;
+    }
+    
+    .participant-panel.open {
+      right: 0;
+    }
+    
+    .panel-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      background: var(--bg-card);
+    }
+    
+    .panel-header h3 {
+      font-size: 1.2rem;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.25rem;
+    }
+    
+    .close-btn:hover {
+      color: var(--text);
+    }
+    
+    .panel-content {
+      padding: 1.5rem;
+    }
+    
+    .participant-stats {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .participant-stat {
+      flex: 1;
+      text-align: center;
+      padding: 0.75rem;
+      background: var(--bg);
+      border-radius: 8px;
+    }
+    
+    .participant-stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    
+    .participant-stat-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+    
+    .legend {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+    }
+    
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    
+    .legend-dot[data-theme="1"] { background: var(--theme-1); }
+    .legend-dot[data-theme="2"] { background: var(--theme-2); }
+    .legend-dot[data-theme="3"] { background: var(--theme-3); }
+    .legend-dot[data-theme="4"] { background: var(--theme-4); }
+    .legend-dot[data-theme="5"] { background: var(--theme-5); }
+    
+    @media (max-width: 900px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      
+      .participant-panel {
+        width: 100%;
+        right: -100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Thematic Explorer <span>| Political Representation</span></h1>
+    <div class="header-actions">
+      <button class="btn-secondary" id="exportBtn">Export CSV</button>
+      <button class="btn-secondary" id="themeToggle">🌙 Dark</button>
+    </div>
+  </header>
+  
+  <main>
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-value">25</div>
+        <div class="stat-label">Interviews</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">5</div>
+        <div class="stat-label">Themes</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="quoteCount">127</div>
+        <div class="stat-label">Coded Quotes</div>
+      </div>
+    </div>
+    
+    <div class="dashboard">
+      <div class="card">
+        <h2>Theme Frequency</h2>
+        <div class="chart-container" id="chart"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      
+      <div class="card">
+        <h2>Theme Co-occurrence Matrix</h2>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+          How often themes appear together in the same interview
+        </p>
+        <div class="co-occurrence" id="coMatrix"></div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h2>Quote Browser</h2>
+      <div class="filters" id="filters"></div>
+      <div class="quote-list" id="quoteList"></div>
+    </div>
+  </main>
+  
+  <div class="participant-panel" id="participantPanel">
+    <div class="panel-header">
+      <h3 id="panelTitle">Participant</h3>
+      <button class="close-btn" id="closePanel">&times;</button>
+    </div>
+    <div class="panel-content" id="panelContent"></div>
+  </div>
+  
+  <script>
+    // Sample coded data (in real use, this would be generated by the AI agent)
+    const codedData = [
+      { participant: "Ali", theme: "Descriptive Representation Pressure", quote: "People assume I speak for all immigrants in my region. It's exhausting to carry that weight.", line: 23 },
+      { participant: "Ali", theme: "Legitimacy Negotiations", quote: "I had to prove myself twice as much as my colleagues. They questioned whether I earned my position.", line: 45 },
+      { participant: "Andrew", theme: "Constituency Boundary Tensions", quote: "My ward is incredibly diverse. When I advocate for one group, others feel neglected.", line: 12 },
+      { participant: "Andrew", theme: "Trust Building", quote: "I spend extra time in communities that didn't initially support me. Trust takes years to build.", line: 67 },
+      { participant: "Arnold", theme: "Descriptive Representation Pressure", quote: "The expectation is that I will always vote in favor of minority interests, even when I disagree.", line: 34 },
+      { participant: "Arnold", theme: "Strategic Essentialism", quote: "Sometimes I lean into my identity to gain support. It's strategic, but it feels inauthentic.", line: 89 },
+      { participant: "Bianca", theme: "Legitimacy Negotiations", quote: "They always ask if I'm a token appointment. It's insulting after 15 years of community work.", line: 56 },
+      { participant: "Bianca", theme: "Trust Building", quote: "I host monthly open forums. People need to see me consistently showing up.", line: 78 },
+      { participant: "Brendan", theme: "Constituency Boundary Tensions", quote: "My ward is diverse, but they expect me to prioritize the majority. It's a constant balancing act.", line: 23 },
+      { participant: "Brendan", theme: "Descriptive Representation Pressure", quote: "Because of my background, constituents expect me to champion certain causes exclusively.", line: 91 },
+      { participant: "Danielle", theme: "Trust Building", quote: "Trust is everything. Once you lose it, you're done in politics.", line: 45 },
+      { participant: "Danielle", theme: "Strategic Essentialism", quote: "I use my identity when it helps advance policy. It's a tool, not my whole identity.", line: 112 },
+      { participant: "David", theme: "Descriptive Representation Pressure", quote: "People assume I speak for all minorities. I represent everyone in my constituency.", line: 34 },
+      { participant: "David", theme: "Constituency Boundary Tensions", quote: "Geographic boundaries don't match cultural ones. It creates impossible expectations.", line: 67 },
+      { participant: "Delcan", theme: "Legitimacy Negotiations", quote: "Every meeting, someone questions whether I belong. It's draining.", line: 23 },
+      { participant: "Delcan", theme: "Trust Building", quote: "I've learned that presence matters more than promises. Being there builds trust.", line: 89 },
+      { participant: "Ebrahim", theme: "Strategic Essentialism", quote: "I emphasize certain aspects of my identity depending on the audience. It's pragmatic.", line: 45 },
+      { participant: "Ebrahim", theme: "Descriptive Representation Pressure", quote: "My community expects me to prioritize their needs above all else.", line: 78 },
+      { participant: "Emershan", theme: "Constituency Boundary Tensions", quote: "I represent a geographic area, not an identity group. But people don't see it that way.", line: 56 },
+      { participant: "Emershan", theme: "Legitimacy Negotiations", quote: "Proving myself never ends. Every new initiative, I start from zero.", line: 112 },
+      { participant: "Ferdinand", theme: "Trust Building", quote: "Consistency is key. People remember when you show up during tough times.", line: 34 },
+      { participant: "Ferdinand", theme: "Descriptive Representation Pressure", quote: "The weight of representation is heavy. I feel responsible for an entire community's image.", line: 67 },
+      { participant: "Julia", theme: "Strategic Essentialism", quote: "I've learned to leverage my identity strategically. It's not ideal, but it works.", line: 89 },
+      { participant: "Julia", theme: "Constituency Boundary Tensions", quote: "My constituency has multiple groups with conflicting interests. Balance is impossible.", line: 23 },
+      { participant: "Kopano", theme: "Legitimacy Negotiations", quote: "They always ask if I'm a token appointment. After years of service, it still stings.", line: 45 },
+      { participant: "Kopano", theme: "Trust Building", quote: "Trust is earned through action, not words. I learned that the hard way.", line: 78 },
+      { participant: "Lily", theme: "Descriptive Representation Pressure", quote: "People assume I will automatically understand their struggles because we share an identity.", line: 56 },
+      { participant: "Lily", theme: "Strategic Essentialism", quote: "I'm strategic about when and how I invoke my identity. It has to serve a purpose.", line: 112 },
+      { participant: "Maria", theme: "Constituency Boundary Tensions", quote: "I represent a district, not a demographic. But expectations don't align with reality.", line: 34 },
+      { participant: "Maria", theme: "Descriptive Representation Pressure", quote: "People assume I speak for all women in politics. The burden is immense.", line: 67 },
+      { participant: "Nelson", theme: "Trust Building", quote: "Building trust across communities takes years. There are no shortcuts.", line: 89 },
+      { participant: "Nelson", theme: "Legitimacy Negotiations", quote: "My qualifications are constantly questioned. I've stopped trying to prove myself.", line: 23 },
+      { participant: "Nicholas", theme: "Strategic Essentialism", quote: "I use my background strategically when it advances good policy.", line: 45 },
+      { participant: "Nicholas", theme: "Constituency Boundary Tensions", quote: "Representing diverse interests in one district is the hardest part of this job.", line: 78 }
+    ];
+    
+    const themes = [
+      { id: 1, name: "Descriptive Representation Pressure", short: "Representation" },
+      { id: 2, name: "Legitimacy Negotiations", short: "Legitimacy" },
+      { id: 3, name: "Constituency Boundary Tensions", short: "Boundaries" },
+      { id: 4, name: "Trust Building", short: "Trust" },
+      { id: 5, name: "Strategic Essentialism", short: "Strategy" }
+    ];
+    
+    let activeTheme = null;
+    
+    function getThemeId(themeName) {
+      const theme = themes.find(t => t.name === themeName);
+      return theme ? theme.id : 1;
+    }
+    
+    function renderChart() {
+      const chart = document.getElementById('chart');
+      const legend = document.getElementById('legend');
+      
+      const themeCounts = themes.map(theme => ({
+        ...theme,
+        count: codedData.filter(d => d.theme === theme.name).length
+      }));
+      
+      const maxCount = Math.max(...themeCounts.map(t => t.count));
+      
+      chart.innerHTML = themeCounts.map(theme => `
+        <div class="bar ${activeTheme === theme.name ? 'active' : ''}" 
+             data-theme="${theme.id}" 
+             data-name="${theme.name}"
+             style="height: ${(theme.count / maxCount) * 100}%"
+             onclick="filterByTheme('${theme.name}')">
+          <span class="bar-value">${theme.count}</span>
+          <span class="bar-label">${theme.short}</span>
+        </div>
+      `).join('');
+      
+      legend.innerHTML = themeCounts.map(theme => `
+        <div class="legend-item">
+          <span class="legend-dot" data-theme="${theme.id}"></span>
+          <span>${theme.name}</span>
+        </div>
+      `).join('');
+    }
+    
+    function renderCoOccurrence() {
+      const matrix = document.getElementById('coMatrix');
+      
+      // Calculate co-occurrence
+      const participants = [...new Set(codedData.map(d => d.participant))];
+      const coOccurrence = {};
+      
+      themes.forEach(t1 => {
+        coOccurrence[t1.name] = {};
+        themes.forEach(t2 => {
+          if (t1.name === t2.name) {
+            coOccurrence[t1.name][t2.name] = '-';
+          } else {
+            const count = participants.filter(p => {
+              const pThemes = codedData.filter(d => d.participant === p).map(d => d.theme);
+              return pThemes.includes(t1.name) && pThemes.includes(t2.name);
+            }).length;
+            coOccurrence[t1.name][t2.name] = count;
+          }
+        });
+      });
+      
+      // Render matrix
+      let html = '<div class="co-cell"></div>';
+      themes.forEach(t => {
+        html += `<div class="co-cell co-header">${t.short}</div>`;
+      });
+      
+      themes.forEach(t1 => {
+        html += `<div class="co-cell co-row-label">${t1.short}</div>`;
+        themes.forEach(t2 => {
+          const value = coOccurrence[t1.name][t2.name];
+          const isHigh = typeof value === 'number' && value >= 8;
+          const isDiagonal = value === '-';
+          html += `<div class="co-cell co-value ${isHigh ? 'high' : ''} ${isDiagonal ? 'diagonal' : ''}">${value}</div>`;
+        });
+      });
+      
+      matrix.innerHTML = html;
+    }
+    
+    function renderFilters() {
+      const filters = document.getElementById('filters');
+      filters.innerHTML = `
+        <button class="filter-btn ${!activeTheme ? 'active' : ''}" onclick="filterByTheme(null)">All Themes</button>
+        ${themes.map(t => `
+          <button class="filter-btn ${activeTheme === t.name ? 'active' : ''}" 
+                  onclick="filterByTheme('${t.name}')">${t.short}</button>
+        `).join('')}
+      `;
+    }
+    
+    function renderQuotes() {
+      const list = document.getElementById('quoteList');
+      const filtered = activeTheme 
+        ? codedData.filter(d => d.theme === activeTheme)
+        : codedData;
+      
+      document.getElementById('quoteCount').textContent = filtered.length;
+      
+      if (filtered.length === 0) {
+        list.innerHTML = '<div class="empty-state">No quotes match the current filter.</div>';
+        return;
+      }
+      
+      list.innerHTML = filtered.map(quote => `
+        <div class="quote">
+          <div class="quote-text">"${quote.quote}"</div>
+          <div class="quote-meta">
+            <span class="quote-participant" onclick="openParticipant('${quote.participant}')">${quote.participant}</span>
+            <span class="quote-theme" data-theme="${getThemeId(quote.theme)}">${themes.find(t => t.name === quote.theme)?.short}</span>
+            <span style="color: var(--text-muted)">Line ${quote.line}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function filterByTheme(themeName) {
+      activeTheme = themeName;
+      renderChart();
+      renderFilters();
+      renderQuotes();
+    }
+    
+    function openParticipant(name) {
+      const panel = document.getElementById('participantPanel');
+      const title = document.getElementById('panelTitle');
+      const content = document.getElementById('panelContent');
+      
+      const participantQuotes = codedData.filter(d => d.participant === name);
+      const participantThemes = [...new Set(participantQuotes.map(d => d.theme))];
+      
+      title.textContent = name;
+      
+      content.innerHTML = `
+        <div class="participant-stats">
+          <div class="participant-stat">
+            <div class="participant-stat-value">${participantQuotes.length}</div>
+            <div class="participant-stat-label">Quotes</div>
+          </div>
+          <div class="participant-stat">
+            <div class="participant-stat-value">${participantThemes.length}</div>
+            <div class="participant-stat-label">Themes</div>
+          </div>
+        </div>
+        <h4 style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">Themes Present</h4>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+          ${participantThemes.map(t => `
+            <span class="quote-theme" data-theme="${getThemeId(t)}">${themes.find(th => th.name === t)?.short}</span>
+          `).join('')}
+        </div>
+        <h4 style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem;">All Quotes</h4>
+        ${participantQuotes.map(q => `
+          <div class="quote">
+            <div class="quote-text">"${q.quote}"</div>
+            <div class="quote-meta">
+              <span class="quote-theme" data-theme="${getThemeId(q.theme)}">${themes.find(t => t.name === q.theme)?.short}</span>
+              <span style="color: var(--text-muted)">Line ${q.line}</span>
+            </div>
+          </div>
+        `).join('')}
+      `;
+      
+      panel.classList.add('open');
+    }
+    
+    function closeParticipantPanel() {
+      document.getElementById('participantPanel').classList.remove('open');
+    }
+    
+    function exportCSV() {
+      const filtered = activeTheme 
+        ? codedData.filter(d => d.theme === activeTheme)
+        : codedData;
+      
+      const csv = [
+        ['participant', 'theme', 'quote', 'line'],
+        ...filtered.map(d => [d.participant, d.theme, `"${d.quote}"`, d.line])
+      ].map(row => row.join(',')).join('\n');
+      
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'coded_quotes.csv';
+      a.click();
+    }
+    
+    function toggleTheme() {
+      const isDark = document.body.dataset.theme === 'dark';
+      document.body.dataset.theme = isDark ? '' : 'dark';
+      document.getElementById('themeToggle').textContent = isDark ? '🌙 Dark' : '☀️ Light';
+    }
+    
+    // Initialize
+    renderChart();
+    renderCoOccurrence();
+    renderFilters();
+    renderQuotes();
+    
+    // Event listeners
+    document.getElementById('closePanel').addEventListener('click', closeParticipantPanel);
+    document.getElementById('exportBtn').addEventListener('click', exportCSV);
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+    
+    // Close panel on escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeParticipantPanel();
+    });
+  </script>
+</body>
+</html>

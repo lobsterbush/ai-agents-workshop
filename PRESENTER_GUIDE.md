@@ -68,26 +68,31 @@
 
 **Backup plan:** If demo fails, show pre-created project and narrate what happened.
 
-#### Demo 2: Data Analysis (12 min)
-**0:28–0:40**
+#### Demo 2: Qualitative Analysis + Web App (15 min)
+**0:28–0:43**
 
 | Slide | Time | Notes |
 |-------|------|-------|
-| Demo 2 title | 30s | "Now let's get to the good stuff—analysis." |
-| "The Workflow" | 1 min | Load → Clean → Descriptives → Models → LaTeX tables. |
-| 🎬 Live Demo | 9 min | **LIVE IN WARP.** Load real survey data. Ask: "Analyze this survey data, produce summary statistics, run a regression predicting [outcome] with [predictors], use clustered standard errors by respondent, and generate a publication-ready LaTeX table." |
-| "Key Insight" | 1.5 min | Everything is logged. Reproducibility is built in. |
+| Demo 2 title | 30s | "Now for something different—real qualitative data." |
+| Data source callout | 1 min | Explain QDR: "This is published, citable data. 25 interviews with South African politicians about representation." |
+| The prompt | 1 min | Walk through the Braun & Clarke framework. "This is proper methodology, not just AI magic." |
+| 🎬 Live Demo Part 1 | 5 min | **LIVE IN WARP.** Download transcripts, run thematic analysis, produce codebook. |
+| Codebook output | 1 min | Show the themes. Discuss: "Would you code it the same way? That's reflexivity." |
+| 🎬 Live Demo Part 2 | 4 min | **LIVE IN WARP.** Build the Thematic Explorer web app. |
+| Web app output | 1.5 min | Demo the app: filter by theme, click participants, show co-occurrence. |
 
-**Presenter note:** When the agent makes a mistake (it might!), don't panic. Say: "Watch this—it's going to notice and fix itself." This is actually MORE impressive than a perfect run.
+**Presenter note:** The web app is the wow moment. Building a custom research tool in minutes. If demo fails, open `examples/thematic_explorer.html` as backup.
 
-#### Demo 3: Full Pipeline — The Wow Demo (13 min)
-**0:40–0:53**
+**Key discussion point:** "AI can code data, but can it be reflexive about its own assumptions? That's where human judgment remains essential."
+
+#### Demo 3: Interactive Experiment Interface (10 min)
+**0:43–0:53**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Demo 3 title | 30s | "This is where it gets wild." |
 | "One Prompt. Multiple Steps." | 1 min | Build anticipation with each fragment. |
-| 🎬 Live Demo | 10 min | **LIVE IN WARP.** Use a short interview transcript (3-4 paragraphs). Prompt: "Take this interview transcript, code it for themes related to [topic], generate a codebook with theme definitions and example quotes, create a bar chart showing theme frequencies, and draft a methods paragraph." |
+| 🎬 Live Demo | 7 min | **LIVE IN WARP.** Build the Twitter/X interface for survey experiment. |
 | "This is workflow, not task" | 1.5 min | Let the quote sink in. This is the paradigm shift. |
 
 **Presenter note:** This is the jaw-dropper. Practice this one the most. Have a backup transcript ready.
@@ -162,24 +167,45 @@ Create a new survey experiment project called "immigration-attitudes" with:
 - .gitignore configured for R projects
 ```
 
-### Demo 2: Data Analysis
+### Demo 2: Qualitative Analysis + Web App
 ```
-Analyze the survey data in data/survey_responses.csv:
-1. Load and summarize the data
-2. Create descriptive statistics table
-3. Run an OLS regression predicting support_immigration with age, education, income, and party_id
-4. Use clustered standard errors by respondent_id
-5. Generate a publication-ready LaTeX table
-6. Write a brief methods paragraph describing the analysis
+Analyze these 25 interview transcripts about political representation in South Africa (QDR doi:10.5064/F6L9HHYL).
+
+Using Braun & Clarke's reflexive thematic analysis:
+1. Familiarize yourself with the data
+2. Generate initial codes inductively
+3. Search for themes—group codes into potential themes
+4. Review themes against data extracts
+5. Define and name themes
+
+Produce a codebook, coded data CSV, and theme visualization using ggplot with theme_tufte().
 ```
 
-### Demo 3: Full Pipeline
+Then immediately follow with:
 ```
-Take this interview transcript and:
-1. Code it for themes related to experiences of discrimination
-2. Generate a codebook with theme definitions and example quotes
-3. Create a bar chart showing theme frequencies using ggplot with theme_tufte()
-4. Draft a methods paragraph for a qualitative analysis section
+Build a web app called "Thematic Explorer" to help researchers explore these coded transcripts.
+
+Features:
+- Dashboard showing theme frequency across all 25 interviews
+- Filter by theme to see all supporting quotes
+- Click a participant to see their full coded transcript
+- Theme co-occurrence matrix (which themes appear together?)
+- Export filtered data to CSV
+- Dark/light mode toggle
+
+Use vanilla HTML/CSS/JS. Make it professional and intuitive.
+```
+
+### Demo 3: Interactive Experiment Interface
+```
+Build a Twitter/X interface for a survey experiment.
+
+- Feed of 8 posts about climate change (mix of accurate/misinformation)
+- Users can like, retweet, reply, and scroll
+- Track all engagement with timestamps
+- Randomize post order and treatment conditions
+- Make it embeddable in Qualtrics via iframe
+- Log data to CSV on completion
 ```
 
 ---

@@ -460,17 +460,30 @@ m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female 
 <!-- DEMO 2: QUALITATIVE -->
 <section>
   <p class="label">Demo 2</p>
-  <h2>Interview Transcripts → Thematic Analysis</h2>
-  <p>Code qualitative data, generate a codebook, visualize themes.</p>
-  <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"I have 12 interview transcripts in /data/interviews/ about 
-experiences of workplace discrimination.
+  <h2>Real Qualitative Data → Thematic Explorer</h2>
+  <p>Using published interview data to build a research tool.</p>
+  <div class="callout" style="margin-top: 0.8em;">
+    <p><strong>Data source:</strong> Qualitative Data Repository — 25 interviews with South African elected representatives on political representation.</p>
+  </div>
+</section>
 
-1. Read all transcripts
-2. Develop an inductive codebook with themes and definitions
-3. Code each transcript, noting illustrative quotes
-4. Create a visualization of theme frequencies
-5. Draft a methods paragraph for the qualitative analysis"</span></pre>
+<!-- DEMO 2: THE PROMPT -->
+<section class="dark">
+  <p class="label">Demo 2</p>
+  <h2>The prompt</h2>
+  <pre>
+<span class="p">$</span> <span class="c">"Analyze these 25 interview transcripts about political 
+representation in South Africa (QDR doi:10.5064/F6L9HHYL).
+
+Using Braun & Clarke's reflexive thematic analysis:
+1. Familiarize yourself with the data
+2. Generate initial codes inductively
+3. Search for themes—group codes into potential themes
+4. Review themes against data extracts
+5. Define and name themes
+
+Produce a codebook, coded data CSV, and theme visualization.
+Then build a web app to explore the coded data interactively."</span></pre>
 </section>
 
 <!-- DEMO 2 OUTPUT: CODEBOOK -->
@@ -478,42 +491,42 @@ experiences of workplace discrimination.
   <p class="label">Output</p>
   <h2>codebook.md</h2>
   <pre>
-<span class="comment"># Inductive Codebook: Workplace Discrimination</span>
+<span class="comment"># Inductive Codebook: Political Representation</span>
 
-<span class="k">## Theme 1: Microaggressions</span>
-Subtle slights communicating hostile messages about identity.
-Example: "They always ask where I'm 'really' from" (P03)
+<span class="k">## Theme 1: Descriptive Representation Pressure</span>
+Expectations that minority representatives prioritize their group's interests.
+Example: "People assume I speak for all women" (Maria)
 
-<span class="k">## Theme 2: Exclusion from Opportunities</span>
-Being passed over for projects or promotions without justification.
-Example: "I watched three less qualified people get promoted" (P07)
+<span class="k">## Theme 2: Legitimacy Negotiations</span>
+Navigating questions about qualification vs. identity-based selection.
+Example: "They always ask if I'm a token appointment" (Kopano)
 
-<span class="k">## Theme 3: Code-Switching Pressure</span>
-Pressure to modify speech, appearance, or behavior to fit norms.
-Example: "I straighten my hair for client meetings" (P11)</pre>
+<span class="k">## Theme 3: Constituency Boundary Tensions</span>
+Conflict between representing geographic vs. identity constituencies.
+Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pre>
 </section>
 
-<!-- DEMO 2 OUTPUT: CODED -->
+<!-- DEMO 2 OUTPUT: WEB APP -->
 <section class="dark">
   <p class="label">Output</p>
-  <h2>coded_transcripts.csv</h2>
+  <h2>thematic_explorer.html</h2>
   <pre>
-participant,theme,quote,line
-P01,microaggressions,"Kept mispronouncing my name on purpose",23
-P01,exclusion,"Never invited to the informal lunch meetings",45
-P02,gaslighting,"HR said I was being too sensitive",156
-P03,microaggressions,"They always ask where I'm 'really' from",47
-P04,exclusion,"Passed over for the London trip",78
-...
+<span class="comment">// A self-contained web app for exploring coded transcripts</span>
 
-<span class="comment"># Theme frequencies:</span>
-<span class="comment"># microaggressions: 34 (12/12)  |  exclusion: 28 (10/12)</span>
-<span class="comment"># code_switching: 19 (8/12)    |  gaslighting: 15 (7/12)</span></pre>
+<span class="k">Features:</span>
+<span class="f">├── Theme frequency dashboard (interactive bar chart)</span>
+<span class="f">├── Quote browser with theme filters</span>
+<span class="f">├── Participant-level transcript view</span>
+<span class="f">├── Theme co-occurrence matrix</span>
+<span class="f">├── Export filtered data to CSV</span>
+<span class="f">└── Dark/light mode toggle</span>
+
+<span class="comment">// Single HTML file, no dependencies, works offline</span></pre>
 </section>
 
 <section class="center">
   <h2>Live Demo</h2>
-  <p style="color: var(--text-muted);">Transcripts → codebook → coded data → visualization</p>
+  <p style="color: var(--text-muted);">Real data → Braun & Clarke analysis → Custom research tool</p>
 </section>
 
 <!-- DEMO 3 -->
