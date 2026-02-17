@@ -291,31 +291,36 @@
     .section-fail h1 { color: #fff; }
     .section-fail .label { color: #e85555; }
 
-    /* Countdown timer */
+    /* Countdown timer — button style */
     .timer {
-      font-size: 5em;
+      font-size: 6em;
       font-weight: 600;
       line-height: 1;
-      color: var(--green);
+      color: #fff;
+      background: var(--green);
       cursor: pointer;
       user-select: none;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
       font-variant-numeric: tabular-nums;
+      padding: 0.4em 0.8em;
+      border-radius: 16px;
+      display: inline-block;
+      box-shadow: 0 8px 30px rgba(74, 155, 103, 0.3);
     }
-    .timer:hover { opacity: 0.85; }
-    .timer.running { color: var(--green); }
-    .timer.warning { color: #e6a817; }
-    .timer.expired { color: #e85555; animation: pulse 1s ease-in-out infinite; }
+    .timer:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(74, 155, 103, 0.4); }
+    .timer.running { background: var(--green); }
+    .timer.warning { background: #e6a817; box-shadow: 0 8px 30px rgba(230, 168, 23, 0.3); }
+    .timer.expired { background: #e85555; animation: pulse 1s ease-in-out infinite; box-shadow: 0 8px 30px rgba(232, 85, 85, 0.3); }
     .timer .timer-hint {
       font-size: 0.14em;
       font-weight: 400;
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.8);
       display: block;
       margin-top: 0.6em;
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
+      50% { opacity: 0.7; }
     }
   </style>
 </head>
@@ -333,7 +338,7 @@
   </p>
   <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
     <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
-    <span style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</span>
+    <a href="https://github.com/lobsterbush/ai-agents-workshop" target="_blank" style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</a>
   </div>
 </section>
 
@@ -373,14 +378,14 @@
 <!-- CONVERTED SKEPTIC -->
 <section class="center">
   <h2>I was a skeptic</h2>
-  <p style="font-size: 1.15em; color: var(--text); margin-top: 0.6em;">
+  <p style="font-size: 1.15em; color: var(--text); margin-top: 0.6em; text-align: center;">
     I spent years studying these tools critically.<br>
     I've published on their failures and limitations.
   </p>
-  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em; font-weight: 600;">
+  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em; font-weight: 600; text-align: center;">
     AI agents converted me.
   </p>
-  <p class="fragment" style="font-size: 1em; margin-top: 0.6em;">
+  <p class="fragment" style="font-size: 1em; margin-top: 0.6em; text-align: center;">
     Not chatbots. Not autocomplete. Agents—tools that act on your computer, see results, and iterate.
   </p>
 </section>
@@ -432,27 +437,27 @@
 </section>
 
 <!-- IT CONVERSATION: SLIDE 1 -->
-<section class="era-slide" data-background-image="images/it-1.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-1.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- IT CONVERSATION: SLIDE 2 -->
-<section class="era-slide" data-background-image="images/it-2.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-2.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- IT CONVERSATION: SLIDE 3 -->
-<section class="era-slide" data-background-image="images/it-3.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-3.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- IT CONVERSATION: SLIDE 4 -->
-<section class="era-slide" data-background-image="images/it-4.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-4.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- IT CONVERSATION: SLIDE 5 -->
-<section class="era-slide" data-background-image="images/it-5.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-5.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- IT CONVERSATION: SLIDE 6 -->
-<section class="era-slide" data-background-image="images/it-6.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+<section class="era-slide" data-background-image="images/it-6.png" data-background-size="contain" data-background-position="center" data-background-color="#ffffff">
 </section>
 
 <!-- WARP SETUP: GETTING STARTED -->
@@ -463,14 +468,14 @@
   <div class="cols" style="margin-top: 1.2em;">
     <div>
       <ul>
-        <li><strong>warp.dev</strong> — free to start</li>
+        <li><strong><a href="https://warp.dev" target="_blank" style="color: var(--accent);">warp.dev</a></strong> — free to start</li>
         <li>macOS, Windows, Linux</li>
         <li>Sign up with email or GitHub</li>
         <li>No credit card required</li>
       </ul>
     </div>
     <div class="card" style="text-align: center;">
-      <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 0.5em;">warp.dev</p>
+      <a href="https://warp.dev" target="_blank" style="font-size: 1.2em; font-weight: 600; margin-bottom: 0.5em; display: block; color: var(--accent); text-decoration: none;">warp.dev</a>
       <p style="font-size: 0.9em; color: var(--text-muted); margin: 0;">Download takes ~30 seconds</p>
     </div>
   </div>
@@ -620,93 +625,11 @@ processed/processed.csv.
 7. Put everything in ~/populism-reanalysis/"</span></pre>
 </section>
 
-<!-- OUTPUT: STRUCTURE -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>Project structure</h2>
-  <pre>
-<span class="o">Exploring dataset... 500+ variables, multiple countries...</span>
-<span class="f">populism-reanalysis/</span>
-<span class="f">├── README.md</span>
-<span class="f">├── paper/</span>
-<span class="f">│   ├── title_abstract.tex</span>
-<span class="f">│   └── results.tex</span>
-<span class="f">├── analysis/</span>
-<span class="f">│   ├── 01_explore.R</span>
-<span class="f">│   ├── 02_populism_index.R</span>
-<span class="f">│   ├── 03_predictors.R</span>
-<span class="f">│   └── 04_conjoint_amces.R</span>
-<span class="f">├── output/</span>
-<span class="f">│   ├── figures/</span>
-<span class="f">│   └── tables/</span>
-<span class="f">└── data/</span></pre>
-</section>
-
-<!-- OUTPUT: ABSTRACT -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>title_abstract.tex</h2>
-  <pre>
-\title{Economic Insecurity, Globalization Attitudes, and
-       Populist Sentiment: Evidence from Latin America}
-
-\begin{abstract}
-What drives populist attitudes? Using original survey data
-from Argentina, we examine how economic insecurity,
-globalization attitudes, and demographic factors predict
-populist sentiment. We find that perceived economic loss
-and negative views of immigration are the strongest
-predictors. A conjoint experiment reveals that respondents
-prefer immigrants with professional occupations, language
-fluency, and European origin.
-\end{abstract}</pre>
-</section>
-
-<!-- OUTPUT: R CODE -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>03_predictors.R</h2>
-  <pre>
-<span class="k">library</span>(tidyverse)
-<span class="k">library</span>(estimatr)
-<span class="k">library</span>(modelsummary)
-<span class="k">library</span>(ggthemes)
-
-df <- <span class="k">read_csv</span>(<span class="s">"data/processed.csv"</span>) |>
-  <span class="k">mutate</span>(pop_index = rowMeans(across(pop_1.n:pop_6.n), na.rm = T))
-
-<span class="comment"># What predicts populist attitudes?</span>
-m1 <- <span class="k">lm_robust</span>(pop_index ~ globalization_family.n +
-  immigration_family.n + loss_1.n + loss_2.n +
-  ed_postsec + age + sex, data = df, se_type = <span class="s">"HC2"</span>)
-
-<span class="k">modelsummary</span>(m1, output = <span class="s">"output/tables/predictors.tex"</span>)</pre>
-</section>
-
-<!-- OUTPUT: CONJOINT -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>04_conjoint_amces.R</h2>
-  <pre>
-<span class="k">library</span>(cregg)
-
-<span class="comment"># Reshape conjoint data to long format</span>
-conj <- df |> <span class="k">pivot_longer</span>(...) |>
-  <span class="k">mutate</span>(chosen = imm_choice == profile_id)
-
-<span class="comment"># AMCEs with clustered SEs by respondent</span>
-amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
-  language + age + gender + duration,
-  id = ~ResponseId, estimate = <span class="s">"amce"</span>)
-
-<span class="k">plot</span>(amces) + <span class="k">theme_tufte</span>() +
-  <span class="k">labs</span>(title = <span class="s">"Immigration Preferences"</span>)</pre>
-</section>
-
 <!-- TIMING -->
 <section class="center">
-  <p class="stat fragment"><span class="n">~60</span><span class="u"> seconds</span></p>
-  <p class="fragment" style="margin-top: 0.6em;">Data exploration, index construction, regression models, conjoint AMCEs, figures, LaTeX output.</p>
+  <p class="stat"><span class="n">Minutes</span></p>
+  <p style="font-size: 1.3em; margin-top: 0.3em; color: var(--text);">not hours or days</p>
+  <p class="fragment" style="margin-top: 1em;">Data exploration, index construction, regression models, conjoint AMCEs, figures, LaTeX output.</p>
 </section>
 
 <!-- DISTINCTION -->
@@ -775,11 +698,10 @@ amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
 </section>
 
 <!-- DEMO 1 -->
-<section>
-  <p class="label">Demo 1</p>
-  <h2>Forgotten Survey Data → Full Paper</h2>
-  <p>A comparative survey project across East Asia I haven't touched in years.</p>
-  <pre style="margin-top: 0.8em; font-size: 0.65em;">
+<section class="dark" style="padding: 0 !important;">
+  <div style="padding: 60px 80px;">
+    <p class="label">Demo 1 — Forgotten Survey Data → Full Paper</p>
+    <pre style="margin-top: 0.8em; font-size: 0.7em;">
 <span class="p">$</span> <span class="c">"I have a large comparative survey project at
 ~/Dropbox/tkfd/surveys/asia that I ran years ago but
 never fully analyzed. Surveys were fielded in China,
@@ -798,28 +720,14 @@ COVID-19 attitudes, security issues, and refugees.
 
 ⚠️ Guardrails: verify all citations exist, flag any
 statistics you're uncertain about, note limitations"</span></pre>
-</section>
-
-<section class="dark center">
-  <h2>Live Demo</h2>
-  <p>Forgotten data → exploration → analysis → paper</p>
-</section>
-
-<!-- DEMO 2: QUALITATIVE -->
-<section>
-  <p class="label">Demo 2</p>
-  <h2>Real Qualitative Data → Thematic Explorer</h2>
-  <p>Using published interview data to build a research tool.</p>
-  <div class="callout" style="margin-top: 0.8em;">
-    <p><strong>Data source:</strong> Qualitative Data Repository — 25 interviews with South African elected representatives on political representation.</p>
   </div>
 </section>
 
-<!-- DEMO 2: THE PROMPT -->
-<section class="dark">
-  <p class="label">Demo 2</p>
-  <h2>The prompt</h2>
-  <pre>
+<!-- DEMO 2 -->
+<section class="dark" style="padding: 0 !important;">
+  <div style="padding: 60px 80px;">
+    <p class="label">Demo 2 — Real Qualitative Data → Thematic Explorer</p>
+    <pre style="margin-top: 0.8em; font-size: 0.65em;">
 <span class="p">$</span> <span class="c">"Analyze these 25 interview transcripts about political 
 representation in South Africa (QDR doi:10.5064/F6L9HHYL).
 
@@ -841,111 +749,14 @@ Then build a web app to explore the data interactively:
 - Participant comparison view (side-by-side theme profiles)
 - Quote density heatmap
 - Export to CSV"</span></pre>
-</section>
-
-<!-- DEMO 2 OUTPUT: CODEBOOK (1/2) -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>codebook.md — Themes 1–4</h2>
-  <pre style="font-size: 0.6em;">
-<span class="comment"># Inductive Codebook: Political Representation in South Africa</span>
-
-<span class="k">## Theme 1: Descriptive Representation Pressure</span>
-Expectations that minority representatives prioritize their group.
-<span class="s">"People assume I speak for all women" (Maria)</span>
-<span class="s">"When I raise economic policy, they ask why I'm not talking about race" (Thandi)</span>
-
-<span class="k">## Theme 2: Legitimacy Negotiations</span>
-Navigating questions about qualification vs. identity-based selection.
-<span class="s">"They always ask if I'm a token appointment" (Kopano)</span>
-<span class="s">"I have to prove myself twice—once as competent, once as authentic" (Naledi)</span>
-
-<span class="k">## Theme 3: Constituency Boundary Tensions</span>
-Conflict between representing geographic vs. identity constituencies.
-<span class="s">"My ward is diverse, but they expect me to prioritize one group" (Brendan)</span>
-<span class="s">"The party wants national loyalty; my voters want local delivery" (Sipho)</span>
-
-<span class="k">## Theme 4: Emotional Labor of Representation</span>
-Psychological toll of carrying community expectations in hostile institutions.
-<span class="s">"I absorb their pain and bring it to parliament, but nobody sees that" (Lindiwe)</span>
-<span class="s">"You learn to perform strength even when you're exhausted" (Maria)</span></pre>
-</section>
-
-<!-- DEMO 2 OUTPUT: CODEBOOK (2/2) -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>codebook.md — Themes 5–7</h2>
-  <pre style="font-size: 0.6em;">
-<span class="k">## Theme 5: Strategic Code-Switching</span>
-Deliberate shifting between formal parliamentary and community registers.
-<span class="s">"In committee I cite the Constitution; at home I speak about ancestors" (Kopano)</span>
-<span class="s">"You need different languages for different audiences" (Thandi)</span>
-
-<span class="k">## Theme 6: Party vs. Conscience</span>
-Tension between party-line voting and personal conviction on identity issues.
-<span class="s">"The whip says vote yes, but my community would never forgive me" (Brendan)</span>
-<span class="s">"I broke ranks once. The consequences lasted two years" (Sipho)</span>
-
-<span class="k">## Theme 7: Institutional Gatekeeping</span>
-Formal and informal barriers to substantive participation.
-<span class="s">"The old guard controls committee assignments" (Naledi)</span>
-<span class="s">"Speaking time is allocated by seniority—new voices wait" (Lindiwe)</span>
-
-<span class="comment"># Summary: 7 themes, 42 codes, 318 coded extracts across 25 transcripts</span></pre>
-</section>
-
-<!-- DEMO 2 OUTPUT: CODED DATA -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>coded_data.csv</h2>
-  <pre style="font-size: 0.6em;">
-<span class="k">participant</span>, <span class="k">theme</span>, <span class="k">code</span>, <span class="k">quote</span>, <span class="k">line</span>
-Maria, Descriptive Pressure, group_spokesperson, "People assume I speak for...", 142
-Kopano, Legitimacy, token_questioning, "They always ask if I'm a...", 87
-Thandi, Code-Switching, register_shift, "In committee I cite the...", 203
-Brendan, Boundary Tensions, geographic_vs_identity, "My ward is diverse...", 156
-Lindiwe, Emotional Labor, absorbing_pain, "I absorb their pain and...", 312
-Sipho, Party vs Conscience, breaking_ranks, "I broke ranks once...", 94
-Naledi, Gatekeeping, committee_control, "The old guard controls...", 267
-<span class="comment">... 311 more rows</span>
-
-<span class="o">7 themes · 42 codes · 318 coded extracts · 25 participants</span></pre>
-</section>
-
-<!-- DEMO 2 OUTPUT: WEB APP -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>thematic_explorer.html</h2>
-  <pre style="font-size: 0.6em;">
-<span class="comment">// A self-contained web app for exploring coded transcripts</span>
-
-<span class="k">Dashboard:</span>
-<span class="f">├── Theme frequency bar chart (interactive, sortable)</span>
-<span class="f">├── Quote density heatmap by participant × theme</span>
-<span class="f">├── Theme co-occurrence matrix with cell counts</span>
-<span class="f">└── Summary statistics (N quotes, N codes, N participants per theme)</span>
-
-<span class="k">Explorer:</span>
-<span class="f">├── Full quote browser with theme/participant/code filters</span>
-<span class="f">├── Participant comparison view (side-by-side theme profiles)</span>
-<span class="f">├── Keyword search across all coded extracts</span>
-<span class="f">├── Export filtered data to CSV</span>
-<span class="f">└── Dark/light mode toggle</span>
-
-<span class="comment">// Single HTML file, no dependencies, works offline</span></pre>
-</section>
-
-<section class="dark center">
-  <h2>Live Demo</h2>
-  <p>Real data → Braun & Clarke analysis → Custom research tool</p>
+  </div>
 </section>
 
 <!-- DEMO 3 -->
-<section>
-  <p class="label">Demo 3</p>
-  <h2>Interactive Experiment Interface</h2>
-  <p>Build a social media simulation for studying information behavior.</p>
-  <pre style="margin-top: 0.8em;">
+<section class="dark" style="padding: 0 !important;">
+  <div style="padding: 60px 80px;">
+    <p class="label">Demo 3 — Interactive Experiment Interface</p>
+    <pre style="margin-top: 0.8em; font-size: 0.7em;">
 <span class="p">$</span> <span class="c">"Build a Twitter/X interface for a survey experiment.
 
 - Feed of 8 posts about climate change (mix of accurate/misinformation)
@@ -954,11 +765,7 @@ Naledi, Gatekeeping, committee_control, "The old guard controls...", 267
 - Randomize post order and treatment conditions
 - Make it embeddable in Qualtrics via iframe
 - Log data to CSV on completion"</span></pre>
-</section>
-
-<section class="dark center">
-  <h2>Live Demo</h2>
-  <p>Building an interactive experiment</p>
+  </div>
 </section>
 
 <!-- KEY POINT -->
@@ -1042,63 +849,55 @@ Naledi, Gatekeeping, committee_control, "The old guard controls...", 267
   <h1>Hands-On Practice</h1>
 </section>
 
-<!-- PROMPT CARD 1: PROJECT MANAGEMENT -->
+<!-- PROMPT CARDS -->
 <section>
-  <p class="label">Prompt Card 1</p>
-  <h2>Project Management</h2>
-  <p>Entering an old or unfamiliar project directory.</p>
-  <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"I just opened an old project directory I haven't touched
-in months.
+  <p class="label">Prompt Cards</p>
+  <h2>Three scenarios to try</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2em; margin-top: 1em; font-size: 0.85em;">
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <h3 style="font-size: 0.9em; color: var(--accent); margin-bottom: 0.5em;">1. Project Management</h3>
+      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Entering an old project directory</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+<span class="c">"I just opened an old project.
 
-1. Look at the file structure and summarize what this
-   project is about
-2. Identify which analyses are complete and which are
-   incomplete
-3. Check for any broken file paths or missing dependencies
-4. List the key data files and what they contain
-5. Suggest a prioritized list of next steps to move this
-   project forward
-6. Create a README if one doesn't exist"</span></pre>
-</section>
+1. Summarize what it's about
+2. ID complete vs incomplete analyses
+3. Check broken paths/dependencies
+4. List key data files
+5. Suggest next steps
+6. Create README if missing"</span></pre>
+    </div>
+    <div class="card" style="border-left: 4px solid #FF6B6B;">
+      <h3 style="font-size: 0.9em; color: #FF6B6B; margin-bottom: 0.5em;">2. Quantitative Analysis</h3>
+      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Re-analyzing old data</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+<span class="c">"Dataset at [PATH], never analyzed.
 
-<!-- PROMPT CARD 2: QUANTITATIVE ANALYSIS -->
-<section>
-  <p class="label">Prompt Card 2</p>
-  <h2>Quantitative Analysis</h2>
-  <p>Re-analyzing old, forgotten, or reused data.</p>
-  <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"I have a dataset at [FILE PATH] that I collected a while
-ago but never fully analyzed.
+1. Explore it (N, variables)
+2. Run [MODEL] predicting [DV]
+   with robust SEs
+3. ggplot figures, theme_tufte()
+4. LaTeX results table
+5. Results paragraph
+6. Put in analysis/ folder"</span></pre>
+    </div>
+    <div class="card" style="border-left: 4px solid #A855F7;">
+      <h3 style="font-size: 0.9em; color: #A855F7; margin-bottom: 0.5em;">3. Survey Instrument</h3>
+      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Survey experiment design</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+<span class="c">"Survey experiment on [TOPIC].
 
-1. Explore it — tell me what's in it, how many observations,
-   key variables
-2. Run [MODEL TYPE] predicting [DV] with [IVs] using
-   robust standard errors
-3. Create publication-ready figures using ggplot with
-   theme_tufte()
-4. Generate a LaTeX results table
-5. Write a results paragraph with inline statistics
-6. Put all output in a new analysis/ folder"</span></pre>
-</section>
+1. Find validated scales
+2. Create treatments
+3. Write items + response scales
+4. Add attention checks
+5. Randomize assignment
+6. Format for Qualtrics
+7. Pre-registration doc
 
-<!-- PROMPT CARD 3: SURVEY INSTRUMENT -->
-<section>
-  <p class="label">Prompt Card 3</p>
-  <h2>Survey Instrument</h2>
-  <p>Creating a survey with validated scales and experimental treatments.</p>
-  <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"Design a survey experiment on [TOPIC YOU CARE ABOUT].
-
-1. Find validated scales for measuring [KEY CONSTRUCTS]
-2. Create experimental treatments that vary [MANIPULATION]
-3. Write survey items with proper response scales
-4. Add attention checks and demographic questions
-5. Randomize treatment assignment
-6. Format everything for import into Qualtrics
-7. Write a brief pre-registration document
-
-⚠️ VERIFY all scale citations — agents hallucinate"</span></pre>
+⚠️ VERIFY scale citations"</span></pre>
+    </div>
+  </div>
 </section>
 
 <!-- CHALLENGES -->
@@ -1118,7 +917,7 @@ ago but never fully analyzed.
 <!-- TIMER -->
 <section class="center">
   <p class="timer" data-minutes="14">14:00</p>
-  <p style="color: var(--text-muted);">Work session — I'll be walking around to help</p>
+  <p style="color: var(--text-muted); margin-top: 1.5em;">Work session — click to start</p>
 </section>
 
 <!-- SHARE -->
@@ -1161,7 +960,7 @@ ago but never fully analyzed.
 <section>
   <p class="label">Equilibrium</p>
   <h2>What gains value</h2>
-  <p>When execution is cheap, what's scarce becomes more valuable.</p>
+  <p>When execution is cheap, other things become more valuable.</p>
   <ul style="margin-top: 1.2em;">
     <li class="fragment"><span class="value-arrow">↑</span> <strong>Ideas</strong> — original questions, creative research design, theoretical insight</li>
     <li class="fragment"><span class="value-arrow">↑</span> <strong>Taste</strong> — knowing what's worth doing, what's interesting, what's important</li>
@@ -1195,7 +994,7 @@ ago but never fully analyzed.
 <!-- TIMER -->
 <section class="center">
   <p class="timer" data-minutes="12">12:00</p>
-  <p style="color: var(--text-muted);">Table discussion</p>
+  <p style="color: var(--text-muted); margin-top: 1.5em;">Table discussion — click to start</p>
 </section>
 
 <!-- SUMMARY -->
@@ -1209,31 +1008,24 @@ ago but never fully analyzed.
   </ol>
 </section>
 
-<!-- RESOURCES -->
-<section>
-  <h2>Resources</h2>
-  <ul style="margin-top: 0.8em;">
-    <li>Prompt cards for common research workflows</li>
-    <li>Example workflows (experimental, qualitative, mixed methods)</li>
-    <li>All slides and materials on GitHub</li>
-  </ul>
-  <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
-    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
-    <span style="font-size: 0.95em; color: var(--text);"><strong>github.com/lobsterbush/ai-agents-workshop</strong></span>
-  </div>
-</section>
-
 <!-- END -->
 <section class="section">
   <h1>Thank you</h1>
   <p style="margin-top: 0.8em;">
     Charles Crabtree<br>
     <span style="color: var(--text-muted);">Senior Lecturer, School of Social Sciences, Monash University</span><br>
-    charles.crabtree@monash.edu
+    <a href="mailto:charles.crabtree@monash.edu" style="color: var(--accent);">charles.crabtree@monash.edu</a> · <a href="https://charlescrabtree.com" target="_blank" style="color: var(--accent);">charlescrabtree.com</a>
   </p>
-  <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
-    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
-    <span style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</span>
+  <div style="margin-top: 1.5em;">
+    <p class="label" style="margin-bottom: 0.6em;">Resources</p>
+    <ul style="font-size: 0.9em;">
+      <li><a href="https://warp.dev" target="_blank" style="color: var(--accent);">warp.dev</a> — Download Warp</li>
+      <li><a href="https://github.com/lobsterbush/ai-agents-workshop" target="_blank" style="color: var(--accent);">github.com/lobsterbush/ai-agents-workshop</a> — Slides, prompt cards, examples</li>
+    </ul>
+  </div>
+  <div style="margin-top: 1.2em; display: flex; align-items: center; gap: 1.2em;">
+    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 100px; height: 100px; border-radius: 8px;">
+    <span style="font-size: 0.85em; color: var(--text-muted);">Scan for materials</span>
   </div>
 </section>
 
