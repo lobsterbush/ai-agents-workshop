@@ -288,22 +288,42 @@
       color: var(--accent);
     }
 
-    /* Section divider with background image */
+    /* Section divider slides — use era-label style overlay */
     .section-bg {
       justify-content: flex-end;
-      padding-bottom: 140px !important;
+      padding-bottom: 100px !important;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);
     }
     .section-bg::before, .section-bg::after { display: none; }
-    .section-bg h1 { color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
-    .section-bg .label { color: rgba(255,255,255,0.8); }
+    .section-bg .section-content {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 24px 40px;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: inline-block;
+    }
+    .section-bg h1 { color: #fff; margin: 0; font-size: 2.2em; }
+    .section-bg .label { color: rgba(255,255,255,0.7); margin-bottom: 0.4em; }
+    .section-bg p { color: rgba(255,255,255,0.85); margin-top: 0.5em; font-size: 1.2em; }
 
     /* Part 3 fail section — dark with red accent */
     .section-fail {
       background: linear-gradient(135deg, #1a1a1a 0%, #2a1015 100%);
+      justify-content: flex-end;
+      padding-bottom: 100px !important;
     }
     .section-fail::before, .section-fail::after { display: none; }
-    .section-fail h1 { color: #fff; }
-    .section-fail .label { color: #e85555; }
+    .section-fail .section-content {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 24px 40px;
+      border-radius: 8px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: inline-block;
+    }
+    .section-fail h1 { color: #fff; margin: 0; font-size: 2.2em; }
+    .section-fail .label { color: #e85555; margin-bottom: 0.4em; }
 
     /* Countdown timer — button style */
     .timer {
@@ -442,10 +462,12 @@
 </section>
 
 <!-- INSTALLATION SECTION -->
-<section class="center section-bg" data-background-image="images/warp_install.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
-  <p class="label" style="color: rgba(255,255,255,0.7);">Getting Started</p>
-  <h1 style="color: #fff; font-size: 3em;">Installation</h1>
-  <p style="font-size: 1.5em; color: rgba(255,255,255,0.9); margin-top: 0.8em; max-width: 100%;">The new operating system is <strong>natural language</strong>.</p>
+<section class="section-bg">
+  <div class="section-content">
+    <p class="label">Getting Started</p>
+    <h1>Installation</h1>
+    <p>The new operating system is <strong>natural language</strong>.</p>
+  </div>
 </section>
 
 <!-- IT CONVERSATION: SLIDE 1 -->
@@ -663,9 +685,11 @@ processed/processed.csv.
 </section>
 
 <!-- PART 1 -->
-<section class="section section-bg" data-background-image="images/section_how.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.35">
-  <p class="label">Part 1</p>
-  <h1>How Agents Work</h1>
+<section class="section-bg">
+  <div class="section-content">
+    <p class="label">Part 1</p>
+    <h1>How Agents Work</h1>
+  </div>
 </section>
 
 <!-- TOOLS -->
@@ -697,9 +721,11 @@ processed/processed.csv.
 </section>
 
 <!-- PART 2 -->
-<section class="section section-bg" data-background-image="images/section_demos.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3">
-  <p class="label">Part 2</p>
-  <h1>Three Demonstrations</h1>
+<section class="section-bg">
+  <div class="section-content">
+    <p class="label">Part 2</p>
+    <h1>Three Demonstrations</h1>
+  </div>
 </section>
 
 <!-- DEMO 1 -->
@@ -802,9 +828,11 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 3 -->
-<section class="section section-fail" data-background-image="images/section_fail.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.25">
-  <p class="label">Part 3</p>
-  <h1>Where They Fail</h1>
+<section class="section-fail">
+  <div class="section-content">
+    <p class="label">Part 3</p>
+    <h1>Where They Fail</h1>
+  </div>
 </section>
 
 <!-- FAILURES -->
@@ -849,9 +877,11 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 4 -->
-<section class="section section-bg" data-background-image="images/section_hands.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3">
-  <p class="label">Part 4</p>
-  <h1>Hands-On Practice</h1>
+<section class="section-bg">
+  <div class="section-content">
+    <p class="label">Part 4</p>
+    <h1>Hands-On Practice</h1>
+  </div>
 </section>
 
 <!-- PROMPT CARDS + TIMER -->
@@ -904,7 +934,12 @@ Then build a web app to explore the data interactively:
     </div>
   </div>
   <p style="font-size: 1.4em; color: var(--text); margin-top: 1.2em; font-weight: 500;">Pick the one that slightly scares you.</p>
-  <p class="timer" data-minutes="14" style="margin-top: 1.2em;">14:00</p>
+</section>
+
+<!-- WORK SESSION TIMER -->
+<section class="center" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
+  <h2 style="color: #fff; font-size: 2em; margin-bottom: 0.8em;">Work Session</h2>
+  <p class="timer" data-minutes="14">14:00</p>
 </section>
 
 <!-- SHARE -->
@@ -914,20 +949,11 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 5 -->
-<section class="section section-bg" data-background-image="images/section_implications.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.35">
-  <p class="label">Part 5</p>
-  <h1>Implications</h1>
-</section>
-
-<!-- FRAMING -->
-<section class="center">
-  <h2 style="font-size: 2.4em; line-height: 1.2;">The question isn't <em>whether</em></h2>
-  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 1em; line-height: 1.5;">
-    These tools are here.<br>They're getting better rapidly.
-  </p>
-  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 1em; line-height: 1.5;">
-    The question is <strong>how</strong> we use them<br>responsibly as a scholarly community.
-  </p>
+<section class="section-bg">
+  <div class="section-content">
+    <p class="label">Part 5</p>
+    <h1>Implications</h1>
+  </div>
 </section>
 
 <!-- EQUILIBRIUM: COSTS FALLING -->
@@ -994,7 +1020,12 @@ Then build a web app to explore the data interactively:
     <li class="fragment" style="margin-bottom: 0.6em;">What norms should we adopt for transparency and acknowledgment?</li>
     <li class="fragment">How do we train the next generation of researchers for this world?</li>
   </ul>
-  <p class="timer" data-minutes="12" style="margin-top: 1.5em;">12:00</p>
+</section>
+
+<!-- DISCUSSION TIMER -->
+<section class="center" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
+  <h2 style="color: #fff; font-size: 2em; margin-bottom: 0.8em;">Table Discussion</h2>
+  <p class="timer" data-minutes="12">12:00</p>
 </section>
 
 <!-- SUMMARY -->
