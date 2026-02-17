@@ -193,6 +193,69 @@ Always follow up with:
 
 ---
 
+## ⚙️ Warp-Specific Tips
+
+### Model Selection for Qualitative Work
+
+| Task | Recommended Model | Why |
+|------|-------------------|-----|
+| Initial coding | **Sonnet 4.5** (auto) | Good balance of speed and nuance |
+| Theme refinement | **Opus 4.5** | Better reasoning for ambiguous codes |
+| Codebook generation | **Sonnet 4.5** | Fast, structured output |
+| Web app building | **Sonnet 4.5** | Optimized for code generation |
+| Quick explanations | **Haiku** | Cheap, fast for simple questions |
+
+### Credit Optimization
+
+Qualitative analysis can be credit-intensive. Save credits by:
+
+1. **Use `@` to reference files** — `@transcripts/participant_01.txt` is cheaper than "read the first transcript"
+2. **Batch transcript analysis** — Analyze 5-10 transcripts per prompt instead of one at a time
+3. **Create a WARP.md file** with your research context:
+   ```markdown
+   # Qualitative Analysis Project
+   
+   ## Research Question
+   How do minority representatives navigate pressure to represent their group?
+   
+   ## Methodology
+   Braun & Clarke reflexive thematic analysis
+   
+   ## Data
+   25 semi-structured interviews (data/transcripts/)
+   ```
+4. **Use Haiku for verification tasks** — Checking if a quote fits a theme doesn't need Opus
+
+### Workflow Tip: Two-Phase Analysis
+
+**Phase 1:** Use auto/Sonnet for initial coding and theme generation
+```
+Analyze @transcripts/ using inductive coding. Produce initial codes and potential themes.
+```
+
+**Phase 2:** Switch to Opus for refinement and ambiguous cases
+```
+/model opus
+
+Review these ambiguous quotes and recommend theme assignments:
+[paste ambiguous quotes]
+
+Explain your reasoning for each.
+```
+
+### Web App Prompting
+
+When building the Thematic Explorer, be specific about tech stack:
+```
+Build a self-contained HTML file (no external dependencies) that works offline.
+Use vanilla JavaScript — no React, Vue, or frameworks.
+Include the coded data directly in the JavaScript.
+```
+
+This produces a single file that opens in any browser without a server.
+
+---
+
 ## 📁 Example Data Source
 
 **Perspectives on Political Representation**  

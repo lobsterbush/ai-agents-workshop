@@ -21,6 +21,29 @@
 
 ## Workshop Flow & Timings
 
+### Part 0: Warp Setup (5 min)
+**-0:05–0:00** (do this as people arrive)
+
+| Slide | Time | Notes |
+|-------|---------|-------|
+| Download Warp | 1 min | "If you haven't already, go to warp.dev. It's free and takes 30 seconds." |
+| Credits = Fuel | 1 min | Quick explanation. "75 credits/month on free tier. Plenty for today." |
+| Pricing Plans | 30s | Show options briefly. "Build at $20/mo is great for power users." |
+| Models Available | 1 min | "Warp works with Claude, GPT, and Gemini. We'll use 'auto' today." |
+| Warp vs Competitors | 1.5 min | Quick landscape. "Claude Code, Codex are alternatives. Warp is model-agnostic." |
+
+**Presenter note:** This section runs while people are still settling in. Keep it light and informational. The goal is to get everyone on the same page about what Warp is and how pricing works.
+
+**Key talking points:**
+- Credits are like fuel. Simple tasks = fewer credits. Complex tasks = more.
+- Free tier (75 credits/month) is enough for occasional use
+- Build plan ($20/mo) gives 1,500 credits and BYOK (Bring Your Own Key)
+- BYOK lets you use your own OpenAI/Anthropic/Google API keys
+- Warp supports multiple models: Claude Sonnet (default), Opus (planning), GPT-4o, Gemini
+- We'll use "auto" mode today — it picks the best model for each task
+
+---
+
 ### Part 1: Opening & Hook (10 min)
 **0:00–0:10**
 
