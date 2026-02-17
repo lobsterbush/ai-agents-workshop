@@ -151,10 +151,24 @@
     
     /* Center */
     .center {
-      align-items: center;
-      text-align: center;
+      align-items: center !important;
+      text-align: center !important;
     }
-    .center p { max-width: 850px; }
+    .center * {
+      text-align: center !important;
+    }
+    .center p {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .center h2 {
+      width: 100%;
+    }
+    .center ul, .center ol {
+      display: inline-block;
+      text-align: left !important;
+    }
     
     /* Section slides */
     .section {
@@ -379,16 +393,17 @@
 
 <!-- CONVERTED SKEPTIC -->
 <section class="center">
-  <h2>I was a skeptic</h2>
-  <p style="font-size: 1.3em; color: var(--text); margin-top: 0.6em; text-align: center;">
+  <h2 style="font-size: 2.2em; margin-bottom: 0.8em;">I was a skeptic</h2>
+  <p style="font-size: 1.4em; color: var(--text); line-height: 1.5;">
     I spent years studying these tools critically.<br>
     I've written papers on their failures and limitations.
   </p>
-  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 0.8em; font-weight: 600; text-align: center;">
+  <p class="fragment" style="font-size: 1.8em; color: var(--text); margin-top: 1em; font-weight: 600;">
     AI agents converted me.
   </p>
-  <p class="fragment" style="font-size: 1.2em; margin-top: 0.6em; text-align: center;">
-    Not chatbots. Not autocomplete. Agents—tools that act on your computer, see results, and iterate.
+  <p class="fragment" style="font-size: 1.3em; color: var(--text-secondary); margin-top: 0.8em; line-height: 1.5;">
+    Not chatbots. Not autocomplete.<br>
+    Agents—tools that act on your computer, see results, and iterate.
   </p>
 </section>
 
@@ -427,10 +442,10 @@
 </section>
 
 <!-- INSTALLATION SECTION -->
-<section class="section section-bg" data-background-image="images/warp_install.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
-  <p class="label">Getting Started</p>
-  <h1>Installation</h1>
-  <p style="font-size: 1.3em; color: rgba(255,255,255,0.9); margin-top: 0.5em; text-align: center;">The new operating system is <strong>natural language</strong>.</p>
+<section class="center section-bg" data-background-image="images/warp_install.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
+  <p class="label" style="color: rgba(255,255,255,0.7);">Getting Started</p>
+  <h1 style="color: #fff; font-size: 3em;">Installation</h1>
+  <p style="font-size: 1.5em; color: rgba(255,255,255,0.9); margin-top: 0.8em; max-width: 100%;">The new operating system is <strong>natural language</strong>.</p>
 </section>
 
 <!-- IT CONVERSATION: SLIDE 1 -->
@@ -842,12 +857,12 @@ Then build a web app to explore the data interactively:
 <!-- PROMPT CARDS + TIMER -->
 <section class="center">
   <p class="label">Prompt Cards</p>
-  <h2 style="font-size: 1.8em;">Three scenarios to try</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 1em; font-size: 0.9em; text-align: left;">
-    <div class="card" style="border-left: 4px solid var(--accent);">
-      <h3 style="font-size: 1em; color: var(--accent); margin-bottom: 0.5em;">1. Project Management</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Entering an old project directory</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+  <h2 style="font-size: 2em; margin-bottom: 0.6em;">Three scenarios to try</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 0.8em; font-size: 0.95em;">
+    <div class="card" style="border-left: 4px solid var(--accent); text-align: left !important;">
+      <h3 style="font-size: 1.05em; color: var(--accent); margin-bottom: 0.5em; text-align: left !important;">1. Project Management</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Entering an old project directory</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
 <span class="c">"I just opened an old project.
 
 1. Summarize what it's about
@@ -857,10 +872,10 @@ Then build a web app to explore the data interactively:
 5. Suggest next steps
 6. Create README if missing"</span></pre>
     </div>
-    <div class="card" style="border-left: 4px solid #FF6B6B;">
-      <h3 style="font-size: 1em; color: #FF6B6B; margin-bottom: 0.5em;">2. Quantitative Analysis</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Re-analyzing old data</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+    <div class="card" style="border-left: 4px solid #FF6B6B; text-align: left !important;">
+      <h3 style="font-size: 1.05em; color: #FF6B6B; margin-bottom: 0.5em; text-align: left !important;">2. Quantitative Analysis</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Re-analyzing old data</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
 <span class="c">"Dataset at [PATH], never analyzed.
 
 1. Explore it (N, variables)
@@ -871,10 +886,10 @@ Then build a web app to explore the data interactively:
 5. Results paragraph
 6. Put in analysis/ folder"</span></pre>
     </div>
-    <div class="card" style="border-left: 4px solid #A855F7;">
-      <h3 style="font-size: 1em; color: #A855F7; margin-bottom: 0.5em;">3. Survey Instrument</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Survey experiment design</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
+    <div class="card" style="border-left: 4px solid #A855F7; text-align: left !important;">
+      <h3 style="font-size: 1.05em; color: #A855F7; margin-bottom: 0.5em; text-align: left !important;">3. Survey Instrument</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Survey experiment design</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
 <span class="c">"Survey experiment on [TOPIC].
 
 1. Find validated scales
@@ -888,8 +903,8 @@ Then build a web app to explore the data interactively:
 ⚠️ VERIFY scale citations"</span></pre>
     </div>
   </div>
-  <p style="font-size: 1.3em; color: var(--text); margin-top: 1.2em; font-weight: 500;">Pick the one that slightly scares you.</p>
-  <p class="timer" data-minutes="14" style="margin-top: 1em;">14:00</p>
+  <p style="font-size: 1.4em; color: var(--text); margin-top: 1.2em; font-weight: 500;">Pick the one that slightly scares you.</p>
+  <p class="timer" data-minutes="14" style="margin-top: 1.2em;">14:00</p>
 </section>
 
 <!-- SHARE -->
@@ -906,12 +921,12 @@ Then build a web app to explore the data interactively:
 
 <!-- FRAMING -->
 <section class="center">
-  <h2 style="font-size: 2em;">The question isn't <em>whether</em></h2>
-  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.8em;">
-    These tools are here. They're getting better rapidly.
+  <h2 style="font-size: 2.4em; line-height: 1.2;">The question isn't <em>whether</em></h2>
+  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 1em; line-height: 1.5;">
+    These tools are here.<br>They're getting better rapidly.
   </p>
-  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.6em;">
-    The question is <strong>how</strong> we use them responsibly as a scholarly community.
+  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 1em; line-height: 1.5;">
+    The question is <strong>how</strong> we use them<br>responsibly as a scholarly community.
   </p>
 </section>
 
@@ -946,34 +961,40 @@ Then build a web app to explore the data interactively:
 
 <!-- EQUILIBRIUM: THE SHIFT -->
 <section class="center">
-  <h2 style="font-size: 2em;">The new premium</h2>
-  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em;">
+  <h2 style="font-size: 2.4em; margin-bottom: 0.6em;">The new premium</h2>
+  <p class="fragment" style="font-size: 1.3em; color: var(--text-secondary); line-height: 1.6;">
     An agent can clean your data, run your models,<br>and draft your paper overnight.
   </p>
-  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 1em; font-weight: 500;">
-    The researcher who has <strong>the idea</strong>—
-  </p>
-  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.3em; font-weight: 500;">
-    who spent <strong>six months in the field</strong>—
-  </p>
-  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.3em; font-weight: 500;">
-    who has <strong>the judgment</strong> to know what matters—
-  </p>
-  <p class="fragment" style="font-size: 1.5em; color: var(--accent); margin-top: 0.8em; font-weight: 600;">
+  <div class="fragment" style="margin-top: 1.2em;">
+    <p style="font-size: 1.5em; color: var(--text); font-weight: 500; line-height: 1.4; margin-bottom: 0.3em;">
+      The researcher who has <strong>the idea</strong>—
+    </p>
+  </div>
+  <div class="fragment">
+    <p style="font-size: 1.5em; color: var(--text); font-weight: 500; line-height: 1.4; margin-bottom: 0.3em;">
+      who spent <strong>six months in the field</strong>—
+    </p>
+  </div>
+  <div class="fragment">
+    <p style="font-size: 1.5em; color: var(--text); font-weight: 500; line-height: 1.4; margin-bottom: 0.3em;">
+      who has <strong>the judgment</strong> to know what matters—
+    </p>
+  </div>
+  <p class="fragment" style="font-size: 1.7em; color: var(--accent); margin-top: 1em; font-weight: 600;">
     becomes more valuable, not less.
   </p>
 </section>
 
 <!-- DISCUSSION + TIMER -->
 <section class="center">
-  <h2 style="font-size: 2em;">Discussion</h2>
-  <ul style="margin-top: 0.8em; font-size: 1.2em; text-align: left; display: inline-block;">
-    <li class="fragment">What research tasks would benefit most from agent assistance?</li>
-    <li class="fragment">Where should human judgment remain non-negotiable?</li>
-    <li class="fragment">What norms should we adopt for transparency and acknowledgment?</li>
+  <h2 style="font-size: 2.2em; margin-bottom: 0.8em;">Discussion</h2>
+  <ul style="margin-top: 0.6em; font-size: 1.3em; max-width: 1000px;">
+    <li class="fragment" style="margin-bottom: 0.6em;">What research tasks would benefit most from agent assistance?</li>
+    <li class="fragment" style="margin-bottom: 0.6em;">Where should human judgment remain non-negotiable?</li>
+    <li class="fragment" style="margin-bottom: 0.6em;">What norms should we adopt for transparency and acknowledgment?</li>
     <li class="fragment">How do we train the next generation of researchers for this world?</li>
   </ul>
-  <p class="timer" data-minutes="12" style="margin-top: 1.2em;">12:00</p>
+  <p class="timer" data-minutes="12" style="margin-top: 1.5em;">12:00</p>
 </section>
 
 <!-- SUMMARY -->
