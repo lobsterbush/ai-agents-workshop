@@ -222,6 +222,56 @@
     .dark h1, .dark h2 { color: #fff; }
     .dark p { color: #aaa; }
     .dark .label { color: var(--green); }
+
+    /* Full-screen background image slides */
+    .era-slide {
+      justify-content: flex-end !important;
+      padding-bottom: 80px !important;
+    }
+    .era-label {
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-size: 1.2em;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 6px;
+      display: inline-block;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .era-label .era-year {
+      font-size: 0.65em;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.7);
+      margin-left: 0.6em;
+    }
+
+    /* Cost shift visualization */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2em;
+      margin-top: 1em;
+    }
+    .cost-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+    }
+    .cost-arrow {
+      font-size: 1.4em;
+      color: var(--green);
+    }
+    .value-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8em;
+    }
+    .value-arrow {
+      font-size: 1.4em;
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -236,6 +286,33 @@
     Charles Crabtree<br>
     <span style="color: var(--text-muted);">Monash University · Korea University</span>
   </p>
+</section>
+
+<!-- HOW WE USE COMPUTERS: A BRIEF HISTORY -->
+<section class="era-slide" data-background-image="images/punch_cards.jpg" data-background-size="cover" data-background-position="center">
+  <div class="era-label">Punch Cards<span class="era-year">1950s–1970s</span></div>
+</section>
+
+<section class="era-slide" data-background-image="images/dos.png" data-background-size="cover" data-background-position="center" data-background-color="#000">
+  <div class="era-label">Command Line<span class="era-year">1980s</span></div>
+</section>
+
+<section class="era-slide" data-background-image="images/windows95.png" data-background-size="cover" data-background-position="center" data-background-color="#008080">
+  <div class="era-label">Graphical Interface<span class="era-year">1995</span></div>
+</section>
+
+<section class="era-slide" data-background-image="images/macos.png" data-background-size="cover" data-background-position="center" data-background-color="#1a1a1a">
+  <div class="era-label">Modern Desktop<span class="era-year">2024</span></div>
+</section>
+
+<section class="era-slide" data-background-image="images/warp.png" data-background-size="cover" data-background-position="center" data-background-color="#1a1a1a">
+  <div class="era-label">AI Agent<span class="era-year">Now</span></div>
+</section>
+
+<section class="center">
+  <h2>The next interface</h2>
+  <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">Each era changed what you had to know to use a computer.<br>This one changes what you have to <em>do</em>.</p>
+  <p class="fragment" style="color: var(--text-muted); margin-top: 0.8em;">You describe intent. The machine handles execution.</p>
 </section>
 
 <!-- WARP SETUP: GETTING STARTED -->
@@ -759,6 +836,45 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
   <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">
     These tools are here. They're getting better rapidly. 
     The question is how we use them responsibly as a scholarly community.
+  </p>
+</section>
+
+<!-- EQUILIBRIUM: COSTS FALLING -->
+<section>
+  <p class="label">Equilibrium</p>
+  <h2>What AI agents drive down</h2>
+  <p>The cost of execution is collapsing across the research pipeline.</p>
+  <div class="cost-grid" style="margin-top: 1.2em;">
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data collection</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Scraping, surveys, API calls, simulation</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data cleaning</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Parsing, merging, imputation, validation</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data analysis</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Models, robustness checks, visualizations</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Results presentation</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Tables, figures, LaTeX, web apps</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Writing</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Drafts, lit reviews, technical prose</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Complex environments</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Web apps, virtual worlds, interactive experiments</span></span></div>
+  </div>
+</section>
+
+<!-- EQUILIBRIUM: WHAT GAINS VALUE -->
+<section>
+  <p class="label">Equilibrium</p>
+  <h2>What gains value</h2>
+  <p>When execution is cheap, what's scarce becomes more valuable.</p>
+  <ul style="margin-top: 1.2em;">
+    <li class="fragment"><span class="value-arrow">↑</span> <strong>Ideas</strong> — original questions, creative research design, theoretical insight</li>
+    <li class="fragment"><span class="value-arrow">↑</span> <strong>Taste</strong> — knowing what's worth doing, what's interesting, what's important</li>
+    <li class="fragment"><span class="value-arrow">↑</span> <strong>Fieldwork</strong> — ethnography, interviews, participant observation</li>
+    <li class="fragment"><span class="value-arrow">↑</span> <strong>Field experiments</strong> — real-world interventions that require human presence</li>
+    <li class="fragment"><span class="value-arrow">↑</span> <strong>Verified human involvement</strong> — anything that requires being there, in person, in context</li>
+  </ul>
+</section>
+
+<!-- EQUILIBRIUM: THE SHIFT -->
+<section class="center">
+  <h2>The new premium</h2>
+  <p style="font-size: 1.15em; color: var(--text); max-width: 750px;">
+    In a world where an agent can clean your data, run your models, and draft your paper overnight—<br><br>
+    the researcher who has <strong>the idea</strong>, who spent <strong>six months in the field</strong>, who has <strong>the judgment</strong> to know what matters<br><br>
+    becomes more valuable, not less.
   </p>
 </section>
 

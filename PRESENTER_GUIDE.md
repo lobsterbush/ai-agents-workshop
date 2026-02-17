@@ -44,18 +44,26 @@
 
 ---
 
-### Part 1: Opening & Hook (10 min)
-**0:00–0:10**
+### Part 1: Opening & Hook (12 min)
+**0:00–0:12**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Title | 30s | Let people settle. Don't start talking immediately. |
+| Computing History (5 slides) | 2-3 min | Click through punch cards → DOS → Windows 95 → macOS → Warp. Each gets 20-30 seconds. Let images speak. |
+| "The next interface" | 45s | Key line: "Each era changed what you had to *know*. This one changes what you have to *do*." Pause on "intent vs execution." |
 | "Before we begin..." | 30s | Build anticipation. Pause for effect. |
 | Cold open demo (terminal) | 2-3 min | **THIS IS THE HOOK.** Don't explain—just type the prompt and let them watch. Use fragments to reveal output step by step. |
 | "45 minutes → 12 seconds" | 1 min | Let the number sink in. Dramatic pause before "12 seconds" reveal. |
 | "What just happened?" | 2 min | Now explain. Chatbot vs Agent comparison. Key insight: agents *do*. |
 | "Today's Journey" | 1 min | Quick roadmap. Don't dwell. |
-| "Pulse Check" | 2 min | Get hands raised. Acknowledge skeptics—"You'll keep us honest." |
+
+**Computing history talking points:**
+- Punch cards: "You had to learn the machine's language. Literally encode your instructions in holes."
+- DOS: "Still text, still arcane, but at least you could see what you typed."
+- Windows 95: "Point and click. Suddenly anyone could use a computer. This was revolutionary."
+- macOS Sonoma: "Decades of refinement. Beautiful, but fundamentally the same paradigm—you operate the tools."
+- Warp: "Now: you describe what you want. The machine operates itself. This is the shift we're living through."
 
 **Presenter note:** The cold open is everything. If you nail this, they're hooked. Practice this demo 10+ times so it's flawless.
 
@@ -150,18 +158,28 @@
 
 ---
 
-### Part 6: Group Discussion (20 min)
-**1:23–1:43**
+### Part 6: Group Discussion (25 min)
+**1:23–1:48**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Part 5 title | 15s | "Let's zoom out." |
 | "These tools are coming..." | 1 min | Frame the stakes. This is about shaping our field. |
+| "What AI agents drive down" | 2 min | Click through each cost item. Let them absorb the scope. |
+| "What gains value" | 2 min | This is the hopeful slide. Researchers aren't replaced—they're elevated. |
+| "The new premium" | 1 min | Let the text breathe. Read it slowly. This is the thesis. |
 | "Discussion Questions" | 2 min | Read each question. Give them 5 seconds to think before moving on. |
 | Timer slide (12 min) | 12 min | Walk around. Listen to conversations. Take notes on good insights. |
 | "Report Back" | 5 min | One insight per table. Capture key themes. "What I'm hearing is..." |
 
-**Presenter note:** This discussion is gold for the post-workshop summary. Listen more than you talk.
+**Equilibrium talking points:**
+- "Think about it in economic terms. When the cost of X falls, the relative value of everything that *isn't* X goes up."
+- Costs falling: data collection (scraping, APIs, simulation), data cleaning, analysis, results presentation, writing, building complex environments. All of these become near-zero marginal cost.
+- Values rising: ideas ("What should we study?"), taste ("What's actually interesting?"), fieldwork (ethnography, interviews, participant observation), field experiments (real-world interventions), anything with *verified human involvement*.
+- "In equilibrium, the person who spent six months in a refugee camp, who has the field notes, who built the relationships—that person's work becomes *more* valuable, not less. The agent can't do that."
+- "The question for each of us: what parts of your research practice are irreducibly human?"
+
+**Presenter note:** This is the intellectual payoff of the workshop. The demos showed capability; this section shows what it *means*. Listen more than you talk during discussion.
 
 ---
 
