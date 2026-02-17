@@ -21,7 +21,7 @@
     
     .reveal {
       font-family: 'Space Grotesk', system-ui, sans-serif;
-      font-size: 36px;
+      font-size: clamp(24px, 2vw, 42px);
       color: var(--text);
       background: var(--bg);
     }
@@ -293,7 +293,7 @@
 
     /* Countdown timer — button style */
     .timer {
-      font-size: 6em;
+      font-size: 8em;
       font-weight: 600;
       line-height: 1;
       color: #fff;
@@ -302,22 +302,15 @@
       user-select: none;
       transition: all 0.3s ease;
       font-variant-numeric: tabular-nums;
-      padding: 0.4em 0.8em;
-      border-radius: 16px;
+      padding: 0.35em 0.7em;
+      border-radius: 20px;
       display: inline-block;
-      box-shadow: 0 8px 30px rgba(74, 155, 103, 0.3);
+      box-shadow: 0 10px 40px rgba(74, 155, 103, 0.35);
     }
-    .timer:hover { transform: scale(1.02); box-shadow: 0 12px 40px rgba(74, 155, 103, 0.4); }
-    .timer.running { background: var(--green); }
-    .timer.warning { background: #e6a817; box-shadow: 0 8px 30px rgba(230, 168, 23, 0.3); }
-    .timer.expired { background: #e85555; animation: pulse 1s ease-in-out infinite; box-shadow: 0 8px 30px rgba(232, 85, 85, 0.3); }
-    .timer .timer-hint {
-      font-size: 0.14em;
-      font-weight: 400;
-      color: rgba(255,255,255,0.8);
-      display: block;
-      margin-top: 0.6em;
-    }
+    .timer:hover { transform: scale(1.02); box-shadow: 0 14px 50px rgba(74, 155, 103, 0.45); }
+    .timer.running { background: var(--green); color: #fff; }
+    .timer.warning { background: #e6a817; color: #fff; box-shadow: 0 10px 40px rgba(230, 168, 23, 0.35); }
+    .timer.expired { background: #e85555; color: #fff; animation: pulse 1s ease-in-out infinite; box-shadow: 0 10px 40px rgba(232, 85, 85, 0.35); }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
@@ -338,7 +331,7 @@
   </p>
   <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
     <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
-    <a href="https://github.com/lobsterbush/ai-agents-workshop" target="_blank" style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</a>
+    <a href="https://github.com/lobsterbush/ai-agents-workshop" target="_blank" style="font-size: 0.85em; color: var(--accent);">github.com/lobsterbush/ai-agents-workshop</a>
   </div>
 </section>
 
@@ -347,10 +340,18 @@
   <p class="label">About Me</p>
   <h2>Charles Crabtree</h2>
   <ul style="margin-top: 0.8em;">
-    <li><strong>Senior Lecturer</strong>, School of Social Sciences, Monash University</li>
-    <li>Previously: Assistant Professor, Department of Government, Dartmouth College</li>
-    <li>Previously: Visiting Assistant Professor, APARC, Stanford University</li>
-    <li>PhD, University of Michigan</li>
+    <li><strong>Senior Lecturer</strong>
+      <ul><li>School of Social Sciences, Monash University</li></ul>
+    </li>
+    <li><strong>Previously: Assistant Professor</strong>
+      <ul><li>Department of Government, Dartmouth College</li></ul>
+    </li>
+    <li><strong>Previously: Visiting Assistant Professor</strong>
+      <ul><li>APARC, Stanford University</li></ul>
+    </li>
+    <li><strong>PhD</strong>
+      <ul><li>University of Michigan</li></ul>
+    </li>
   </ul>
   <div class="callout" style="margin-top: 1.2em;">
     <p><strong>Research interests:</strong> intergroup relations and conflict, experimental methods, computational social science</p>
@@ -360,13 +361,14 @@
 <!-- INTRO: AI CREDENTIALS -->
 <section>
   <p class="label">About Me</p>
-  <h2>Working with AI before it was cool</h2>
+  <h2>Working with AI before it was everywhere</h2>
   <ul style="margin-top: 0.8em;">
     <li class="fragment"><strong>Writing papers about LLMs since January 2021</strong> — roughly 20 months before ChatGPT was released</li>
-    <li class="fragment">Teaching workshops on AI use for research at:
+    <li class="fragment">Taught workshops on AI use for research at:
       <ul style="margin-top: 0.4em;">
         <li>Dartmouth College</li>
-        <li>University of Essex</li>
+        <li>Essex Summer School in Social Science Data Analysis</li>
+        <li>University of New Mexico</li>
         <li>IPSA-NUS Methods School</li>
         <li>Instats</li>
         <li>Statistical Horizons</li>
@@ -378,14 +380,14 @@
 <!-- CONVERTED SKEPTIC -->
 <section class="center">
   <h2>I was a skeptic</h2>
-  <p style="font-size: 1.15em; color: var(--text); margin-top: 0.6em; text-align: center;">
+  <p style="font-size: 1.3em; color: var(--text); margin-top: 0.6em; text-align: center;">
     I spent years studying these tools critically.<br>
-    I've published on their failures and limitations.
+    I've written papers on their failures and limitations.
   </p>
-  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em; font-weight: 600; text-align: center;">
+  <p class="fragment" style="font-size: 1.5em; color: var(--text); margin-top: 0.8em; font-weight: 600; text-align: center;">
     AI agents converted me.
   </p>
-  <p class="fragment" style="font-size: 1em; margin-top: 0.6em; text-align: center;">
+  <p class="fragment" style="font-size: 1.2em; margin-top: 0.6em; text-align: center;">
     Not chatbots. Not autocomplete. Agents—tools that act on your computer, see results, and iterate.
   </p>
 </section>
@@ -424,16 +426,11 @@
   <div class="era-label">AI Agent<span class="era-year">Now</span></div>
 </section>
 
-<section class="center">
-  <h2>The new operating system is language</h2>
-  <p style="font-size: 1.15em; color: var(--text);">Every era required learning a different operating system—punch cards, command lines, graphical interfaces.</p>
-  <p class="fragment" style="font-size: 1.15em; color: var(--text); margin-top: 0.6em;">Now the operating system is <strong>language</strong>. You describe what you want. The machine handles execution.</p>
-</section>
-
 <!-- INSTALLATION SECTION -->
-<section class="section section-bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
+<section class="section section-bg" data-background-image="images/warp_install.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
   <p class="label">Getting Started</p>
   <h1>Installation</h1>
+  <p style="font-size: 1.3em; color: rgba(255,255,255,0.9); margin-top: 0.5em; text-align: center;">The new operating system is <strong>natural language</strong>.</p>
 </section>
 
 <!-- IT CONVERSATION: SLIDE 1 -->
@@ -625,13 +622,6 @@ processed/processed.csv.
 7. Put everything in ~/populism-reanalysis/"</span></pre>
 </section>
 
-<!-- TIMING -->
-<section class="center">
-  <p class="stat"><span class="n">Minutes</span></p>
-  <p style="font-size: 1.3em; margin-top: 0.3em; color: var(--text);">not hours or days</p>
-  <p class="fragment" style="margin-top: 1em;">Data exploration, index construction, regression models, conjoint AMCEs, figures, LaTeX output.</p>
-</section>
-
 <!-- DISTINCTION -->
 <section>
   <h2>This isn't the ChatGPT you know</h2>
@@ -797,7 +787,7 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 3 -->
-<section class="section section-fail">
+<section class="section section-fail" data-background-image="images/section_fail.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.25">
   <p class="label">Part 3</p>
   <h1>Where They Fail</h1>
 </section>
@@ -849,14 +839,14 @@ Then build a web app to explore the data interactively:
   <h1>Hands-On Practice</h1>
 </section>
 
-<!-- PROMPT CARDS -->
-<section>
+<!-- PROMPT CARDS + TIMER -->
+<section class="center">
   <p class="label">Prompt Cards</p>
-  <h2>Three scenarios to try</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2em; margin-top: 1em; font-size: 0.85em;">
+  <h2 style="font-size: 1.8em;">Three scenarios to try</h2>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 1em; font-size: 0.9em; text-align: left;">
     <div class="card" style="border-left: 4px solid var(--accent);">
-      <h3 style="font-size: 0.9em; color: var(--accent); margin-bottom: 0.5em;">1. Project Management</h3>
-      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Entering an old project directory</p>
+      <h3 style="font-size: 1em; color: var(--accent); margin-bottom: 0.5em;">1. Project Management</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Entering an old project directory</p>
       <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"I just opened an old project.
 
@@ -868,8 +858,8 @@ Then build a web app to explore the data interactively:
 6. Create README if missing"</span></pre>
     </div>
     <div class="card" style="border-left: 4px solid #FF6B6B;">
-      <h3 style="font-size: 0.9em; color: #FF6B6B; margin-bottom: 0.5em;">2. Quantitative Analysis</h3>
-      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Re-analyzing old data</p>
+      <h3 style="font-size: 1em; color: #FF6B6B; margin-bottom: 0.5em;">2. Quantitative Analysis</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Re-analyzing old data</p>
       <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"Dataset at [PATH], never analyzed.
 
@@ -882,8 +872,8 @@ Then build a web app to explore the data interactively:
 6. Put in analysis/ folder"</span></pre>
     </div>
     <div class="card" style="border-left: 4px solid #A855F7;">
-      <h3 style="font-size: 0.9em; color: #A855F7; margin-bottom: 0.5em;">3. Survey Instrument</h3>
-      <p style="font-size: 0.85em; color: var(--text-muted); margin-bottom: 0.8em;">Survey experiment design</p>
+      <h3 style="font-size: 1em; color: #A855F7; margin-bottom: 0.5em;">3. Survey Instrument</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Survey experiment design</p>
       <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"Survey experiment on [TOPIC].
 
@@ -898,26 +888,8 @@ Then build a web app to explore the data interactively:
 ⚠️ VERIFY scale citations"</span></pre>
     </div>
   </div>
-</section>
-
-<!-- CHALLENGES -->
-<section>
-  <h2>Choose your challenge</h2>
-  <p>Use one of the prompt cards above, or make up your own.</p>
-  <ul style="margin-top: 0.8em;">
-    <li><strong style="color: var(--text-muted);">Starter:</strong> Use Prompt Card 1 — navigate to a real project directory and have the agent map it out</li>
-    <li><strong>Standard:</strong> Use Prompt Card 2 — point at a real dataset and get a full analysis pipeline</li>
-    <li><strong class="accent">Advanced:</strong> Use Prompt Card 3 — design a complete survey experiment on a topic you care about</li>
-  </ul>
-  <div class="callout fragment" style="margin-top: 1.2em;">
-    <p>Pick the one that slightly scares you.</p>
-  </div>
-</section>
-
-<!-- TIMER -->
-<section class="center">
-  <p class="timer" data-minutes="14">14:00</p>
-  <p style="color: var(--text-muted); margin-top: 1.5em;">Work session — click to start</p>
+  <p style="font-size: 1.3em; color: var(--text); margin-top: 1.2em; font-weight: 500;">Pick the one that slightly scares you.</p>
+  <p class="timer" data-minutes="14" style="margin-top: 1em;">14:00</p>
 </section>
 
 <!-- SHARE -->
@@ -933,11 +905,13 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- FRAMING -->
-<section>
-  <h2>The question isn't whether</h2>
-  <p style="font-size: 1.15em; color: var(--text);">
-    These tools are here. They're getting better rapidly. 
-    The question is how we use them responsibly as a scholarly community.
+<section class="center">
+  <h2 style="font-size: 2em;">The question isn't <em>whether</em></h2>
+  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.8em;">
+    These tools are here. They're getting better rapidly.
+  </p>
+  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.6em;">
+    The question is <strong>how</strong> we use them responsibly as a scholarly community.
   </p>
 </section>
 
@@ -972,29 +946,34 @@ Then build a web app to explore the data interactively:
 
 <!-- EQUILIBRIUM: THE SHIFT -->
 <section class="center">
-  <h2>The new premium</h2>
-  <p style="font-size: 1.15em; color: var(--text);">
-    In a world where an agent can clean your data, run your models, and draft your paper overnight—<br><br>
-    the researcher who has <strong>the idea</strong>, who spent <strong>six months in the field</strong>, who has <strong>the judgment</strong> to know what matters<br><br>
+  <h2 style="font-size: 2em;">The new premium</h2>
+  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em;">
+    An agent can clean your data, run your models,<br>and draft your paper overnight.
+  </p>
+  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 1em; font-weight: 500;">
+    The researcher who has <strong>the idea</strong>—
+  </p>
+  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.3em; font-weight: 500;">
+    who spent <strong>six months in the field</strong>—
+  </p>
+  <p class="fragment" style="font-size: 1.4em; color: var(--text); margin-top: 0.3em; font-weight: 500;">
+    who has <strong>the judgment</strong> to know what matters—
+  </p>
+  <p class="fragment" style="font-size: 1.5em; color: var(--accent); margin-top: 0.8em; font-weight: 600;">
     becomes more valuable, not less.
   </p>
 </section>
 
-<!-- DISCUSSION -->
-<section>
-  <h2>Discussion</h2>
-  <ul style="margin-top: 0.8em;">
+<!-- DISCUSSION + TIMER -->
+<section class="center">
+  <h2 style="font-size: 2em;">Discussion</h2>
+  <ul style="margin-top: 0.8em; font-size: 1.2em; text-align: left; display: inline-block;">
     <li class="fragment">What research tasks would benefit most from agent assistance?</li>
     <li class="fragment">Where should human judgment remain non-negotiable?</li>
     <li class="fragment">What norms should we adopt for transparency and acknowledgment?</li>
     <li class="fragment">How do we train the next generation of researchers for this world?</li>
   </ul>
-</section>
-
-<!-- TIMER -->
-<section class="center">
-  <p class="timer" data-minutes="12">12:00</p>
-  <p style="color: var(--text-muted); margin-top: 1.5em;">Table discussion — click to start</p>
+  <p class="timer" data-minutes="12" style="margin-top: 1.2em;">12:00</p>
 </section>
 
 <!-- SUMMARY -->
