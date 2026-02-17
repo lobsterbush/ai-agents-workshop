@@ -13,7 +13,7 @@
 - [ ] Pre-create demo project folder (so you have a backup if live demo fails)
 - [ ] Have sample dataset ready (anonymized survey data)
 - [ ] Test projector/screen resolution (slides are 1920×1080)
-- [ ] Print prompt cards (6 per person)
+- [ ] Print prompt cards (3 per person) — or use the inline versions in the slide deck
 - [ ] Set up shared Google Doc for discussion notes capture
 - [ ] Test internet connection (slides use CDN-hosted fonts/libraries)
 
@@ -44,28 +44,31 @@
 
 ---
 
-### Part 1: Opening & Hook (12 min)
-**0:00–0:12**
+### Part 1: Opening & Hook (15 min)
+**0:00–0:15**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Title | 30s | Let people settle. Don't start talking immediately. |
-| Computing History (5 slides) | 2-3 min | Click through punch cards → DOS → Windows 95 → macOS → Warp. Each gets 20-30 seconds. Let images speak. |
-|| "The new operating system is language" | 45s | Key line: "Every era required learning a different OS. Now the OS is *language*." Pause on the reveal. |
-| "Before we begin..." | 30s | Build anticipation. Pause for effect. |
-| Cold open demo (terminal) | 2-3 min | **THIS IS THE HOOK.** Don't explain—just type the prompt and let them watch. Use fragments to reveal output step by step. |
-| "45 minutes → 12 seconds" | 1 min | Let the number sink in. Dramatic pause before "12 seconds" reveal. |
-| "What just happened?" | 2 min | Now explain. Chatbot vs Agent comparison. Key insight: agents *do*. |
+| Intro slides (2) | 2 min | Brief background and AI credentials. Don't dwell—establish credibility quickly. |
+| Computing History (5 slides) | 2-3 min | Click through punch cards → DOS → Windows 95 → macOS → Warp. Each gets 20-30 seconds. |
+| "The new operating system is language" | 45s | Key line: "Every era required learning a different OS. Now the OS is *language*." |
+| "You interact with and direct the agent" | 1 min | **KEY POINT.** Make clear this is a conversation, not fire-and-forget. |
+| Cold open demo (terminal) | 2-3 min | **THIS IS THE HOOK.** Populism data re-analysis. Let them watch the agent explore 500+ variables and build a paper. |
+| "~60 seconds" | 1 min | Let the number sink in. Data exploration, models, figures, LaTeX. |
+| "This isn't ChatGPT" | 2 min | Chatbot vs Agent comparison. Key insight: agents *act*. |
 | "Today's Journey" | 1 min | Quick roadmap. Don't dwell. |
 
 **Computing history talking points:**
 - Punch cards: "You had to learn the machine's language. Literally encode your instructions in holes."
 - DOS: "Still text, still arcane, but at least you could see what you typed."
 - Windows 95: "Point and click. Suddenly anyone could use a computer. This was revolutionary."
-- macOS Sonoma: "Decades of refinement. Beautiful, but fundamentally the same paradigm—you operate the tools."
+- macOS: "Decades of refinement. Beautiful, but fundamentally the same paradigm—you operate the tools."
 - Warp: "Now: you describe what you want. The machine operates itself. The new operating system is language."
 
-**Presenter note:** The cold open is everything. If you nail this, they're hooked. Practice this demo 10+ times so it's flawless.
+**Agent interaction talking point:** "This is not fire-and-forget. You're in a conversation with the agent. You watch it work, you intervene when needed, you iterate through follow-up prompts. Think of pair programming with a very fast junior colleague."
+
+**Presenter note:** The cold open uses a real populism dataset with 500+ variables. The agent explores it, builds indices, runs models, creates figures, and produces LaTeX output in ~60 seconds. Practice this demo 10+ times.
 
 ---
 
@@ -130,29 +133,31 @@
 
 ---
 
-### Part 4: Principles & Pitfalls (10 min)
-**0:53–1:03**
+### Part 4: Principles & Pitfalls (12 min)
+**0:53–1:05**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Part 3 title | 15s | Transition |
-| "Four Habits" | 4 min | Be specific, ask for explanations, verify, humans in loop. Give a quick example for each. |
-| "Common Failure Modes" | 3 min | Hallucinated citations (!), plausible-but-wrong stats, overconfident code. "Trust but verify." |
-| "Reproducibility Payoff" | 2.5 min | Everything is logged. This is your audit trail. Reviewers will love you. |
+| "Known failure modes" | 3 min | Hallucinated citations (!), plausible-but-wrong stats, overconfident code. "Trust but verify." |
+| "The verification principle" | 2.5 min | Run the code yourself, spot-check, verify citations. |
+| "Prototype fast, iterate faster" | 2.5 min | Agents excel at rapid prototyping. First draft in seconds, try multiple approaches, fail fast. |
+| "Built-in replication" | 2 min | Session logs, model tracking, export, pair with git. |
 
-**Presenter note:** Be honest about limitations. Credibility comes from acknowledging what can go wrong.
+**Presenter note:** Be honest about limitations. Credibility comes from acknowledging what can go wrong. The prototyping slide pivots to a positive note after failures.
 
 ---
 
 ### Part 5: Hands-On Sprint (20 min)
-**1:03–1:23**
+**1:05–1:25**
 
 | Slide | Time | Notes |
 |-------|------|-------|
 | Part 4 title | 15s | "Your turn." |
-| "Choose Your Level" | 2 min | Walk through all three options. Tell them: "Pick the one that slightly scares you." |
-|| Timer slide (14 min) | 14 min | **Click the timer to start countdown.** Click again to reset. Green → amber (2 min left) → red (expired). Roam the room. Help people. Common issues: typos in prompts, not being specific enough. Celebrate early wins out loud. |
-| "Quick Share-Out" | 3 min | 2-3 volunteers. "Show us what you got!" Applaud everything. Normalize when things go sideways. |
+| Prompt Cards 1-3 | 3 min | Walk through the 3 prompt cards (project management, quant analysis, survey instrument). These are now inline in the slides. |
+| "Choose Your Challenge" | 1 min | Tell them: "Pick the one that slightly scares you." |
+| Timer slide (14 min) | 14 min | **Click the timer to start countdown.** Click again to reset. Green → amber (2 min left) → red (expired). Roam the room. Help people. |
+| "Quick Share-Out" | 3 min | 2-3 volunteers. "Show us what you got!" Applaud everything. Normalize failures. |
 
 **Presenter note:** The sprint is where learning actually happens. Be generous with encouragement.
 
@@ -277,15 +282,12 @@ Build a Twitter/X interface for a survey experiment.
 
 ---
 
-## Resource Packet Contents (bit.ly/soss-ai-agents)
+## Resource Packet Contents (github.com/lobsterbush/ai-agents-workshop)
 
-1. **Prompt Cards (PDF)** — 6 cards covering:
-   - Project setup
-   - Data cleaning
-   - Statistical analysis
-   - Visualization
-   - Writing assistance
-   - Literature review
+1. **Prompt Cards (PDF)** — 3 cards covering:
+   - Project management (entering old/unfamiliar projects)
+   - Quantitative analysis (re-analyzing old/forgotten data)
+   - Survey instrument (validated scales + experimental treatments)
 
 2. **Workflow Templates** — Pre-built project structures for:
    - Survey experiments

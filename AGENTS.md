@@ -9,7 +9,7 @@ Workshop materials for a 105-minute hands-on session teaching social scientists 
 ## Structure
 
 - `slides.html` - Reveal.js presentation (1920×1080, CDN-hosted dependencies)
-- `prompt-cards.html` - Printable 2×3 grid of prompt cards for participants
+- `prompt-cards.html` - Printable prompt cards (3 scenarios: project management, quantitative analysis, survey instrument)
 - `PRESENTER_GUIDE.md` - Detailed timing guide and backup plans
 
 ## Development
@@ -35,15 +35,16 @@ Open `slides.html` directly in a browser. Requires internet connection for CDN r
 - Code blocks: `#1a1a1a` background, `#e8e8e8` text
 
 ### Typography
-- Headings: Space Grotesk 600, h1 at 2.6em, h2 at 1.7em
-- Body: Space Grotesk 400 at 1.1em
+- Headings: Space Grotesk 600, h1 at 2.4em, h2 at 1.6em
+- Body: Space Grotesk 400 at 1em
 - Code: IBM Plex Mono at 0.7em
 
 ### Layout
 - Resolution: 1920×1080
 - Padding: 60px top/bottom, 80px sides
 - Left-aligned text throughout
-- Max paragraph width: 750px
+- Max paragraph width: 1100px
+- Center slides: max 850px
 - Graph paper background (blue grid pattern from charlescrabtree.org)
 - Subtle radial gradient overlays (blue/green)
 
@@ -66,10 +67,16 @@ The workshop demonstrates three live demos in Warp:
 2. **Interview Transcripts → Thematic Analysis** - Qualitative coding with inductive codebook, theme visualization
 3. **Interactive Experiment** - Building a Twitter/X clone interface for survey experiments, embeddable in Qualtrics
 
-The cold open builds a complete "Partisan Bias in Scandal Evaluation" experiment in ~47 seconds:
-- Title and abstract (LaTeX)
-- Vignette text with randomization
-- AsPredicted pre-registration
-- R analysis script with estimatr/modelsummary
+The cold open re-analyzes a forgotten populism survey dataset (~60 seconds):
+- Data exploration (500+ variables, Argentina sample)
+- Populism index construction
+- Predictor models with robust SEs
+- Immigration conjoint AMCEs with clustered SEs
+- Publication-ready figures and LaTeX output
 
-Key themes: workflow automation (not just task completion), reproducibility through logging, verification of all outputs.
+Prompt cards (3 scenarios, also inlined in slides):
+1. Project management — entering an old/unfamiliar project directory
+2. Quantitative analysis — re-analyzing old/forgotten data
+3. Survey instrument — creating a survey with validated scales and experimental treatments
+
+Key themes: workflow automation (not just task completion), interacting with and directing agents, rapid prototyping/iteration, reproducibility through logging, verification of all outputs.

@@ -101,14 +101,9 @@ I'm getting this error when I run my code:
 Read the relevant files and fix the issue.
 ```
 
-### Prompt 5: Refactor Code
-```
-Refactor @utils.py to be more readable. Add docstrings and type hints.
-```
-
 ---
 
-## 6. Key Features to Try
+## 5. Key Features to Try
 
 ### Universal Input (`@` mentions)
 Type `@` in the input to:
@@ -121,11 +116,9 @@ Create a `WARP.md` file in your project root to give the agent persistent contex
 ```markdown
 # Project Context
 
-This is a Python data analysis project using pandas and matplotlib.
+This is an R data analysis project using pandas and matplotlib.
 
 ## Conventions
-- Use type hints
-- Follow PEP 8
 - All plots use theme_tufte()
 
 ## Key Files
@@ -145,11 +138,10 @@ Settings → AI → Agents → Profiles
 
 ## 7. Credit-Saving Tips
 
-1. **Use Haiku for simple tasks** — explanations, quick questions
-2. **Be specific** — vague prompts require more back-and-forth
-3. **Use `@` mentions** — pointing to files is cheaper than asking agent to search
-4. **Batch related tasks** — one detailed prompt > multiple small ones
-5. **Set up WARP.md** — reduces context-building on each request
+1. **Be specific** — vague prompts require more back-and-forth
+2. **Use `@` mentions** — pointing to files is cheaper than asking agent to search
+3. **Batch related tasks** — one detailed prompt > multiple small ones
+4. **Set up WARP.md** — reduces context-building on each request
 
 ---
 
@@ -184,8 +176,7 @@ Settings → AI → Agents → Profiles
 - Be more specific in your prompts
 
 ### "The agent made a mistake"
-- Use `Cmd/Ctrl + Z` to undo file changes
-- Or: Type "undo that" and explain what went wrong
+- Type "undo that" and explain what went wrong
 - The agent can correct itself
 
 ### "How do I switch models?"

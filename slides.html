@@ -62,7 +62,7 @@
     .reveal .slides { text-align: left; position: relative; z-index: 1; }
     
     .reveal .slides section {
-      padding: 80px 120px;
+      padding: 60px 80px;
       height: 100%;
       box-sizing: border-box;
       display: flex;
@@ -91,7 +91,7 @@
       line-height: 1.6;
       color: var(--text-secondary);
       margin: 0 0 1em 0;
-      max-width: 900px;
+      max-width: 1100px;
     }
     
     .reveal .progress { height: 3px; background: var(--border); }
@@ -117,7 +117,7 @@
       padding: 28px 32px;
       border-radius: 8px;
       margin: 1em 0;
-      max-width: 1100px;
+      max-width: 1400px;
       overflow-x: auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
@@ -134,7 +134,7 @@
     .reveal ul, .reveal ol {
       margin: 0;
       padding-left: 1.2em;
-      max-width: 900px;
+      max-width: 1100px;
     }
     
     .reveal li {
@@ -153,7 +153,7 @@
       align-items: center;
       text-align: center;
     }
-    .center p { max-width: 650px; }
+    .center p { max-width: 850px; }
     
     /* Section slides */
     .section {
@@ -206,7 +206,7 @@
       padding: 20px 24px;
       border-radius: 0 6px 6px 0;
       margin: 1.2em 0;
-      max-width: 850px;
+      max-width: 1100px;
     }
     .callout p { margin: 0; color: var(--text); font-size: 1em; }
     
@@ -392,8 +392,24 @@
 
 <section class="center">
   <h2>The new operating system is language</h2>
-  <p style="font-size: 1.15em; color: var(--text); max-width: 750px;">Every era required learning a different operating system—punch cards, command lines, graphical interfaces.</p>
-  <p class="fragment" style="font-size: 1.15em; color: var(--text); max-width: 750px; margin-top: 0.6em;">Now the operating system is <strong>language</strong>. You describe what you want. The machine handles execution.</p>
+  <p style="font-size: 1.15em; color: var(--text);">Every era required learning a different operating system—punch cards, command lines, graphical interfaces.</p>
+  <p class="fragment" style="font-size: 1.15em; color: var(--text); margin-top: 0.6em;">Now the operating system is <strong>language</strong>. You describe what you want. The machine handles execution.</p>
+</section>
+
+<!-- YOU DIRECT THE AGENT -->
+<section>
+  <p class="label">Key Concept</p>
+  <h2>You interact with and direct the agent</h2>
+  <p>This isn't fire-and-forget. You're in a conversation.</p>
+  <ul style="margin-top: 0.8em;">
+    <li class="fragment"><strong>Give instructions</strong> — describe what you want in plain language</li>
+    <li class="fragment"><strong>Watch it work</strong> — see every command, every file change in real time</li>
+    <li class="fragment"><strong>Intervene</strong> — correct course, add context, change direction mid-task</li>
+    <li class="fragment"><strong>Iterate</strong> — refine the output through follow-up prompts</li>
+  </ul>
+  <div class="callout fragment" style="margin-top: 1em;">
+    <p>Think of it as pair programming with a very fast junior colleague. You set direction. It executes. You review.</p>
+  </div>
 </section>
 
 <!-- WARP SETUP: GETTING STARTED -->
@@ -828,7 +844,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 <!-- KEY POINT -->
 <section>
   <h2>What matters</h2>
-  <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">
+  <p style="font-size: 1.15em; color: var(--text);">
     Every command is logged. Every file change is tracked. 
     The workflow is reproducible by default.
   </p>
@@ -884,19 +900,95 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
   </ul>
 </section>
 
+<!-- PROTOTYPING -->
+<section>
+  <p class="label">Best Practice</p>
+  <h2>Prototype fast, iterate faster</h2>
+  <p>Agents excel at rapid prototyping. Use this strategically.</p>
+  <ul style="margin-top: 0.8em;">
+    <li class="fragment"><strong>First draft in seconds</strong> — get a working version, then refine through conversation</li>
+    <li class="fragment"><strong>Try multiple approaches</strong> — "Now try this with a different specification" costs nothing</li>
+    <li class="fragment"><strong>Fail fast</strong> — test an idea before committing hours to it</li>
+    <li class="fragment"><strong>Robustness checks</strong> — "Run this with every combination of controls" in one prompt</li>
+  </ul>
+  <div class="callout fragment" style="margin-top: 1em;">
+    <p>The cost of trying something has collapsed. The cost of not trying just went up.</p>
+  </div>
+</section>
+
 <!-- PART 4 -->
 <section class="section section-bg" data-background-image="images/section_hands.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3">
   <p class="label">Part 4</p>
   <h1>Hands-On Practice</h1>
 </section>
 
+<!-- PROMPT CARD 1: PROJECT MANAGEMENT -->
+<section>
+  <p class="label">Prompt Card 1</p>
+  <h2>Project Management</h2>
+  <p>Entering an old or unfamiliar project directory.</p>
+  <pre style="margin-top: 0.8em;">
+<span class="p">$</span> <span class="c">"I just opened an old project directory I haven't touched
+in months.
+
+1. Look at the file structure and summarize what this
+   project is about
+2. Identify which analyses are complete and which are
+   incomplete
+3. Check for any broken file paths or missing dependencies
+4. List the key data files and what they contain
+5. Suggest a prioritized list of next steps to move this
+   project forward
+6. Create a README if one doesn't exist"</span></pre>
+</section>
+
+<!-- PROMPT CARD 2: QUANTITATIVE ANALYSIS -->
+<section>
+  <p class="label">Prompt Card 2</p>
+  <h2>Quantitative Analysis</h2>
+  <p>Re-analyzing old, forgotten, or reused data.</p>
+  <pre style="margin-top: 0.8em;">
+<span class="p">$</span> <span class="c">"I have a dataset at [FILE PATH] that I collected a while
+ago but never fully analyzed.
+
+1. Explore it — tell me what's in it, how many observations,
+   key variables
+2. Run [MODEL TYPE] predicting [DV] with [IVs] using
+   robust standard errors
+3. Create publication-ready figures using ggplot with
+   theme_tufte()
+4. Generate a LaTeX results table
+5. Write a results paragraph with inline statistics
+6. Put all output in a new analysis/ folder"</span></pre>
+</section>
+
+<!-- PROMPT CARD 3: SURVEY INSTRUMENT -->
+<section>
+  <p class="label">Prompt Card 3</p>
+  <h2>Survey Instrument</h2>
+  <p>Creating a survey with validated scales and experimental treatments.</p>
+  <pre style="margin-top: 0.8em;">
+<span class="p">$</span> <span class="c">"Design a survey experiment on [TOPIC YOU CARE ABOUT].
+
+1. Find validated scales for measuring [KEY CONSTRUCTS]
+2. Create experimental treatments that vary [MANIPULATION]
+3. Write survey items with proper response scales
+4. Add attention checks and demographic questions
+5. Randomize treatment assignment
+6. Format everything for import into Qualtrics
+7. Write a brief pre-registration document
+
+⚠️ VERIFY all scale citations — agents hallucinate"</span></pre>
+</section>
+
 <!-- CHALLENGES -->
 <section>
   <h2>Choose your challenge</h2>
+  <p>Use one of the prompt cards above, or make up your own.</p>
   <ul style="margin-top: 0.8em;">
-    <li><strong style="color: var(--text-muted);">Starter:</strong> Project structure with README, pre-registration template, and analysis scaffold</li>
-    <li><strong>Standard:</strong> Design a vignette experiment on a topic of your choice, export to Qualtrics</li>
-    <li><strong class="accent">Advanced:</strong> Full pipeline — experimental design, pre-registration, simulated data, analysis code</li>
+    <li><strong style="color: var(--text-muted);">Starter:</strong> Use Prompt Card 1 — navigate to a real project directory and have the agent map it out</li>
+    <li><strong>Standard:</strong> Use Prompt Card 2 — point at a real dataset and get a full analysis pipeline</li>
+    <li><strong class="accent">Advanced:</strong> Use Prompt Card 3 — design a complete survey experiment on a topic you care about</li>
   </ul>
   <div class="callout fragment" style="margin-top: 1.2em;">
     <p>Pick the one that slightly scares you.</p>
@@ -924,7 +1016,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 <!-- FRAMING -->
 <section>
   <h2>The question isn't whether</h2>
-  <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">
+  <p style="font-size: 1.15em; color: var(--text);">
     These tools are here. They're getting better rapidly. 
     The question is how we use them responsibly as a scholarly community.
   </p>
@@ -962,7 +1054,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 <!-- EQUILIBRIUM: THE SHIFT -->
 <section class="center">
   <h2>The new premium</h2>
-  <p style="font-size: 1.15em; color: var(--text); max-width: 750px;">
+  <p style="font-size: 1.15em; color: var(--text);">
     In a world where an agent can clean your data, run your models, and draft your paper overnight—<br><br>
     the researcher who has <strong>the idea</strong>, who spent <strong>six months in the field</strong>, who has <strong>the judgment</strong> to know what matters<br><br>
     becomes more valuable, not less.
