@@ -155,143 +155,83 @@
 
 <div class="print-instructions">
   <h1>🖨️ Prompt Cards — Print Instructions</h1>
-  <p>Print this page double-sided, then cut along the grid lines. Each participant gets one set of 6 cards.</p>
+  <p>Print this page, then cut along the grid lines. Each participant gets one set of 3 cards.</p>
 </div>
 
 <div class="card-grid">
 
-  <!-- Card 1: Project Setup -->
+  <!-- Card 1: Project Management -->
   <div class="card blue">
     <div class="card-header">
-      <span class="card-icon">🚀</span>
+      <span class="card-icon">📂</span>
       <div>
         <div class="card-subtitle">Card 1</div>
-        <div class="card-title">Project Setup</div>
+        <div class="card-title">Project Management</div>
       </div>
     </div>
     <div class="card-prompt">
-Create a new research project called "[PROJECT NAME]" with:
-- Folder structure for data (raw/processed), analysis, output (tables/figures)
-- README explaining the project and each folder
-- Pre-registration template
-- Starter analysis scripts in [R/Python/Stata]
-- .gitignore configured for [language]
+I just opened an old project directory I haven't touched in months.
+
+1. Look at the file structure and summarize what this project is about
+2. Identify which analyses are complete and which are incomplete
+3. Check for any broken file paths or missing dependencies
+4. List the key data files and what they contain
+5. Suggest a prioritized list of next steps to move this project forward
+6. Create a README if one doesn't exist
     </div>
     <div class="card-tip">
-      <strong>Tip:</strong> Be specific about your language and project type. The more detail, the better the output.
+      <strong>Tip:</strong> Navigate to your real project directory first. The agent reads your actual files—the more context it has, the better its suggestions.
     </div>
   </div>
 
-  <!-- Card 2: Data Cleaning -->
-  <div class="card mint">
-    <div class="card-header">
-      <span class="card-icon">🧹</span>
-      <div>
-        <div class="card-subtitle">Card 2</div>
-        <div class="card-title">Data Cleaning</div>
-      </div>
-    </div>
-    <div class="card-prompt">
-Load the data in [FILE PATH] and:
-1. Show me the first few rows and variable types
-2. Identify missing values and suggest how to handle them
-3. Check for outliers in [VARIABLE]
-4. Create clean versions of [VARIABLES] with appropriate labels
-5. Save the cleaned data to [OUTPUT PATH]
-    </div>
-    <div class="card-tip">
-      <strong>Tip:</strong> Always verify the agent's cleaning decisions. Ask "explain why you made this choice" for anything non-obvious.
-    </div>
-  </div>
-
-  <!-- Card 3: Statistical Analysis -->
+  <!-- Card 2: Quantitative Analysis -->
   <div class="card coral">
     <div class="card-header">
       <span class="card-icon">📊</span>
       <div>
-        <div class="card-subtitle">Card 3</div>
-        <div class="card-title">Statistical Analysis</div>
+        <div class="card-subtitle">Card 2</div>
+        <div class="card-title">Quantitative Analysis</div>
       </div>
     </div>
     <div class="card-prompt">
-Using the data in [FILE PATH]:
-1. Run a [MODEL TYPE] predicting [DV] with [IVs]
-2. Use [robust/clustered] standard errors by [CLUSTER VAR]
-3. Include [controls/fixed effects] for [VARIABLES]
-4. Generate a publication-ready LaTeX table
-5. Write a methods paragraph describing the analysis
+I have a dataset at [FILE PATH] that I collected a while ago but never fully analyzed.
+
+1. Explore it—tell me what's in it, how many observations, key variables
+2. Run [MODEL TYPE] predicting [DV] with [IVs] using robust standard errors
+3. Create publication-ready figures using ggplot with theme_tufte()
+4. Generate a LaTeX results table
+5. Write a results paragraph with inline statistics
+6. Put all output in a new analysis/ folder
     </div>
     <div class="card-tip">
-      <strong>Tip:</strong> Specify your standard error type explicitly. The agent will default to your preferences if you've set them.
+      <strong>Tip:</strong> Point at a real CSV on your machine. Specify your standard error type and preferred plotting style. Always verify the numbers.
     </div>
   </div>
 
-  <!-- Card 4: Visualization -->
-  <div class="card gold">
-    <div class="card-header">
-      <span class="card-icon">📈</span>
-      <div>
-        <div class="card-subtitle">Card 4</div>
-        <div class="card-title">Visualization</div>
-      </div>
-    </div>
-    <div class="card-prompt">
-Create a [CHART TYPE] showing [RELATIONSHIP]:
-- Use ggplot with theme_tufte()
-- X-axis: [VARIABLE], Y-axis: [VARIABLE]
-- Color/group by [VARIABLE] if relevant
-- Add clear axis labels and a descriptive title
-- Save as high-resolution PNG and PDF
-- Make labels appropriately large for publication
-    </div>
-    <div class="card-tip">
-      <strong>Tip:</strong> Ask for multiple versions: "Also create a version without the legend" or "Make a grayscale version."
-    </div>
-  </div>
-
-  <!-- Card 5: Writing Assistance -->
+  <!-- Card 3: Survey Instrument -->
   <div class="card purple">
     <div class="card-header">
-      <span class="card-icon">✍️</span>
+      <span class="card-icon">📝</span>
       <div>
-        <div class="card-subtitle">Card 5</div>
-        <div class="card-title">Writing Assistance</div>
+        <div class="card-subtitle">Card 3</div>
+        <div class="card-title">Survey Instrument</div>
       </div>
     </div>
     <div class="card-prompt">
-Based on the analysis we just ran:
-1. Write a results paragraph summarizing the key findings
-2. Include effect sizes and confidence intervals
-3. Reference the table/figure numbers
-4. Use past tense and passive voice (per journal style)
-5. Flag any results that need human interpretation
+Design a survey experiment on [TOPIC YOU CARE ABOUT].
+
+1. Find validated scales for measuring [KEY CONSTRUCTS]
+2. Create experimental treatments that vary [MANIPULATION]
+3. Write survey items with proper response scales
+4. Add attention checks and demographic questions
+5. Randomize treatment assignment
+6. Format everything for import into Qualtrics
+7. Write a brief pre-registration document
+
+⚠️ VERIFY all scale citations—agents hallucinate references
     </div>
     <div class="card-tip">
-      <strong>Tip:</strong> Always verify statistical claims in generated text. Numbers can be subtly wrong even when prose sounds correct.
-    </div>
-  </div>
-
-  <!-- Card 6: Literature Review -->
-  <div class="card blue">
-    <div class="card-header">
-      <span class="card-icon">📚</span>
-      <div>
-        <div class="card-subtitle">Card 6</div>
-        <div class="card-title">Literature Review</div>
-      </div>
-    </div>
-    <div class="card-prompt">
-Help me understand the literature on [TOPIC]:
-1. What are the key debates in this area?
-2. What methodological approaches are common?
-3. What gaps exist that my research could address?
-4. Suggest 5 seminal papers I should cite
-5. Draft a paragraph positioning my contribution
-
-⚠️ VERIFY ALL CITATIONS — agents hallucinate references
-    </div>
-    <div class="card-tip">
-      <strong>Tip:</strong> Cross-check every citation against Google Scholar. Hallucinated citations are the #1 failure mode.
+      <strong>Tip:</strong> Be specific about your topic and manipulation. Cross-check every cited scale against the original publication.
     </div>
   </div>
 
@@ -299,7 +239,7 @@ Help me understand the literature on [TOPIC]:
 
 <div class="footer">
   <p>AI Agents for Social Science Research • School of Social Sciences, Monash University</p>
-  <p>bit.ly/soss-ai-agents • charles.crabtree@monash.edu</p>
+  <p>github.com/lobsterbush/ai-agents-workshop • charles.crabtree@monash.edu</p>
 </div>
 
 </body>

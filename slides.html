@@ -328,8 +328,45 @@
   <h1>AI Agents for<br>Social Science Research</h1>
   <p style="margin-top: 1.2em;">
     Charles Crabtree<br>
-    <span style="color: var(--text-muted);">Monash University · Korea University</span>
+    <span style="color: var(--text-muted);">Senior Lecturer, School of Social Sciences, Monash University</span>
   </p>
+  <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
+    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
+    <span style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</span>
+  </div>
+</section>
+
+<!-- INTRO: ABOUT ME -->
+<section>
+  <p class="label">About Me</p>
+  <h2>Charles Crabtree</h2>
+  <ul style="margin-top: 0.8em;">
+    <li><strong>Senior Lecturer</strong>, School of Social Sciences, Monash University</li>
+    <li>Previously: Assistant Professor, Department of Government, Dartmouth College</li>
+    <li>Previously: Visiting Assistant Professor, APARC, Stanford University</li>
+    <li>PhD, University of Michigan</li>
+  </ul>
+  <div class="callout" style="margin-top: 1.2em;">
+    <p><strong>Research interests:</strong> intergroup relations and conflict, experimental methods, computational social science</p>
+  </div>
+</section>
+
+<!-- INTRO: AI CREDENTIALS -->
+<section>
+  <p class="label">About Me</p>
+  <h2>Working with AI before it was cool</h2>
+  <ul style="margin-top: 0.8em;">
+    <li class="fragment"><strong>Writing papers about LLMs since January 2021</strong> — roughly 20 months before ChatGPT was released</li>
+    <li class="fragment">Teaching workshops on AI use for research at:
+      <ul style="margin-top: 0.4em;">
+        <li>Dartmouth College</li>
+        <li>University of Essex</li>
+        <li>IPSA-NUS Methods School</li>
+        <li>Instats</li>
+        <li>Statistical Horizons</li>
+      </ul>
+    </li>
+  </ul>
 </section>
 
 <!-- HOW WE USE COMPUTERS: A BRIEF HISTORY -->
@@ -490,20 +527,22 @@
 <!-- THE PROMPT -->
 <section class="dark">
   <p class="label">Live Demo</p>
-  <h2>One prompt. One research project.</h2>
+  <h2>One prompt. Forgotten data. Full paper.</h2>
   <pre>
-<span class="p">$</span> <span class="c">"Design an experiment on partisan bias in scandal evaluation.
+<span class="p">$</span> <span class="c">"I have a dataset from a populism project I haven't touched
+in two years. It's at ~/Dropbox/populism-project-yao/Data/
+processed/processed.csv.
 
-Voters see a vignette about a state legislator accused of misconduct.
-Randomize: politician party (Democrat/Republican) × respondent party.
-
-Create:
-1. Title and abstract in LaTeX
-2. Vignette conditions as markdown
-3. AsPredicted pre-registration
-4. R analysis script with robust SEs
-
-Put everything in /partisan-scandal/"</span></pre>
+1. Explore the data — tell me what's in it, how many
+   respondents, what country/countries, key variables
+2. Build a populism index from the pop_1 through pop_6 items
+3. Model what predicts populist attitudes (demographics,
+   globalization attitudes, loss aversion, education)
+4. Estimate AMCEs for the immigration conjoint experiment
+   with clustered SEs by respondent
+5. Create publication-ready figures (ggplot, theme_tufte)
+6. Generate a title, abstract, and results section in LaTeX
+7. Put everything in ~/populism-reanalysis/"</span></pre>
 </section>
 
 <!-- OUTPUT: STRUCTURE -->
@@ -511,16 +550,20 @@ Put everything in /partisan-scandal/"</span></pre>
   <p class="label">Output</p>
   <h2>Project structure</h2>
   <pre>
-<span class="o">Creating project...</span>
-<span class="f">partisan-scandal/</span>
+<span class="o">Exploring dataset... 500+ variables, multiple countries...</span>
+<span class="f">populism-reanalysis/</span>
 <span class="f">├── README.md</span>
 <span class="f">├── paper/</span>
 <span class="f">│   ├── title_abstract.tex</span>
-<span class="f">│   └── prereg.md</span>
-<span class="f">├── survey/</span>
-<span class="f">│   └── vignettes.md</span>
+<span class="f">│   └── results.tex</span>
 <span class="f">├── analysis/</span>
-<span class="f">│   └── 01_analysis.R</span>
+<span class="f">│   ├── 01_explore.R</span>
+<span class="f">│   ├── 02_populism_index.R</span>
+<span class="f">│   ├── 03_predictors.R</span>
+<span class="f">│   └── 04_conjoint_amces.R</span>
+<span class="f">├── output/</span>
+<span class="f">│   ├── figures/</span>
+<span class="f">│   └── tables/</span>
 <span class="f">└── data/</span></pre>
 </section>
 
@@ -529,78 +572,66 @@ Put everything in /partisan-scandal/"</span></pre>
   <p class="label">Output</p>
   <h2>title_abstract.tex</h2>
   <pre>
-\title{Partisan Bias in Evaluating Political Scandals}
+\title{Economic Insecurity, Globalization Attitudes, and
+       Populist Sentiment: Evidence from Latin America}
 
 \begin{abstract}
-Do partisans apply different standards when evaluating 
-misconduct by co-partisan versus opposing-party politicians? 
-We present a pre-registered survey experiment (N = 2,000) 
-in which respondents evaluate a state legislator accused 
-of financial misconduct. We randomize the party affiliation 
-of the accused politician while holding the scandal constant.
+What drives populist attitudes? Using original survey data
+from Argentina, we examine how economic insecurity,
+globalization attitudes, and demographic factors predict
+populist sentiment. We find that perceived economic loss
+and negative views of immigration are the strongest
+predictors. A conjoint experiment reveals that respondents
+prefer immigrants with professional occupations, language
+fluency, and European origin.
 \end{abstract}</pre>
-</section>
-
-<!-- OUTPUT: VIGNETTE -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>Vignette text</h2>
-  <pre>
-<span class="comment"># Treatment conditions (party randomized)</span>
-
-"State Representative Michael Torres, a <span class="k">[Democrat / Republican]</span> 
-from District 14, is facing an ethics investigation. According to 
-local reporters, Torres allegedly used $47,000 in campaign funds 
-to pay for personal travel and family expenses.
-
-Torres has denied wrongdoing, stating the expenditures were 
-'legitimate campaign-related costs.'"
-
-<span class="comment"># DVs: culpability (7-pt), punishment (5-pt), vote likelihood</span></pre>
-</section>
-
-<!-- OUTPUT: PREREG -->
-<section class="dark">
-  <p class="label">Output</p>
-  <h2>prereg.md (AsPredicted format)</h2>
-  <pre>
-<span class="comment">## 1. Data collection</span>
-Prolific, N = 2,000 US adults.
-
-<span class="comment">## 2. Hypotheses</span>
-H1 (In-party bias): Respondents rate co-partisans as less culpable.
-H2 (Asymmetry): Effect stronger among strong partisans.
-
-<span class="comment">## 3. DVs</span>
-Culpability (7-pt), Punishment (5-pt), Vote likelihood
-
-<span class="comment">## 4. Analyses</span>
-OLS with robust SEs. Interaction: politician_party × respondent_party.</pre>
 </section>
 
 <!-- OUTPUT: R CODE -->
 <section class="dark">
   <p class="label">Output</p>
-  <h2>01_analysis.R</h2>
+  <h2>03_predictors.R</h2>
   <pre>
 <span class="k">library</span>(tidyverse)
 <span class="k">library</span>(estimatr)
 <span class="k">library</span>(modelsummary)
+<span class="k">library</span>(ggthemes)
 
-df <- <span class="k">read_csv</span>(<span class="s">"data/scandal_experiment.csv"</span>) |>
-  <span class="k">mutate</span>(co_partisan = respondent_party == politician_party)
+df <- <span class="k">read_csv</span>(<span class="s">"data/processed.csv"</span>) |>
+  <span class="k">mutate</span>(pop_index = rowMeans(across(pop_1.n:pop_6.n), na.rm = T))
 
-<span class="comment"># H1: In-party bias</span>
-m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female + college,
-                data = df, se_type = <span class="s">"HC2"</span>)
+<span class="comment"># What predicts populist attitudes?</span>
+m1 <- <span class="k">lm_robust</span>(pop_index ~ globalization_family.n +
+  immigration_family.n + loss_1.n + loss_2.n +
+  ed_postsec + age + sex, data = df, se_type = <span class="s">"HC2"</span>)
 
-<span class="k">modelsummary</span>(m1, output = <span class="s">"output/tables/main_results.tex"</span>)</pre>
+<span class="k">modelsummary</span>(m1, output = <span class="s">"output/tables/predictors.tex"</span>)</pre>
+</section>
+
+<!-- OUTPUT: CONJOINT -->
+<section class="dark">
+  <p class="label">Output</p>
+  <h2>04_conjoint_amces.R</h2>
+  <pre>
+<span class="k">library</span>(cregg)
+
+<span class="comment"># Reshape conjoint data to long format</span>
+conj <- df |> <span class="k">pivot_longer</span>(...) |>
+  <span class="k">mutate</span>(chosen = imm_choice == profile_id)
+
+<span class="comment"># AMCEs with clustered SEs by respondent</span>
+amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
+  language + age + gender + duration,
+  id = ~ResponseId, estimate = <span class="s">"amce"</span>)
+
+<span class="k">plot</span>(amces) + <span class="k">theme_tufte</span>() +
+  <span class="k">labs</span>(title = <span class="s">"Immigration Preferences"</span>)</pre>
 </section>
 
 <!-- TIMING -->
 <section class="center">
-  <p class="stat fragment"><span class="n">47</span><span class="u"> seconds</span></p>
-  <p class="fragment" style="margin-top: 0.6em;">Title, abstract, survey, pre-registration, analysis code.</p>
+  <p class="stat fragment"><span class="n">~60</span><span class="u"> seconds</span></p>
+  <p class="fragment" style="margin-top: 0.6em;">Data exploration, index construction, regression models, conjoint AMCEs, figures, LaTeX output.</p>
 </section>
 
 <!-- DISTINCTION -->
@@ -806,6 +837,22 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
   </div>
 </section>
 
+<!-- REPLICATION -->
+<section>
+  <p class="label">Reproducibility</p>
+  <h2>Built-in replication</h2>
+  <p>Warp creates an audit trail without any extra effort.</p>
+  <ul style="margin-top: 0.8em;">
+    <li class="fragment"><strong>Full session logs</strong> — every prompt, every command, every output is recorded</li>
+    <li class="fragment"><strong>Model tracked per interaction</strong> — which LLM (Sonnet, Opus, GPT-4o) produced each result</li>
+    <li class="fragment"><strong>Export sessions</strong> — save complete interaction history as shareable files</li>
+    <li class="fragment"><strong>Pair with git</strong> — commits + session logs = complete provenance chain</li>
+  </ul>
+  <div class="callout fragment" style="margin-top: 1em;">
+    <p>Save your Warp session logs alongside your data and code. Reviewers can see exactly how results were produced—including which model generated each step.</p>
+  </div>
+</section>
+
 <!-- PART 3 -->
 <section class="section section-fail">
   <p class="label">Part 3</p>
@@ -954,12 +1001,14 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 <section>
   <h2>Resources</h2>
   <ul style="margin-top: 0.8em;">
-    <li>Prompt templates for common research tasks</li>
+    <li>Prompt cards for common research workflows</li>
     <li>Example workflows (experimental, qualitative, mixed methods)</li>
-    <li>Practice datasets</li>
-    <li>Troubleshooting guide</li>
+    <li>All slides and materials on GitHub</li>
   </ul>
-  <p style="margin-top: 1.2em; color: var(--text);"><strong>bit.ly/agents-workshop</strong></p>
+  <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
+    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
+    <span style="font-size: 0.95em; color: var(--text);"><strong>github.com/lobsterbush/ai-agents-workshop</strong></span>
+  </div>
 </section>
 
 <!-- END -->
@@ -967,9 +1016,13 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
   <h1>Thank you</h1>
   <p style="margin-top: 0.8em;">
     Charles Crabtree<br>
-    charles.crabtree@monash.edu<br>
-    charlescrabtree.com
+    <span style="color: var(--text-muted);">Senior Lecturer, School of Social Sciences, Monash University</span><br>
+    charles.crabtree@monash.edu
   </p>
+  <div style="margin-top: 1.5em; display: flex; align-items: center; gap: 1.2em;">
+    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
+    <span style="font-size: 0.85em; color: var(--text-muted);">github.com/lobsterbush/ai-agents-workshop</span>
+  </div>
 </section>
 
 </div>
