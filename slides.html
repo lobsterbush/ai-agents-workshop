@@ -68,6 +68,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      overflow-y: auto;
     }
     
     .reveal h1 {
@@ -369,6 +370,34 @@
   </ul>
 </section>
 
+<!-- CONVERTED SKEPTIC -->
+<section class="center">
+  <h2>I was a skeptic</h2>
+  <p style="font-size: 1.15em; color: var(--text); margin-top: 0.6em;">
+    I spent years studying these tools critically.<br>
+    I've published on their failures and limitations.
+  </p>
+  <p class="fragment" style="font-size: 1.3em; color: var(--text); margin-top: 0.8em; font-weight: 600;">
+    AI agents converted me.
+  </p>
+  <p class="fragment" style="font-size: 1em; margin-top: 0.6em;">
+    Not chatbots. Not autocomplete. Agents—tools that act on your computer, see results, and iterate.
+  </p>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <p class="label">Today</p>
+  <h2>What we'll cover</h2>
+  <ol style="margin-top: 0.8em;">
+    <li class="fragment">How agents work</li>
+    <li class="fragment">Three demonstrations</li>
+    <li class="fragment">Where they fail</li>
+    <li class="fragment">Hands-on practice</li>
+    <li class="fragment">Implications for our field</li>
+  </ol>
+</section>
+
 <!-- HOW WE USE COMPUTERS: A BRIEF HISTORY -->
 <section class="era-slide" data-background-image="images/punch_cards.jpg" data-background-size="cover" data-background-position="center">
   <div class="era-label">Punch Cards<span class="era-year">1950s–1970s</span></div>
@@ -396,20 +425,34 @@
   <p class="fragment" style="font-size: 1.15em; color: var(--text); margin-top: 0.6em;">Now the operating system is <strong>language</strong>. You describe what you want. The machine handles execution.</p>
 </section>
 
-<!-- YOU DIRECT THE AGENT -->
-<section>
-  <p class="label">Key Concept</p>
-  <h2>You interact with and direct the agent</h2>
-  <p>This isn't fire-and-forget. You're in a conversation.</p>
-  <ul style="margin-top: 0.8em;">
-    <li class="fragment"><strong>Give instructions</strong> — describe what you want in plain language</li>
-    <li class="fragment"><strong>Watch it work</strong> — see every command, every file change in real time</li>
-    <li class="fragment"><strong>Intervene</strong> — correct course, add context, change direction mid-task</li>
-    <li class="fragment"><strong>Iterate</strong> — refine the output through follow-up prompts</li>
-  </ul>
-  <div class="callout fragment" style="margin-top: 1em;">
-    <p>Think of it as pair programming with a very fast junior colleague. You set direction. It executes. You review.</p>
-  </div>
+<!-- INSTALLATION SECTION -->
+<section class="section section-bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
+  <p class="label">Getting Started</p>
+  <h1>Installation</h1>
+</section>
+
+<!-- IT CONVERSATION: SLIDE 1 -->
+<section class="era-slide" data-background-image="images/it-1.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+</section>
+
+<!-- IT CONVERSATION: SLIDE 2 -->
+<section class="era-slide" data-background-image="images/it-2.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+</section>
+
+<!-- IT CONVERSATION: SLIDE 3 -->
+<section class="era-slide" data-background-image="images/it-3.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+</section>
+
+<!-- IT CONVERSATION: SLIDE 4 -->
+<section class="era-slide" data-background-image="images/it-4.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+</section>
+
+<!-- IT CONVERSATION: SLIDE 5 -->
+<section class="era-slide" data-background-image="images/it-5.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
+</section>
+
+<!-- IT CONVERSATION: SLIDE 6 -->
+<section class="era-slide" data-background-image="images/it-6.png" data-background-size="contain" data-background-position="center" data-background-color="#1a1a1a">
 </section>
 
 <!-- WARP SETUP: GETTING STARTED -->
@@ -535,6 +578,22 @@
   <p class="fragment" style="margin-top: 1em; color: var(--text-muted);">All three are evolving rapidly. Today we use Warp for its model flexibility and terminal integration.</p>
 </section>
 
+<!-- YOU DIRECT THE AGENT -->
+<section>
+  <p class="label">Key Concept</p>
+  <h2>You interact with and direct the agent</h2>
+  <p>This isn't fire-and-forget. You're in a conversation.</p>
+  <ul style="margin-top: 0.8em;">
+    <li class="fragment"><strong>Give instructions</strong> — describe what you want in plain language</li>
+    <li class="fragment"><strong>Watch it work</strong> — see every command, every file change in real time</li>
+    <li class="fragment"><strong>Intervene</strong> — correct course, add context, change direction mid-task</li>
+    <li class="fragment"><strong>Iterate</strong> — refine the output through follow-up prompts</li>
+  </ul>
+  <div class="callout fragment" style="margin-top: 1em;">
+    <p>Think of it as pair programming with a very fast junior colleague. You set direction. It executes. You review.</p>
+  </div>
+</section>
+
 <!-- SETUP -->
 <section class="dark center">
   <p style="color: #aaa; font-size: 1.15em;">Before we start, let me show you something.</p>
@@ -652,7 +711,7 @@ amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
 
 <!-- DISTINCTION -->
 <section>
-  <h2>This isn't ChatGPT</h2>
+  <h2>This isn't the ChatGPT you know</h2>
   <div class="cols">
     <div class="fragment">
       <h3>Chatbot</h3>
@@ -673,19 +732,6 @@ amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
       </ul>
     </div>
   </div>
-</section>
-
-<!-- ROADMAP -->
-<section>
-  <p class="label">Today</p>
-  <h2>What we'll cover</h2>
-  <ol style="margin-top: 0.8em;">
-    <li class="fragment">How agents work</li>
-    <li class="fragment">Three demonstrations</li>
-    <li class="fragment">Where they fail</li>
-    <li class="fragment">Hands-on practice</li>
-    <li class="fragment">Implications for our field</li>
-  </ol>
 </section>
 
 <!-- PART 1 -->
@@ -731,21 +777,32 @@ amces <- <span class="k">cj</span>(conj, chosen ~ origin + profession +
 <!-- DEMO 1 -->
 <section>
   <p class="label">Demo 1</p>
-  <h2>Data Analysis → Publication-Ready Output</h2>
-  <p>Analyze experimental data and produce results for a paper.</p>
-  <pre style="margin-top: 0.8em;">
-<span class="p">$</span> <span class="c">"Analyze the conjoint experiment in data/conjoint_raw.csv.
+  <h2>Forgotten Survey Data → Full Paper</h2>
+  <p>A comparative survey project across East Asia I haven't touched in years.</p>
+  <pre style="margin-top: 0.8em; font-size: 0.65em;">
+<span class="p">$</span> <span class="c">"I have a large comparative survey project at
+~/Dropbox/tkfd/surveys/asia that I ran years ago but
+never fully analyzed. Surveys were fielded in China,
+Korea, and Taiwan covering immigration, masculinity,
+COVID-19 attitudes, security issues, and refugees.
 
-1. Clean the data and create treatment indicators
-2. Estimate AMCEs with clustered standard errors by respondent
-3. Create a coefficient plot following Tufte principles
-4. Export a LaTeX table for the appendix
-5. Write a results paragraph with inline stats"</span></pre>
+1. Explore the data/ and qualtrics-files/ directories —
+   tell me what datasets exist, how many respondents per
+   country, and what the key variables are
+2. Pick the most interesting dataset for political
+   scientists and run models with robust standard errors
+3. Create publication-ready figures (ggplot, theme_tufte)
+4. Generate LaTeX tables for an appendix
+5. Write a title, abstract, and results section
+6. Put everything in ~/asia-reanalysis/
+
+⚠️ Guardrails: verify all citations exist, flag any
+statistics you're uncertain about, note limitations"</span></pre>
 </section>
 
 <section class="dark center">
   <h2>Live Demo</h2>
-  <p>Raw data → analysis → figures → tables → text</p>
+  <p>Forgotten data → exploration → analysis → paper</p>
 </section>
 
 <!-- DEMO 2: QUALITATIVE -->
@@ -773,42 +830,105 @@ Using Braun & Clarke's reflexive thematic analysis:
 4. Review themes against data extracts
 5. Define and name themes
 
-Produce a codebook, coded data CSV, and theme visualization.
-Then build a web app to explore the coded data interactively."</span></pre>
+Produce:
+- A codebook with 5+ themes, codes, and example quotes
+- A coded data CSV with every extract tagged
+- A theme visualization
+
+Then build a web app to explore the data interactively:
+- Theme frequency dashboard and co-occurrence matrix
+- Quote browser with filters by theme, participant, code
+- Participant comparison view (side-by-side theme profiles)
+- Quote density heatmap
+- Export to CSV"</span></pre>
 </section>
 
-<!-- DEMO 2 OUTPUT: CODEBOOK -->
+<!-- DEMO 2 OUTPUT: CODEBOOK (1/2) -->
 <section class="dark">
   <p class="label">Output</p>
-  <h2>codebook.md</h2>
-  <pre>
-<span class="comment"># Inductive Codebook: Political Representation</span>
+  <h2>codebook.md — Themes 1–4</h2>
+  <pre style="font-size: 0.6em;">
+<span class="comment"># Inductive Codebook: Political Representation in South Africa</span>
 
 <span class="k">## Theme 1: Descriptive Representation Pressure</span>
-Expectations that minority representatives prioritize their group's interests.
-Example: "People assume I speak for all women" (Maria)
+Expectations that minority representatives prioritize their group.
+<span class="s">"People assume I speak for all women" (Maria)</span>
+<span class="s">"When I raise economic policy, they ask why I'm not talking about race" (Thandi)</span>
 
 <span class="k">## Theme 2: Legitimacy Negotiations</span>
 Navigating questions about qualification vs. identity-based selection.
-Example: "They always ask if I'm a token appointment" (Kopano)
+<span class="s">"They always ask if I'm a token appointment" (Kopano)</span>
+<span class="s">"I have to prove myself twice—once as competent, once as authentic" (Naledi)</span>
 
 <span class="k">## Theme 3: Constituency Boundary Tensions</span>
 Conflict between representing geographic vs. identity constituencies.
-Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pre>
+<span class="s">"My ward is diverse, but they expect me to prioritize one group" (Brendan)</span>
+<span class="s">"The party wants national loyalty; my voters want local delivery" (Sipho)</span>
+
+<span class="k">## Theme 4: Emotional Labor of Representation</span>
+Psychological toll of carrying community expectations in hostile institutions.
+<span class="s">"I absorb their pain and bring it to parliament, but nobody sees that" (Lindiwe)</span>
+<span class="s">"You learn to perform strength even when you're exhausted" (Maria)</span></pre>
+</section>
+
+<!-- DEMO 2 OUTPUT: CODEBOOK (2/2) -->
+<section class="dark">
+  <p class="label">Output</p>
+  <h2>codebook.md — Themes 5–7</h2>
+  <pre style="font-size: 0.6em;">
+<span class="k">## Theme 5: Strategic Code-Switching</span>
+Deliberate shifting between formal parliamentary and community registers.
+<span class="s">"In committee I cite the Constitution; at home I speak about ancestors" (Kopano)</span>
+<span class="s">"You need different languages for different audiences" (Thandi)</span>
+
+<span class="k">## Theme 6: Party vs. Conscience</span>
+Tension between party-line voting and personal conviction on identity issues.
+<span class="s">"The whip says vote yes, but my community would never forgive me" (Brendan)</span>
+<span class="s">"I broke ranks once. The consequences lasted two years" (Sipho)</span>
+
+<span class="k">## Theme 7: Institutional Gatekeeping</span>
+Formal and informal barriers to substantive participation.
+<span class="s">"The old guard controls committee assignments" (Naledi)</span>
+<span class="s">"Speaking time is allocated by seniority—new voices wait" (Lindiwe)</span>
+
+<span class="comment"># Summary: 7 themes, 42 codes, 318 coded extracts across 25 transcripts</span></pre>
+</section>
+
+<!-- DEMO 2 OUTPUT: CODED DATA -->
+<section class="dark">
+  <p class="label">Output</p>
+  <h2>coded_data.csv</h2>
+  <pre style="font-size: 0.6em;">
+<span class="k">participant</span>, <span class="k">theme</span>, <span class="k">code</span>, <span class="k">quote</span>, <span class="k">line</span>
+Maria, Descriptive Pressure, group_spokesperson, "People assume I speak for...", 142
+Kopano, Legitimacy, token_questioning, "They always ask if I'm a...", 87
+Thandi, Code-Switching, register_shift, "In committee I cite the...", 203
+Brendan, Boundary Tensions, geographic_vs_identity, "My ward is diverse...", 156
+Lindiwe, Emotional Labor, absorbing_pain, "I absorb their pain and...", 312
+Sipho, Party vs Conscience, breaking_ranks, "I broke ranks once...", 94
+Naledi, Gatekeeping, committee_control, "The old guard controls...", 267
+<span class="comment">... 311 more rows</span>
+
+<span class="o">7 themes · 42 codes · 318 coded extracts · 25 participants</span></pre>
 </section>
 
 <!-- DEMO 2 OUTPUT: WEB APP -->
 <section class="dark">
   <p class="label">Output</p>
   <h2>thematic_explorer.html</h2>
-  <pre>
+  <pre style="font-size: 0.6em;">
 <span class="comment">// A self-contained web app for exploring coded transcripts</span>
 
-<span class="k">Features:</span>
-<span class="f">├── Theme frequency dashboard (interactive bar chart)</span>
-<span class="f">├── Quote browser with theme filters</span>
-<span class="f">├── Participant-level transcript view</span>
-<span class="f">├── Theme co-occurrence matrix</span>
+<span class="k">Dashboard:</span>
+<span class="f">├── Theme frequency bar chart (interactive, sortable)</span>
+<span class="f">├── Quote density heatmap by participant × theme</span>
+<span class="f">├── Theme co-occurrence matrix with cell counts</span>
+<span class="f">└── Summary statistics (N quotes, N codes, N participants per theme)</span>
+
+<span class="k">Explorer:</span>
+<span class="f">├── Full quote browser with theme/participant/code filters</span>
+<span class="f">├── Participant comparison view (side-by-side theme profiles)</span>
+<span class="f">├── Keyword search across all coded extracts</span>
 <span class="f">├── Export filtered data to CSV</span>
 <span class="f">└── Dark/light mode toggle</span>
 
@@ -1147,7 +1267,9 @@ ago but never fully analyzed.
 
     el.textContent = fmt(remaining);
 
-    el.addEventListener('click', function() {
+    el.addEventListener('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
       if (state === 'idle') {
         // Start
         state = 'running';
