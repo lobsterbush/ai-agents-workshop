@@ -51,7 +51,7 @@
 |-------|------|-------|
 | Title | 30s | Let people settle. Don't start talking immediately. |
 | Computing History (5 slides) | 2-3 min | Click through punch cards → DOS → Windows 95 → macOS → Warp. Each gets 20-30 seconds. Let images speak. |
-| "The next interface" | 45s | Key line: "Each era changed what you had to *know*. This one changes what you have to *do*." Pause on "intent vs execution." |
+|| "The new operating system is language" | 45s | Key line: "Every era required learning a different OS. Now the OS is *language*." Pause on the reveal. |
 | "Before we begin..." | 30s | Build anticipation. Pause for effect. |
 | Cold open demo (terminal) | 2-3 min | **THIS IS THE HOOK.** Don't explain—just type the prompt and let them watch. Use fragments to reveal output step by step. |
 | "45 minutes → 12 seconds" | 1 min | Let the number sink in. Dramatic pause before "12 seconds" reveal. |
@@ -63,7 +63,7 @@
 - DOS: "Still text, still arcane, but at least you could see what you typed."
 - Windows 95: "Point and click. Suddenly anyone could use a computer. This was revolutionary."
 - macOS Sonoma: "Decades of refinement. Beautiful, but fundamentally the same paradigm—you operate the tools."
-- Warp: "Now: you describe what you want. The machine operates itself. This is the shift we're living through."
+- Warp: "Now: you describe what you want. The machine operates itself. The new operating system is language."
 
 **Presenter note:** The cold open is everything. If you nail this, they're hooked. Practice this demo 10+ times so it's flawless.
 
@@ -151,7 +151,7 @@
 |-------|------|-------|
 | Part 4 title | 15s | "Your turn." |
 | "Choose Your Level" | 2 min | Walk through all three options. Tell them: "Pick the one that slightly scares you." |
-| Timer slide (14 min) | 14 min | Roam the room. Help people. Common issues: typos in prompts, not being specific enough. Celebrate early wins out loud. |
+|| Timer slide (14 min) | 14 min | **Click the timer to start countdown.** Click again to reset. Green → amber (2 min left) → red (expired). Roam the room. Help people. Common issues: typos in prompts, not being specific enough. Celebrate early wins out loud. |
 | "Quick Share-Out" | 3 min | 2-3 volunteers. "Show us what you got!" Applaud everything. Normalize when things go sideways. |
 
 **Presenter note:** The sprint is where learning actually happens. Be generous with encouragement.
@@ -169,7 +169,7 @@
 | "What gains value" | 2 min | This is the hopeful slide. Researchers aren't replaced—they're elevated. |
 | "The new premium" | 1 min | Let the text breathe. Read it slowly. This is the thesis. |
 | "Discussion Questions" | 2 min | Read each question. Give them 5 seconds to think before moving on. |
-| Timer slide (12 min) | 12 min | Walk around. Listen to conversations. Take notes on good insights. |
+|| Timer slide (12 min) | 12 min | **Click the timer to start countdown.** Click again to reset. Walk around. Listen to conversations. Take notes on good insights. |
 | "Report Back" | 5 min | One insight per table. Capture key themes. "What I'm hearing is..." |
 
 **Equilibrium talking points:**

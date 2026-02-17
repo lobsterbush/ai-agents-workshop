@@ -99,7 +99,7 @@
     
     .label {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.55em;
+      font-size: 0.65em;
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -112,7 +112,7 @@
       background: var(--bg-code);
       color: #e8e8e8;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6em;
+      font-size: 0.7em;
       line-height: 1.5;
       padding: 28px 32px;
       border-radius: 8px;
@@ -138,7 +138,7 @@
     }
     
     .reveal li {
-      font-size: 0.95em;
+      font-size: 1em;
       line-height: 1.55;
       color: var(--text-secondary);
       margin-bottom: 0.5em;
@@ -208,7 +208,7 @@
       margin: 1.2em 0;
       max-width: 850px;
     }
-    .callout p { margin: 0; color: var(--text); font-size: 0.9em; }
+    .callout p { margin: 0; color: var(--text); font-size: 1em; }
     
     /* Accent */
     .accent { color: var(--accent); }
@@ -272,6 +272,50 @@
       font-size: 1.4em;
       color: var(--accent);
     }
+
+    /* Section divider with background image */
+    .section-bg {
+      justify-content: flex-end;
+      padding-bottom: 140px !important;
+    }
+    .section-bg::before, .section-bg::after { display: none; }
+    .section-bg h1 { color: #fff; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+    .section-bg .label { color: rgba(255,255,255,0.8); }
+
+    /* Part 3 fail section — dark with red accent */
+    .section-fail {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a1015 100%);
+    }
+    .section-fail::before, .section-fail::after { display: none; }
+    .section-fail h1 { color: #fff; }
+    .section-fail .label { color: #e85555; }
+
+    /* Countdown timer */
+    .timer {
+      font-size: 5em;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--green);
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+      font-variant-numeric: tabular-nums;
+    }
+    .timer:hover { opacity: 0.85; }
+    .timer.running { color: var(--green); }
+    .timer.warning { color: #e6a817; }
+    .timer.expired { color: #e85555; animation: pulse 1s ease-in-out infinite; }
+    .timer .timer-hint {
+      font-size: 0.14em;
+      font-weight: 400;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.6em;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
   </style>
 </head>
 <body>
@@ -310,9 +354,9 @@
 </section>
 
 <section class="center">
-  <h2>The next interface</h2>
-  <p style="font-size: 1.15em; color: var(--text); max-width: 700px;">Each era changed what you had to know to use a computer.<br>This one changes what you have to <em>do</em>.</p>
-  <p class="fragment" style="color: var(--text-muted); margin-top: 0.8em;">You describe intent. The machine handles execution.</p>
+  <h2>The new operating system is language</h2>
+  <p style="font-size: 1.15em; color: var(--text); max-width: 750px;">Every era required learning a different operating system—punch cards, command lines, graphical interfaces.</p>
+  <p class="fragment" style="font-size: 1.15em; color: var(--text); max-width: 750px; margin-top: 0.6em;">Now the operating system is <strong>language</strong>. You describe what you want. The machine handles execution.</p>
 </section>
 
 <!-- WARP SETUP: GETTING STARTED -->
@@ -331,7 +375,7 @@
     </div>
     <div class="card" style="text-align: center;">
       <p style="font-size: 1.2em; font-weight: 600; margin-bottom: 0.5em;">warp.dev</p>
-      <p style="font-size: 0.8em; color: var(--text-muted); margin: 0;">Download takes ~30 seconds</p>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin: 0;">Download takes ~30 seconds</p>
     </div>
   </div>
 </section>
@@ -359,10 +403,10 @@
   <div class="cols" style="margin-top: 0.8em;">
     <div>
       <ul style="list-style: none; padding: 0;">
-        <li style="margin-bottom: 0.8em;"><strong style="color: var(--green);">Free</strong><br><span style="color: var(--text-muted); font-size: 0.85em;">75 credits/month · All terminal features</span></li>
-        <li style="margin-bottom: 0.8em;"><strong style="color: var(--accent);">Build — $20/mo</strong><br><span style="color: var(--text-muted); font-size: 0.85em;">1,500 credits · BYOK · 40 repos indexed</span></li>
-        <li style="margin-bottom: 0.8em;"><strong>Business — $50/mo</strong><br><span style="color: var(--text-muted); font-size: 0.85em;">Team controls · SSO · Zero Data Retention</span></li>
-        <li><strong>Enterprise</strong><br><span style="color: var(--text-muted); font-size: 0.85em;">Custom LLMs · Advanced security</span></li>
+        <li style="margin-bottom: 0.8em;"><strong style="color: var(--green);">Free</strong><br><span style="color: var(--text-muted); font-size: 0.9em;">75 credits/month · All terminal features</span></li>
+        <li style="margin-bottom: 0.8em;"><strong style="color: var(--accent);">Build — $20/mo</strong><br><span style="color: var(--text-muted); font-size: 0.9em;">1,500 credits · BYOK · 40 repos indexed</span></li>
+        <li style="margin-bottom: 0.8em;"><strong>Business — $50/mo</strong><br><span style="color: var(--text-muted); font-size: 0.9em;">Team controls · SSO · Zero Data Retention</span></li>
+        <li><strong>Enterprise</strong><br><span style="color: var(--text-muted); font-size: 0.9em;">Custom LLMs · Advanced security</span></li>
       </ul>
     </div>
     <div>
@@ -406,10 +450,10 @@
 <section>
   <p class="label">Landscape</p>
   <h2>Warp vs Claude Code vs Codex</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 1em; font-size: 0.85em;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 1em; font-size: 0.95em;">
     <div class="card">
       <h3 style="color: var(--accent); margin-bottom: 0.5em;">Warp</h3>
-      <ul style="font-size: 0.9em;">
+      <ul>
         <li>Multi-model (Claude, GPT, Gemini)</li>
         <li>Terminal-native</li>
         <li>WARP.md context files</li>
@@ -418,7 +462,7 @@
     </div>
     <div class="card">
       <h3 style="color: var(--green); margin-bottom: 0.5em;">Claude Code</h3>
-      <ul style="font-size: 0.9em;">
+      <ul>
         <li>Anthropic only (Sonnet/Opus)</li>
         <li>Terminal, IDE, web, iOS</li>
         <li>Agent Teams (parallel)</li>
@@ -427,7 +471,7 @@
     </div>
     <div class="card">
       <h3 style="margin-bottom: 0.5em;">OpenAI Codex</h3>
-      <ul style="font-size: 0.9em;">
+      <ul>
         <li>OpenAI only (GPT-5.3-Codex)</li>
         <li>Cloud sandbox tasks</li>
         <li>Skills system</li>
@@ -435,12 +479,12 @@
       </ul>
     </div>
   </div>
-  <p class="fragment" style="margin-top: 1em; font-size: 0.9em; color: var(--text-muted);">All three are evolving rapidly. Today we use Warp for its model flexibility and terminal integration.</p>
+  <p class="fragment" style="margin-top: 1em; color: var(--text-muted);">All three are evolving rapidly. Today we use Warp for its model flexibility and terminal integration.</p>
 </section>
 
 <!-- SETUP -->
-<section class="center">
-  <p style="color: var(--text-muted);">Before we start, let me show you something.</p>
+<section class="dark center">
+  <p style="color: #aaa; font-size: 1.15em;">Before we start, let me show you something.</p>
 </section>
 
 <!-- THE PROMPT -->
@@ -598,7 +642,7 @@ m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female 
 </section>
 
 <!-- PART 1 -->
-<section class="section">
+<section class="section section-bg" data-background-image="images/section_how.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.35">
   <p class="label">Part 1</p>
   <h1>How Agents Work</h1>
 </section>
@@ -632,7 +676,7 @@ m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female 
 </section>
 
 <!-- PART 2 -->
-<section class="section">
+<section class="section section-bg" data-background-image="images/section_demos.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3">
   <p class="label">Part 2</p>
   <h1>Three Demonstrations</h1>
 </section>
@@ -652,9 +696,9 @@ m1 <- <span class="k">lm_robust</span>(culpability ~ co_partisan + age + female 
 5. Write a results paragraph with inline stats"</span></pre>
 </section>
 
-<section class="center">
+<section class="dark center">
   <h2>Live Demo</h2>
-  <p style="color: var(--text-muted);">Raw data → analysis → figures → tables → text</p>
+  <p>Raw data → analysis → figures → tables → text</p>
 </section>
 
 <!-- DEMO 2: QUALITATIVE -->
@@ -724,9 +768,9 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 <span class="comment">// Single HTML file, no dependencies, works offline</span></pre>
 </section>
 
-<section class="center">
+<section class="dark center">
   <h2>Live Demo</h2>
-  <p style="color: var(--text-muted);">Real data → Braun & Clarke analysis → Custom research tool</p>
+  <p>Real data → Braun & Clarke analysis → Custom research tool</p>
 </section>
 
 <!-- DEMO 3 -->
@@ -745,9 +789,9 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 - Log data to CSV on completion"</span></pre>
 </section>
 
-<section class="center">
+<section class="dark center">
   <h2>Live Demo</h2>
-  <p style="color: var(--text-muted);">Building an interactive experiment</p>
+  <p>Building an interactive experiment</p>
 </section>
 
 <!-- KEY POINT -->
@@ -763,7 +807,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 </section>
 
 <!-- PART 3 -->
-<section class="section">
+<section class="section section-fail">
   <p class="label">Part 3</p>
   <h1>Where They Fail</h1>
 </section>
@@ -794,7 +838,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 </section>
 
 <!-- PART 4 -->
-<section class="section">
+<section class="section section-bg" data-background-image="images/section_hands.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.3">
   <p class="label">Part 4</p>
   <h1>Hands-On Practice</h1>
 </section>
@@ -814,18 +858,18 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 
 <!-- TIMER -->
 <section class="center">
-  <p class="stat">14:00</p>
+  <p class="timer" data-minutes="14">14:00</p>
   <p style="color: var(--text-muted);">Work session — I'll be walking around to help</p>
 </section>
 
 <!-- SHARE -->
-<section class="center">
+<section class="dark center">
   <h2>Share what you built</h2>
-  <p style="color: var(--text-muted);">Successes and failures are both useful.</p>
+  <p>Successes and failures are both useful.</p>
 </section>
 
 <!-- PART 5 -->
-<section class="section">
+<section class="section section-bg" data-background-image="images/section_implications.jpg" data-background-size="cover" data-background-position="center" data-background-opacity="0.35">
   <p class="label">Part 5</p>
   <h1>Implications</h1>
 </section>
@@ -845,12 +889,12 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
   <h2>What AI agents drive down</h2>
   <p>The cost of execution is collapsing across the research pipeline.</p>
   <div class="cost-grid" style="margin-top: 1.2em;">
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data collection</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Scraping, surveys, API calls, simulation</span></span></div>
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data cleaning</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Parsing, merging, imputation, validation</span></span></div>
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data analysis</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Models, robustness checks, visualizations</span></span></div>
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Results presentation</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Tables, figures, LaTeX, web apps</span></span></div>
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Writing</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Drafts, lit reviews, technical prose</span></span></div>
-    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Complex environments</strong><br><span style="font-size: 0.8em; color: var(--text-muted);">Web apps, virtual worlds, interactive experiments</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data collection</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Scraping, surveys, API calls, simulation</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data cleaning</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Parsing, merging, imputation, validation</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Data analysis</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Models, robustness checks, visualizations</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Results presentation</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Tables, figures, LaTeX, web apps</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Writing</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Drafts, lit reviews, technical prose</span></span></div>
+    <div class="cost-item fragment"><span class="cost-arrow">↓</span> <span><strong>Complex environments</strong><br><span style="font-size: 0.9em; color: var(--text-muted);">Web apps, virtual worlds, interactive experiments</span></span></div>
   </div>
 </section>
 
@@ -891,7 +935,7 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
 
 <!-- TIMER -->
 <section class="center">
-  <p class="stat">12:00</p>
+  <p class="timer" data-minutes="12">12:00</p>
   <p style="color: var(--text-muted);">Table discussion</p>
 </section>
 
@@ -941,6 +985,52 @@ Example: "My ward is diverse, but they expect me to prioritize..." (Brendan)</pr
     width: 1920,
     height: 1080,
     margin: 0
+  });
+
+  // Countdown timers
+  document.querySelectorAll('.timer').forEach(function(el) {
+    var totalSeconds = parseInt(el.getAttribute('data-minutes')) * 60;
+    var remaining = totalSeconds;
+    var interval = null;
+    var state = 'idle'; // idle | running | expired
+
+    function fmt(s) {
+      var m = Math.floor(s / 60);
+      var sec = s % 60;
+      return m + ':' + (sec < 10 ? '0' : '') + sec;
+    }
+
+    el.textContent = fmt(remaining);
+
+    el.addEventListener('click', function() {
+      if (state === 'idle') {
+        // Start
+        state = 'running';
+        el.classList.add('running');
+        interval = setInterval(function() {
+          remaining--;
+          el.textContent = fmt(remaining);
+          if (remaining <= 120 && remaining > 0) {
+            el.classList.remove('running');
+            el.classList.add('warning');
+          }
+          if (remaining <= 0) {
+            clearInterval(interval);
+            el.textContent = '0:00';
+            el.classList.remove('running', 'warning');
+            el.classList.add('expired');
+            state = 'expired';
+          }
+        }, 1000);
+      } else {
+        // Reset
+        clearInterval(interval);
+        remaining = totalSeconds;
+        el.textContent = fmt(remaining);
+        el.classList.remove('running', 'warning', 'expired');
+        state = 'idle';
+      }
+    });
   });
 </script>
 </body>
