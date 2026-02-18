@@ -229,14 +229,22 @@
     .accent { color: var(--accent); }
     .green { color: var(--green); }
     
-    /* Dark slides */
+    /* Dark slides - full bleed */
     .dark {
-      background: var(--bg-code);
+      background: var(--bg-code) !important;
+      padding: 0 !important;
     }
-    .dark::before, .dark::after { display: none; }
+    .dark::before, .dark::after { display: none !important; }
     .dark h1, .dark h2 { color: #fff; }
     .dark p { color: #aaa; }
     .dark .label { color: var(--green); }
+    .dark .dark-content {
+      padding: 60px 80px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
     /* Full-screen background image slides */
     .era-slide {
@@ -288,19 +296,18 @@
       color: var(--accent);
     }
 
-    /* Section divider slides — use era-label style overlay */
+    /* Section divider slides with background images */
     .section-bg {
       justify-content: flex-end;
       padding-bottom: 100px !important;
-      background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);
     }
     .section-bg::before, .section-bg::after { display: none; }
     .section-bg .section-content {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       padding: 24px 40px;
       border-radius: 8px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: inline-block;
     }
     .section-bg h1 { color: #fff; margin: 0; font-size: 2.2em; }
@@ -309,21 +316,26 @@
 
     /* Part 3 fail section — dark with red accent */
     .section-fail {
-      background: linear-gradient(135deg, #1a1a1a 0%, #2a1015 100%);
       justify-content: flex-end;
       padding-bottom: 100px !important;
     }
     .section-fail::before, .section-fail::after { display: none; }
     .section-fail .section-content {
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       padding: 24px 40px;
       border-radius: 8px;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       display: inline-block;
     }
     .section-fail h1 { color: #fff; margin: 0; font-size: 2.2em; }
     .section-fail .label { color: #e85555; margin-bottom: 0.4em; }
+
+    /* Timer slides */
+    .timer-slide {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%) !important;
+    }
+    .timer-slide::before, .timer-slide::after { display: none !important; }
 
     /* Countdown timer — button style */
     .timer {
@@ -462,7 +474,7 @@
 </section>
 
 <!-- INSTALLATION SECTION -->
-<section class="section-bg">
+<section class="section-bg" data-background-image="images/keyboard_code.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Getting Started</p>
     <h1>Installation</h1>
@@ -634,15 +646,18 @@
 </section>
 
 <!-- SETUP -->
-<section class="dark center">
-  <p style="color: #aaa; font-size: 1.15em;">Before we start, let me show you something.</p>
+<section class="dark">
+  <div class="dark-content center">
+    <p style="color: #aaa; font-size: 1.15em;">Before we start, let me show you something.</p>
+  </div>
 </section>
 
 <!-- THE PROMPT -->
 <section class="dark">
-  <p class="label">Live Demo</p>
-  <h2>One prompt. Forgotten data. Full paper.</h2>
-  <pre>
+  <div class="dark-content">
+    <p class="label">Live Demo</p>
+    <h2>One prompt. Forgotten data. Full paper.</h2>
+    <pre>
 <span class="p">$</span> <span class="c">"I have a dataset from a populism project I haven't touched
 in two years. It's at ~/Dropbox/populism-project-yao/Data/
 processed/processed.csv.
@@ -657,6 +672,7 @@ processed/processed.csv.
 5. Create publication-ready figures (ggplot, theme_tufte)
 6. Generate a title, abstract, and results section in LaTeX
 7. Put everything in ~/populism-reanalysis/"</span></pre>
+  </div>
 </section>
 
 <!-- DISTINCTION -->
@@ -685,7 +701,7 @@ processed/processed.csv.
 </section>
 
 <!-- PART 1 -->
-<section class="section-bg">
+<section class="section-bg" data-background-image="images/circuit_board.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Part 1</p>
     <h1>How Agents Work</h1>
@@ -721,7 +737,7 @@ processed/processed.csv.
 </section>
 
 <!-- PART 2 -->
-<section class="section-bg">
+<section class="section-bg" data-background-image="images/code_screen.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Part 2</p>
     <h1>Three Demonstrations</h1>
@@ -729,8 +745,8 @@ processed/processed.csv.
 </section>
 
 <!-- DEMO 1 -->
-<section class="dark" style="padding: 0 !important;">
-  <div style="padding: 60px 80px;">
+<section class="dark">
+  <div class="dark-content">
     <p class="label">Demo 1 — Forgotten Survey Data → Full Paper</p>
     <pre style="margin-top: 0.8em; font-size: 0.7em;">
 <span class="p">$</span> <span class="c">"I have a large comparative survey project at
@@ -755,8 +771,8 @@ statistics you're uncertain about, note limitations"</span></pre>
 </section>
 
 <!-- DEMO 2 -->
-<section class="dark" style="padding: 0 !important;">
-  <div style="padding: 60px 80px;">
+<section class="dark">
+  <div class="dark-content">
     <p class="label">Demo 2 — Real Qualitative Data → Thematic Explorer</p>
     <pre style="margin-top: 0.8em; font-size: 0.65em;">
 <span class="p">$</span> <span class="c">"Analyze these 25 interview transcripts about political 
@@ -784,8 +800,8 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- DEMO 3 -->
-<section class="dark" style="padding: 0 !important;">
-  <div style="padding: 60px 80px;">
+<section class="dark">
+  <div class="dark-content">
     <p class="label">Demo 3 — Interactive Experiment Interface</p>
     <pre style="margin-top: 0.8em; font-size: 0.7em;">
 <span class="p">$</span> <span class="c">"Build a Twitter/X interface for a survey experiment.
@@ -828,7 +844,7 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 3 -->
-<section class="section-fail">
+<section class="section-fail" data-background-image="images/warning_sign.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Part 3</p>
     <h1>Where They Fail</h1>
@@ -877,7 +893,7 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PART 4 -->
-<section class="section-bg">
+<section class="section-bg" data-background-image="images/typing_hands.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Part 4</p>
     <h1>Hands-On Practice</h1>
@@ -937,19 +953,20 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- WORK SESSION TIMER -->
-<section class="center" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
-  <h2 style="color: #fff; font-size: 2em; margin-bottom: 0.8em;">Work Session</h2>
+<section class="center timer-slide">
   <p class="timer" data-minutes="14">14:00</p>
 </section>
 
 <!-- SHARE -->
-<section class="dark center">
-  <h2>Share what you built</h2>
-  <p>Successes and failures are both useful.</p>
+<section class="dark">
+  <div class="dark-content center">
+    <h2>Share what you built</h2>
+    <p>Successes and failures are both useful.</p>
+  </div>
 </section>
 
 <!-- PART 5 -->
-<section class="section-bg">
+<section class="section-bg" data-background-image="images/horizon.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Part 5</p>
     <h1>Implications</h1>
@@ -1023,8 +1040,7 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- DISCUSSION TIMER -->
-<section class="center" style="background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 100%);">
-  <h2 style="color: #fff; font-size: 2em; margin-bottom: 0.8em;">Table Discussion</h2>
+<section class="center timer-slide">
   <p class="timer" data-minutes="12">12:00</p>
 </section>
 
@@ -1055,8 +1071,8 @@ Then build a web app to explore the data interactively:
     </ul>
   </div>
   <div style="margin-top: 1.2em; display: flex; align-items: center; gap: 1.2em;">
-    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 100px; height: 100px; border-radius: 8px;">
-    <span style="font-size: 0.85em; color: var(--text-muted);">Scan for materials</span>
+    <img src="images/Active QR Code.png" alt="Workshop repo QR code" style="width: 120px; height: 120px; border-radius: 8px;">
+    <a href="https://github.com/lobsterbush/ai-agents-workshop" target="_blank" style="font-size: 0.85em; color: var(--accent);">github.com/lobsterbush/ai-agents-workshop</a>
   </div>
 </section>
 
