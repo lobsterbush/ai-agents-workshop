@@ -86,12 +86,6 @@
       color: var(--text);
       margin: 0 0 0.6em 0;
     }
-    .reveal h2 strong {
-      background: linear-gradient(120deg, var(--accent), var(--green));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
     
     .reveal p {
       font-size: 1em;
@@ -113,78 +107,6 @@
       color: var(--accent);
       margin-bottom: 0.8em;
     }
-
-    /* Smooth animations */
-    .reveal .slides section.present .label {
-      animation: fadeSlideDown 0.5s ease-out both;
-    }
-    .reveal .slides section.present h1,
-    .reveal .slides section.present h2 {
-      animation: fadeSlideDown 0.6s ease-out 0.1s both;
-    }
-    .reveal .slides section.present > p:not(.timer):not(.label),
-    .reveal .slides section.present > ul,
-    .reveal .slides section.present > ol,
-    .reveal .slides section.present > .cols,
-    .reveal .slides section.present > .cost-grid {
-      animation: fadeSlideUp 0.6s ease-out 0.2s both;
-    }
-    .reveal .slides section.present > .callout {
-      animation: fadeSlideUp 0.6s ease-out 0.3s both;
-    }
-    .reveal .slides section.present pre {
-      animation: fadeScale 0.5s ease-out 0.2s both;
-    }
-
-    @keyframes fadeSlideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    @keyframes fadeScale {
-      from {
-        opacity: 0;
-        transform: scale(0.98);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* Fragment animations */
-    .reveal .fragment {
-      transition: all 0.4s ease-out;
-    }
-    .reveal .fragment:not(.visible) {
-      opacity: 0;
-      transform: translateY(15px);
-    }
-    .reveal .fragment.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Progress bar glow */
-    .reveal .progress span {
-      background: linear-gradient(90deg, var(--accent), var(--green));
-      box-shadow: 0 0 10px var(--accent);
-    }
     
     /* Code blocks */
     pre {
@@ -199,11 +121,6 @@
       max-width: 1400px;
       overflow-x: auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    pre:hover {
-      transform: scale(1.01);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     }
     
     pre .p { color: var(--green); }
@@ -295,11 +212,6 @@
       border-radius: 8px;
       padding: 20px 24px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
     
     /* Callout */
@@ -310,11 +222,6 @@
       border-radius: 0 6px 6px 0;
       margin: 1.2em 0;
       max-width: 1100px;
-      transition: transform 0.3s ease, border-left-width 0.3s ease;
-    }
-    .callout:hover {
-      transform: translateX(4px);
-      border-left-width: 5px;
     }
     .callout p { margin: 0; color: var(--text); font-size: 1em; }
     
@@ -355,7 +262,6 @@
       display: inline-block;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      animation: fadeSlideUp 0.6s ease-out 0.3s both;
     }
     .era-label .era-year {
       font-size: 0.65em;
@@ -1178,9 +1084,7 @@ Then build a web app to explore the data interactively:
 <script>
   Reveal.initialize({
     hash: true,
-    transition: 'fade',
-    transitionSpeed: 'fast',
-    backgroundTransition: 'fade',
+    transition: 'none',
     progress: true,
     center: false,
     width: 1920,
