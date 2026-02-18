@@ -342,7 +342,7 @@
       font-size: 8em;
       font-weight: 600;
       line-height: 1;
-      color: #fff;
+      color: #fff !important;
       background: var(--green);
       cursor: pointer;
       user-select: none;
@@ -354,9 +354,9 @@
       box-shadow: 0 10px 40px rgba(74, 155, 103, 0.35);
     }
     .timer:hover { transform: scale(1.02); box-shadow: 0 14px 50px rgba(74, 155, 103, 0.45); }
-    .timer.running { background: var(--green); color: #fff; }
-    .timer.warning { background: #e6a817; color: #fff; box-shadow: 0 10px 40px rgba(230, 168, 23, 0.35); }
-    .timer.expired { background: #e85555; color: #fff; animation: pulse 1s ease-in-out infinite; box-shadow: 0 10px 40px rgba(232, 85, 85, 0.35); }
+    .timer.running { background: var(--green); color: #fff !important; }
+    .timer.warning { background: #e6a817; color: #fff !important; box-shadow: 0 10px 40px rgba(230, 168, 23, 0.35); }
+    .timer.expired { background: #e85555; color: #fff !important; animation: pulse 1s ease-in-out infinite; box-shadow: 0 10px 40px rgba(232, 85, 85, 0.35); }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
@@ -424,7 +424,7 @@
 </section>
 
 <!-- CONVERTED SKEPTIC -->
-<section class="center">
+<section>
   <h2 style="font-size: 2.2em; margin-bottom: 0.8em;">I was a skeptic</h2>
   <p style="font-size: 1.4em; color: var(--text); line-height: 1.5;">
     I spent years studying these tools critically.<br>
@@ -473,12 +473,19 @@
   <div class="era-label">AI Agent<span class="era-year">Now</span></div>
 </section>
 
+<!-- NEW OS = NATURAL LANGUAGE -->
+<section>
+  <h2 style="font-size: 2.4em; margin-bottom: 0.8em;">The new operating system is<br><span style="color: var(--accent);">natural language</span></h2>
+  <p style="font-size: 1.3em; color: var(--text-secondary); line-height: 1.6;">
+    You describe what you want. The agent figures out how to do it.
+  </p>
+</section>
+
 <!-- INSTALLATION SECTION -->
-<section class="section-bg" data-background-image="images/keyboard_code.jpg" data-background-size="cover" data-background-position="center">
+<section class="section-bg" data-background-image="images/laptop_setup.jpg" data-background-size="cover" data-background-position="center">
   <div class="section-content">
     <p class="label">Getting Started</p>
     <h1>Installation</h1>
-    <p>The new operating system is <strong>natural language</strong>.</p>
   </div>
 </section>
 
@@ -901,14 +908,14 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- PROMPT CARDS + TIMER -->
-<section class="center">
+<section>
   <p class="label">Prompt Cards</p>
-  <h2 style="font-size: 2em; margin-bottom: 0.6em;">Three scenarios to try</h2>
+  <h2>Three scenarios to try</h2>
   <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5em; margin-top: 0.8em; font-size: 0.95em;">
-    <div class="card" style="border-left: 4px solid var(--accent); text-align: left !important;">
-      <h3 style="font-size: 1.05em; color: var(--accent); margin-bottom: 0.5em; text-align: left !important;">1. Project Management</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Entering an old project directory</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
+    <div class="card" style="border-left: 4px solid var(--accent);">
+      <h3 style="font-size: 1.05em; color: var(--accent); margin-bottom: 0.5em;">1. Project Management</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Entering an old project directory</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"I just opened an old project.
 
 1. Summarize what it's about
@@ -918,10 +925,10 @@ Then build a web app to explore the data interactively:
 5. Suggest next steps
 6. Create README if missing"</span></pre>
     </div>
-    <div class="card" style="border-left: 4px solid #FF6B6B; text-align: left !important;">
-      <h3 style="font-size: 1.05em; color: #FF6B6B; margin-bottom: 0.5em; text-align: left !important;">2. Quantitative Analysis</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Re-analyzing old data</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
+    <div class="card" style="border-left: 4px solid #FF6B6B;">
+      <h3 style="font-size: 1.05em; color: #FF6B6B; margin-bottom: 0.5em;">2. Quantitative Analysis</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Re-analyzing old data</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"Dataset at [PATH], never analyzed.
 
 1. Explore it (N, variables)
@@ -932,10 +939,10 @@ Then build a web app to explore the data interactively:
 5. Results paragraph
 6. Put in analysis/ folder"</span></pre>
     </div>
-    <div class="card" style="border-left: 4px solid #A855F7; text-align: left !important;">
-      <h3 style="font-size: 1.05em; color: #A855F7; margin-bottom: 0.5em; text-align: left !important;">3. Survey Instrument</h3>
-      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em; text-align: left !important;">Survey experiment design</p>
-      <pre style="font-size: 0.7em; padding: 14px; margin: 0; text-align: left !important;">
+    <div class="card" style="border-left: 4px solid #A855F7;">
+      <h3 style="font-size: 1.05em; color: #A855F7; margin-bottom: 0.5em;">3. Survey Instrument</h3>
+      <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 0.8em;">Survey experiment design</p>
+      <pre style="font-size: 0.7em; padding: 14px; margin: 0;">
 <span class="c">"Survey experiment on [TOPIC].
 
 1. Find validated scales
@@ -949,17 +956,15 @@ Then build a web app to explore the data interactively:
 ⚠️ VERIFY scale citations"</span></pre>
     </div>
   </div>
-  <p style="font-size: 1.4em; color: var(--text); margin-top: 1.2em; font-weight: 500;">Pick the one that slightly scares you.</p>
-</section>
-
-<!-- WORK SESSION TIMER -->
-<section class="center timer-slide">
-  <p class="timer" data-minutes="14">14:00</p>
+  <div style="display: flex; align-items: center; gap: 2em; margin-top: 1.2em;">
+    <p style="font-size: 1.4em; color: var(--text); font-weight: 500; margin: 0;">Pick the one that slightly scares you.</p>
+    <p class="timer" data-minutes="14" style="font-size: 3em;">14:00</p>
+  </div>
 </section>
 
 <!-- SHARE -->
 <section class="dark">
-  <div class="dark-content center">
+  <div class="dark-content">
     <h2>Share what you built</h2>
     <p>Successes and failures are both useful.</p>
   </div>
@@ -1003,10 +1008,10 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- EQUILIBRIUM: THE SHIFT -->
-<section class="center">
-  <h2 style="font-size: 2.4em; margin-bottom: 0.6em;">The new premium</h2>
+<section>
+  <h2>The new premium</h2>
   <p class="fragment" style="font-size: 1.3em; color: var(--text-secondary); line-height: 1.6;">
-    An agent can clean your data, run your models,<br>and draft your paper overnight.
+    An agent can clean your data, run your models, and draft your paper overnight.
   </p>
   <div class="fragment" style="margin-top: 1.2em;">
     <p style="font-size: 1.5em; color: var(--text); font-weight: 500; line-height: 1.4; margin-bottom: 0.3em;">
@@ -1029,19 +1034,17 @@ Then build a web app to explore the data interactively:
 </section>
 
 <!-- DISCUSSION + TIMER -->
-<section class="center">
-  <h2 style="font-size: 2.2em; margin-bottom: 0.8em;">Discussion</h2>
+<section>
+  <h2>Discussion</h2>
   <ul style="margin-top: 0.6em; font-size: 1.3em; max-width: 1000px;">
     <li class="fragment" style="margin-bottom: 0.6em;">What research tasks would benefit most from agent assistance?</li>
     <li class="fragment" style="margin-bottom: 0.6em;">Where should human judgment remain non-negotiable?</li>
     <li class="fragment" style="margin-bottom: 0.6em;">What norms should we adopt for transparency and acknowledgment?</li>
     <li class="fragment">How do we train the next generation of researchers for this world?</li>
   </ul>
-</section>
-
-<!-- DISCUSSION TIMER -->
-<section class="center timer-slide">
-  <p class="timer" data-minutes="12">12:00</p>
+  <div style="margin-top: 1.5em;">
+    <p class="timer" data-minutes="12" style="font-size: 3em;">12:00</p>
+  </div>
 </section>
 
 <!-- SUMMARY -->
